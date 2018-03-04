@@ -1,0 +1,212 @@
+# bspwm hotkeys
+#
+
+#
+# Window manipulation
+# ______________
+
+# Show Help
+super + F1 
+	$TERMINAL -e sh -c 'cat $HOME/.config/sxhkd/sxhkdrc | egrep "super|ctrl" -B2 | less'
+
+# Presel window position
+super + {KP_Left,KP_Down,KP_Up,KP_Right}
+	bspc node -p \~{west,south,north,east}
+
+# Presel ghost window position
+super + ctrl + {KP_Left,KP_Down,KP_Up,KP_Right}
+	bspc node -p \~{west,south,north,east} -i
+
+# Presel desktop position
+super + shift + {KP_Left,KP_Down,KP_Up,KP_Right}
+	bspc node @/ -p \~{west,south,north,east}
+
+
+# Close window
+super + q
+	bspc  node -c
+
+# Kill window
+super + k
+	bspc  node -k
+
+# Toggle fullscreen
+super + shift + f 
+	bspc node -t {fullscreen,tiled}	
+
+# Toggle monocle mode
+super + f 
+	bspc desktop -l next
+
+
+#
+# Window moving and splitting
+# ______________    
+
+
+# Change desktop
+ctrl + alt + {Left,Right}
+	bspc desktop -f {prev,next} 
+		
+# Move current window to largest space or preselected area if there is one.
+super + m
+  windowpromoter
+
+#
+# Desktop navigation i3 style
+#
+
+# Select desktop 1
+super + ampersand
+  focusdesktop 1
+
+# Select desktop 2
+super + eacute
+  focusdesktop 2
+
+# Select desktop 3
+super + quotedbl
+  focusdesktop 3 
+
+# Select desktop 4
+super + apostrophe
+  focusdesktop 4 
+
+# Select desktop 5
+super + parenleft
+  focusdesktop 5 
+  
+# Select desktop 6
+super + minus
+  focusdesktop 6
+
+# Select desktop 7
+super + egrave
+  focusdesktop 7 
+
+# Select desktop 8
+super + underscore
+  focusdesktop 8 
+
+# Select desktop 9
+super + ccedilla
+  focusdesktop 9 
+
+# Select desktop 10
+super + agrave
+  focusdesktop 10 
+
+# Select desktop 1-10
+super + shift + {1-9,0}
+	movetodesktop  {1-9,10}
+
+
+# Go to specific window
+super + Tab
+	WindowSelector
+	
+# Windows navigation
+super +  {Left,Down,Up,Right}
+  focusmover {west,south,north,east}
+        	
+# Windows resize
+super + ctrl + {Left,Down,Up,Right}
+	bspwm_resize.sh {west,south,north,east} 50
+
+# Windows move
+super + shift + {Left,Down,Up,Right}
+	euclid_mover {west,south,north,east}
+
+
+#
+# Layout manipulation/desktop level controls
+# ______________    
+
+	
+# Undo balancing (equalize windows)
+super + ctrl + b
+	bspc node @/ -E
+
+# Toggle window gap
+super + g
+	bspc config -d focused window_gap {$maxgap,$mingap}
+
+# Reduce windows gap size
+super + button{5,4}
+	bspc config -d focused window_gap $((`bspc config -d focused window_gap` {+,-} 2 ))
+#
+# mouse bindings
+# __________________
+
+# Show dmenu#
+super + space
+	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
+
+# Show another menu
+super + alt + space
+	rofi -show
+
+# Launch Terminal
+super + Return
+	$TERMINAL 2>/dev/null
+
+# Launch rofi finder
+super + r
+	rofi-finder.sh
+
+# Launch spacefm file manager
+super + e
+	spacefm -n
+
+# Launch ranger file manager
+super + shift + e
+	$TERMINAL -e ranger
+
+# Cange window flag
+super + {s,p,l}
+	bspc node -g {sticky,private,locked}
+
+# Take a screenshot
+Print
+	maim  -u ~/Images/screenshot_$(date +%s).png
+
+#
+# Media keys
+#
+
+XF86AudioRaiseVolume
+	volume up
+
+XF86AudioLowerVolume
+	volume down
+
+XF86AudioMute
+	volume mute
+	
+XF86MonBrightnessDown
+ xbacklight -dec 10 
+
+XF86MonBrightnessUp
+ xbacklight -inc 10
+ 
+
+XF86Sleep
+	systemctl suspend
+
+# Show configuration folder
+super + c 
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+#	$TERMINAL -e ranger $HOME/.config
+
+# Reload sxhkd
+super + shift + s
+  notify-send "sxhkd" "Reload sxhkd" && pkill -USR1 -x sxhkd 
+
+# Restart bspwm
+super + shift + r
+	notify-send "sxhkd" "Reload bspwm" && $HOME/.config/bspwm/bspwmrc
+
+# Toggle compositing
+super + ctrl + space
+	{pkill compton ,\
+	compton -b }

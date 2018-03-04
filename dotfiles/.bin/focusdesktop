@@ -1,0 +1,4 @@
+#!/bin/sh
+
+NB=$1
+bspc desktop -f "$(bspc query -D | awk NR==$NB)"

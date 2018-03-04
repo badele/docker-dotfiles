@@ -1,0 +1,6 @@
+#!/bin/sh
+if [ $(pgrep pulseaudio >/dev/null) ]; then
+		volume_command=pulseaudio-ctl 
+	else
+		volume_command=avol
+fi

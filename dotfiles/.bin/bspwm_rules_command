@@ -1,0 +1,2 @@
+#!/bin/sh
+echo "$@" >> /tmp/.rules_cmd.log

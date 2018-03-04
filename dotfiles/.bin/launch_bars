@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pkill -x polybar
+
+MONITORS=$(xrandr -q | awk '/ connected/ {print $1}')
+for m in $MONITORS; do
+	MONITOR=$m polybar --reload bottom &
+	MONITOR=$m polybar --reload top &
+done
