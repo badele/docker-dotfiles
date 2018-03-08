@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NB=$(bspc query -M | wc -l)
+NB=$(xrandr | grep " connected" | wc -l)
 
 if [[ "$NB" == 1 ]]; then
     # Ignore if in x11docker

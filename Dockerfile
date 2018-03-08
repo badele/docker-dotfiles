@@ -15,29 +15,31 @@ USER user
 RUN yaourt -Syua --noconfirm
 
 # Install some packages
-RUN yaourt --noconfirm -S xorg-xrandr xorg-apps numlockx compton xterm rxvt-unicode
-RUN yaourt --noconfirm -S nitrogen mpd ncmpcpp libmpdclient 
-RUN yaourt --noconfirm -S w3m ranger unclutter key-mon dmenu rofi spacefm maim dunst
+RUN yaourt --noconfirm -S xorg-xrandr xorg-apps numlockx compton xterm rxvt-unicode nitrogen w3m 
 RUN yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
+RUN yaourt --noconfirm -S ranger unclutter key-mon dmenu rofi spacefm maim dunst
 RUN yaourt --noconfirm -S bspwm sxhkd polybar ttf-material-design-icons
 #RUN yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
 
-RUN yaourt --noconfirm -S vi nano
-RUN yaourt --noconfirm -S chromium
+RUN yaourt --noconfirm -S vi nano mpd ncmpcpp libmpdclient chromium
+
+# Python
+RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper 
 
 # Configure ZSH
-RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper antigen-git
+RUN yaourt --noconfirm -S antigen-git thefuck powerline powerline-fonts
 
-# Configuration
+# System configuration
 USER root
+ADD dotfiles/system/ /
 
-ADD dotfiles/ /etc/skel/
+# User configuration
+ADD dotfiles/user/ /etc/skel/
 RUN mv /etc/skel/startx /usr/bin/startx
-RUN pip install virtualenvwrapper
 
 # startscript to copy dotfiles from /etc/skel
 # runs either CMD or image command from docker run
-RUN echo -e '#! /bin/bash\n \
+RUN echo -e '#! /bin/zsh\n \
 [ -e "$HOME/.config" ] || cp -R /etc/skel/. $HOME/ \n\
 chmod 755 $HOME/.bin/*\n\
 sed -i -e "s@HOMEDIR@$HOME@g" ~/.config/nitrogen/nitrogen.cfg \n\
