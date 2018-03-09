@@ -55,3 +55,6 @@ sleep 2s && bspc config top_padding 10 &
 
 ## Run screenlock when suspending
 #i3lock-wait-for-suspend &
+
+[ $(pgrep ${TERMINAL}|wc -l) -eq 0 ] && ${TERMINAL}&
+[ $(pgrep termite|wc -l) -eq 0 ] && termite&

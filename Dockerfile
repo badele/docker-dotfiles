@@ -27,11 +27,14 @@ RUN yaourt --noconfirm -S vi nano mpd ncmpcpp libmpdclient chromium
 RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper 
 
 # Configure ZSH
-RUN yaourt --noconfirm -S antigen-git thefuck powerline powerline-fonts
+RUN yaourt --noconfirm -S antigen-git thefuck powerline nerd-fonts-source-code-pro 
+RUN yaourt --noconfirm -S neofetch termite imlib2 feh
 
 # System configuration
 USER root
 ADD dotfiles/system/ /
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && echo "fr_FR.UTF-8 UTF-8" >> /etc/locale.gen
+RUN locale-gen
 
 # User configuration
 ADD dotfiles/user/ /etc/skel/

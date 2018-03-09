@@ -13,4 +13,4 @@ if [[ -e /usr/bin/pacman && ! -e /usr/bin/Xephyr ]]; then
 fi
 
 #docker build --rm -f ./Dockerfile -t bspwm .
-x11docker --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --desktop bspwm xterm
+x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --desktop bspwm

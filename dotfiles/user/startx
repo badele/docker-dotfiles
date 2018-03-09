@@ -1,8 +1,5 @@
 #! /bin/bash
 
-export PATH="$HOME/.bin:$PATH"
-export TERMINAL="/usr/bin/urxvt"
-
 $HOME/.config/bspwm/autostart
 sxhkd &
 bspwm
