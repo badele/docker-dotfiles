@@ -1,0 +1,35 @@
+# Action & Key code => https://github.com/derf/feh/blob/586d183e320b0b8dbfe89f4615bfc3fac8a4a9e0/src/keyevents.c#L142
+
+# Menu and misc
+menu_parent         Left
+menu_child          Right
+menu_down           Down
+menu_up             Up
+menu_select         m
+toggle_filenames    f
+
+# Image navigation ...
+next_img            Down
+prev_img            Up
+
+# Image zooming
+zoom_in             KP_Add S-Up Page_Up KP_Page_Up
+zoom_out            KP_Subtract S-Down Page_Down KP_Page_Down
+zoom_default        KP_0 space
+zoom_fit            KP_1
+
+# Image movement
+scroll_up           C-Up
+scroll_down         C-Down
+scroll_left         C-Left
+scroll_right        C-Right
+
+# Remove from file list || Delete from file
+remove              d   Delete
+delete              C-d C-Delete
+
+# Disable key functions
+save_image
+save_filelist
+jump_back
+jump_fwd

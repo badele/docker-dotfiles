@@ -75,7 +75,8 @@ bspc config external_rules_command "$HOME/.bin/bspwm_rules_command"
 #bspc config external_rules_command /usr/bin/adjust-new-window
 
 # Background
-nitrogen --restore &
+#nitrogen --restore &
+color_scheme_reset ~/Images/mountain1.jpg
 
 # Polybar
 launch_bars &

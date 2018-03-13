@@ -9,6 +9,10 @@
 super + F1 
 	$TERMINAL -e sh -c 'cat $HOME/.config/sxhkd/sxhkdrc | egrep "super|ctrl" -B2 | less'
 
+# Move current window to largest space or preselected area if there is one.
+super + m
+    windowpromoter
+
 # Presel window position
 super + {KP_Left,KP_Down,KP_Up,KP_Right}
 	bspc node -p \~{west,south,north,east}
@@ -31,6 +35,10 @@ super + k
 	bspc  node -k
 
 # Toggle fullscreen
+super + shift + space
+	bspc node -t {float}
+
+# Toggle fullscreen
 super + shift + f 
 	bspc node -t {fullscreen,tiled}	
 
@@ -48,10 +56,6 @@ super + f
 ctrl + alt + {Left,Right}
 	bspc desktop -f {prev,next} 
 		
-# Move current window to largest space or preselected area if there is one.
-super + m
-  windowpromoter
-
 #
 # Desktop navigation i3 style
 #
@@ -162,7 +166,7 @@ super + e
 super + shift + e
 	$TERMINAL -e ranger
 
-# Cange window flag
+# Change window flag
 super + {s,p,l}
 	bspc node -g {sticky,private,locked}
 

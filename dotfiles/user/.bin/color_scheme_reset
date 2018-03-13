@@ -1,0 +1,14 @@
+#!/bin/bash
+
+wal -i $1
+
+# Set Xresources
+xrdb -load ${HOME}/.cache/wal/colors.Xresources
+xrdb -merge ${HOME}/.Xresources
+
+# Set the border colors for bspwm
+. "${HOME}/.cache/wal/colors.sh"
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+bspc config presel_border_color "$color1"

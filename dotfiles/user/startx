@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/zsh
 
 $HOME/.config/bspwm/autostart
 sxhkd &

@@ -1,0 +1,8 @@
+include "/usr/share/nano/*.nanorc"
+
+#set backup
+#set autoindent
+#set casesensitive
+#set historylog
+#set linenumbers
+#set mouse

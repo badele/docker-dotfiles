@@ -1,8 +1,3 @@
-# For urxvt and powerline
-export TERM="xterm-256color"
-export PATH="$HOME/.bin:$PATH"
-export TERMINAL="urxvt"
-
 # Powerline
 powerline-daemon -q
 . /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh

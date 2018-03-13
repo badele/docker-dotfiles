@@ -4,44 +4,13 @@
 ! SPACE COLORS
 ! #########################################
 
-urxvt*cursorColor:		#d0d0d0
-urxvt*colorIT:			#c37561
-urxvt*colorUL:			#a0a57e
+!urxvt*cursorColor:		#d0d0d0
+!urxvt*colorIT:			#c37561
+!urxvt*colorUL:			#a0a57e
 
 ! URxvt
 urxvt*scrollBar:          false
 
 !If compton not working
-urxvt*transparent: true
-urxvt*shading: 10
-
-
-! URxvt.font: xft:FontAwesome:pixelsize=10:antialias=true, xft:Noto Color Emoji, xft:Inconsolata\ for\ Powerline:pixelsize=10
-
-!Background / Foreground
-urxvt*background: #20202088
-urxvt*foreground: #ddccbbff
-!Black / Light black
-urxvt*color0: #222222
-urxvt*color8: #666666
-!Red / Light red
-urxvt*color1:  #cc4747
-urxvt*color9:  #bf5858
-!Green / Light green
-urxvt*color2:  #a0cf5d
-urxvt*color10: #b8d68c
-!Yellow / Light yellow
-urxvt*color3:  #e0a524
-urxvt*color11: #edB85c
-!Blue / Light blue
-urxvt*color4:  #4194d9
-urxvt*color12: #60aae6
-!Purple / Light purple
-urxvt*color5:  #cc2f6e
-urxvt*color13: #db588c
-!Cyan / Light cyan
-urxvt*color6:  #6d878d
-urxvt*color14:  #42717b
-!White / Light white...?
-urxvt*color7:  #dedede
-urxvt*color15: #f2f2f2
+urxvt*transparent: false
+!urxvt*shading: 10
