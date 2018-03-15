@@ -43,6 +43,7 @@ ADD dotfiles/user/ /etc/skel/
 RUN mv /etc/skel/startx /usr/bin/startx
 
 RUN mkdir -p /etc/skel/Images
+RUN /etc/skel/.bin/download_wallpapers /etc/skel/Images
 
 # Get bspwm doc generator
 RUN cd /etc/skel/.bin && wget https://raw.githubusercontent.com/badele/bspwm-doc/master/doc_generate
@@ -61,6 +62,9 @@ echo x11docker | sudo --stdin su -c "echo \"root ALL=(ALL) ALL\" >> /etc/sudoers
 exec $* \n\
 ' > /usr/local/bin/start 
 RUN chmod +x /usr/local/bin/start 
+
+# Clean pacman cache
+RUN pacman -Scc
 
 ENTRYPOINT start
 CMD startx

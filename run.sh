@@ -12,5 +12,5 @@ if [[ -e /usr/bin/pacman && ! -e /usr/bin/Xephyr ]]; then
     sudo pacman -S xorg-server-xephyr
 fi
 
-#docker build --rm -f ./Dockerfile -t bspwm .
+docker build --rm -f ./Dockerfile -t bspwm .
 x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --desktop bspwm

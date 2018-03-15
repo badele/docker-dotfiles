@@ -17,7 +17,10 @@ tpal brightness
 tpal rainbow
 
 ## Run
-
-`./run.sh`
+```
+./run.sh
+[Optional] execute download_wallpapers # to ~/Images
+[Optional] launch ranger and select background with 'b' key
+```
 
 
