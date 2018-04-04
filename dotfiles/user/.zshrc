@@ -1,6 +1,6 @@
 # Powerline
-powerline-daemon -q
-. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
+#powerline-daemon -q
+#. /usr/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh
 
 # Antigen configuration
 source /usr/share/zsh/share/antigen.zsh

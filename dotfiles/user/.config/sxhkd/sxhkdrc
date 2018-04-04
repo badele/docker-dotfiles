@@ -144,7 +144,7 @@ super + button{5,4}
 
 # Show dmenu#
 super + space
-	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
+	dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14
 
 # Show another menu
 super + alt + space

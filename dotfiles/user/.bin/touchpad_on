@@ -1,0 +1,4 @@
+#!/bin/bash
+
+TOUCHPAD=$(xinput --list | grep "PS/2" | egrep -o "id=[0-9]+" | cut -d"=" -f2)
+xinput --set-prop $TOUCHPAD "Device Enabled" 1

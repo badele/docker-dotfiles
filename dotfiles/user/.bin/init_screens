@@ -5,9 +5,12 @@ NB=$(xrandr | grep " connected" | wc -l)
 if [[ "$NB" == 1 ]]; then
     # Ignore if in x11docker
     xrandr --listmonitors|grep default
-    if [ $? -eq 0 ]; then
-	    xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --off --output DP1-2 --off --output DP1-1 --off
+    if [ $? -ne 0 ]; then
+      exit 0
     fi
-elif [[ "$NB" == 2 ]]; then
-    xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --off --output DP1-3 --mode 1680x1050 --pos 1366x0 --rotate normal --output DP1-2 --off --output DP1-1 --off
 fi
+
+SCREENS=$(xrandr | grep " connected" | awk '{ print $1 }')
+for SCR in $SCREENS; do
+  xrandr --output "$SCR" --auto
+done
