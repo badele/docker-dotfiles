@@ -63,5 +63,6 @@ XClock*hourColor:   rgba:96/c2/d3/ff
 XClock*minuteColor: rgba:96/c2/d3/ff
 XClock*secondColor: rgba:96/c2/d3/ff
 
-! Set depth to make transparency work.
+! Urxvt configuration
 URxvt*depth: 32
+URxvt*scrollBar: false

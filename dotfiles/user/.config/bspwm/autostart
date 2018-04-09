@@ -14,6 +14,9 @@ xsetroot -cursor_name left_ptr &
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 xrdb merge $HOME/.Xresources &
 
+# Clipboard
+clipit &
+
 # For shadows and transparency
 compton -b &
 
@@ -56,9 +59,4 @@ sleep 2s && bspc config top_padding 10 &
 ## Run screenlock when suspending
 #i3lock-wait-for-suspend &
 
-$(pgrep ${TERMINAL}|wc -l) > /tmp/result
-pgrep ${TERMINAL}|wc -l > /tmp/result1
-echo ${TERMINAL} > /tmp/result2
-
 [ $(pgrep ${TERMINAL}|wc -l) -eq 0 ] && ${TERMINAL}&
-urxvt &

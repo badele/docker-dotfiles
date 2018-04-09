@@ -24,4 +24,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen theme bhilburn/powerlevel9k powerlevel9k
 
 # Tell Antigen that you're done.
-antigen apply                 
+antigen apply
+
+# Disable Ctrl-S (freeze terminal)
+stty -ixon -ixoff

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Download wallpapers
+#download_wallpapers
+
+# Download bspwm doc generation
+curl -fLo ~/.bin/doc_generate https://raw.githubusercontent.com/badele/bspwm-doc/master/doc_generate
+chmod 755 ~/.bin/doc_generate

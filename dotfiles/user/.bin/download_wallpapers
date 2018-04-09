@@ -3,18 +3,19 @@
 # Get max monitors resolution
 maxres=$(xrandr | grep '*' | sort -n | tail -1 | awk '{ print $1 }')
 
-FOLDER="~/Images"
+FOLDER="$HOME/Images"
 if [ "$1" != "" ]; then
   FOLDER=$1
 fi
+FOLDER=$(realpath "$FOLDER")
 
 # Download and resize a wallpapers
 function wresize() {
     if [ -e ${FOLDER}/${2} ]; then
-			echo "$1 Allready Downloaded"
+			echo "${1} Allready Downloaded"
     else
-			echo "Downloaded $1"
-      convert "${1}" -strip -resize "$maxres^" ${FOLDER}/${2}
+			echo "Downloaded ${1}"
+      convert "${1}" -strip -resize "$maxres^" "${FOLDER}/${2}"
     fi
 }
 
@@ -97,6 +98,7 @@ wresize "http://www.tokkoro.com/picsup/2741957-geometry-4k-free-pc-hd-wallpaper.
 wresize "http://www.tokkoro.com/picsup/2742178-geometry-4k-widescreen-computer-wallpaper.jpg" cube2_tokkoro.jpg
 wresize "http://www.tokkoro.com/picsup/2746365-triangle-4k-wallpaper-pack-1080p-hd.jpg" grass3_tokooro.jpg
 wresize "http://www.tokkoro.com/picsup/2746078-abstract-4k-cool-hd-wallpaper.jpg" x1_tokkoro.jpg
+wresize "http://www.tokkoro.com/picsup/2815661-digital-art-minimalism-simple-background-abstract-3d-geometry-blue-background___abstract-wallpapers.jpg" abstract1_tokkoro.jpg
 wresize "http://www.tokkoro.com/picsup/2942903-artwork___abstract-wallpapers.jpg" city6_tokkoro.jpg
 wresize "http://www.tokkoro.com/picsup/2803243-women-anime-soft-shading___abstract-wallpapers.jpg" girl1_tokkoro.jpg
 wresize "http://www.tokkoro.com/picsup/2744742-minimalism-4k-best-image.jpg" food3_tokkoro.jpg

@@ -115,7 +115,7 @@ super +  {Left,Down,Up,Right}
         	
 # Windows resize
 super + ctrl + {Left,Down,Up,Right}
-	bspwm_resize.sh {west,south,north,east} 50
+	resize_win {west,south,north,east} 50
 
 # Windows move
 super + shift + {Left,Down,Up,Right}

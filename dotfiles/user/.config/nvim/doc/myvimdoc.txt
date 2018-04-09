@@ -1,0 +1,103 @@
+" vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
+*myvimdoc.txt* My Summary Vim Help
+
+███╗   ███╗██╗   ██╗    ██╗   ██╗██╗███╗   ███╗    ██████╗  ██████╗  ██████╗ ~
+████╗ ████║╚██╗ ██╔╝    ██║   ██║██║████╗ ████║    ██╔══██╗██╔═══██╗██╔════╝ ~
+██╔████╔██║ ╚████╔╝     ██║   ██║██║██╔████╔██║    ██║  ██║██║   ██║██║      ~
+██║╚██╔╝██║  ╚██╔╝      ╚██╗ ██╔╝██║██║╚██╔╝██║    ██║  ██║██║   ██║██║      ~
+██║ ╚═╝ ██║   ██║        ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝╚██████╔╝╚██████╗ ~
+╚═╝     ╚═╝   ╚═╝         ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝  ╚═════╝  ╚═════╝ ~
+
+                        Some tips for some apps   
+                                 from
+			      Bruno Adelé
+
+====================================================================
+CONTENTS                                                *MyContents*
+
+    1. My Vim ............... |MyVim|
+    2. My NERDTree .......... |MyNerdTree|
+
+====================================================================
+Section 1: My Vim                                            *MyVim*
+
+  == *MyPrerequisite* ==
+
+    - Copy dotfile to your homedir
+    - Generate this help with helptags ~/.config/nvim/doc/  
+
+    [F1]   For showing this Help
+    [C-F1] Refresh docs with :helptags command
+
+Note: maps can be view with :map and you can search mapping with :map,
+
+== Stating ==
+    vim -V[LEVELNUMBER]FILENAME
+    vim --startuptime vim.log
+
+== Selecting Mode ==
+
+    [i]   Insertion mode
+    [v]   Selection mode
+    [R]   Replacement mode
+    [ESC] Normal mode
+
+== Buffers ==
+
+    [:buffers] List buffers
+    [:b,:buf] selectt buffer
+
+== Movement ==
+
+    [h,j,k,l] Left, Down, Up, Right
+    [◀,▼,▲,▶] Left, Down, Up, Right
+    [b,w,e]   Word movement (begin, word, end)
+    [0,^,$]   Line movement (begin, first character, end line)
+    [(,)]     Sentence movement (begin,end)
+    [{,}]     Paragraph movement (begin,end)
+
+    [<x>g]    Go to <x> line
+    [gg]      Go to first line == 1g
+    [G]       Go to last line
+    [H,M,L]   Go to (upper, middle, bottom) screen
+
+== Editor ==
+
+    [a,A] Append character (after character, end line)
+    [i,I] Append character (before character, begin line)
+    [o,O] Append character (before line, after line)
+    [r]   Replace character
+    
+    [d{number}<movement>] Delete with movement option
+    [{number}dd]          Delete line
+    [C-v] + key           Show keycode
+
+    
+    
+Section 2: My NERDTree                                            *MyNerdTree*
+
+	== Navigation ==
+	
+    	[u]         	Up folder
+	[C]		Change root
+	[p]		Goto parent
+	[P]		Goto root parent
+
+	== Files / Folders ==
+	
+	[C-d]       	Toogle NERDTree
+    	[?]		Show help
+    	[o,<Enter>] 	Open folder
+    	[go]		File preview
+    	[I]		Toogle hidden files 
+    	[m]         	Show NERDTree menu
+    	[mg]		Grep on folder
+    	[o,x]		Open/Close node
+    	[O,X]       	Open/close all nodes
+    	[B]		Show bookmark
+    	:Bookmark	Add bookmark
+    	[D]		Delete bookmark
+
+	== Git ==
+	cd 		Select current folder(CWD) for showing the git status
+	r		Refresh git state

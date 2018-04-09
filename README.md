@@ -19,8 +19,8 @@ tpal rainbow
 ## Run
 ```
 ./run.sh
-[Optional] execute download_wallpapers # to ~/Images
-[Optional] launch ranger and select background with 'b' key
+[Optional] execute download_wallpapers (it download ~/Images )
+[Optional] launch ranger with urxvt (w3m support) and select background with 'b' key
 ```
 
 
