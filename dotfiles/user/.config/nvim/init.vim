@@ -123,6 +123,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'masaakif/nerdtree-useful-plugins'
 map <C-d> :NERDTreeToggle<CR>
 let g:NERDTreeShowBookmarks=1
+let g:NERDTreeShowHidden=1
 let g:NERDTreeIndicatorMapCustom = {
     \ 'Modified'  : '✹',
     \ 'Staged'    : '✚',

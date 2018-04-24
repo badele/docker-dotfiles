@@ -1,5 +1,0 @@
-#!/bin/zsh
-
-$HOME/.config/bspwm/autostart
-sxhkd &
-bspwm

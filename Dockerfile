@@ -1,11 +1,10 @@
 # x11docker/bspwm
 # 
-# Run BSPWM desktop in docker. 
+# Run I3 desktop in docker. 
 # Use x11docker to run image. 
 # Get x11docker from github: 
 #   https://github.com/mviereck/x11docker 
 #
-# Examples: x11docker --xephyr --user=root --pulseaudio --desktop bspwm startx
 
 FROM heichblatt/archlinux-yaourt
 
@@ -24,10 +23,10 @@ RUN locale-gen
 # Install some graphical packages
 USER user
 RUN yaourt --noconfirm -S nerd-fonts-complete 
-RUN yaourt --noconfirm -S xorg-xrandr xorg-apps xdo numlockx compton xterm rxvt-unicode termite
+RUN yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit xautolock xdo numlockx compton xterm rxvt-unicode termite
 RUN yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
-RUN yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm maim dunst dunstify 
-RUN yaourt --noconfirm -S bspwm sxhkd polybar-git ttf-material-design-icons chromium
+RUN yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm maim dunst dunstify clipit
+RUN yaourt --noconfirm -S i3-gaps polybar-git ttf-material-design-icons chromium
 #RUN yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
 
 # Install some terminal package
@@ -58,11 +57,16 @@ USER root
 RUN mkdir -p /etc/skel/Images
 RUN pwd
 ADD dotfiles/user/ /etc/skel/
-RUN mv /etc/skel/startx /usr/bin/startx
+
+
+# DISABLE
 #RUN /etc/skel/.bin/download_wallpapers /etc/skel/Images
-RUN  convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/wallpaper.jpg"
+RUN  convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/mountain.jpg"
 RUN  convert "http://www.tokkoro.com/picsup/427348-anonymous-hd-widescreen-wallpapers-backgrounds.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/anonymous1_tokkoro.jpg"
 RUN  convert "http://www.tokkoro.com/picsup/2986141-anonymous-face-mask-minimalism-guy-fawkes-mask-hope-posters___mixed-wallpapers.jpg" -strip -resize "1920x1080^" "/etc/skel/Images/wanonymous2_tokkoro.jpg"
+RUN  convert "https://static.pexels.com/photos/51123/apple-education-school-knowledge-51123.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/apple1_pexels.jpg"
+
+RUN cp "/etc/skel/Images/mountain.jpg" "/etc/skel/wallpaper.jpg" 
 
 # Download some file in skeleton folder
 #RUN curl -fLo /etc/skel/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -78,12 +82,17 @@ sed -i -e "s@HOMEDIR@$HOME@g" ~/.config/nitrogen/bg-saved.cfg \n\
 # Sudoers configuration\n\
 echo x11docker | sudo --stdin su -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\"  > /etc/sudoers"\n\ 
 echo x11docker | sudo --stdin su -c "echo \"root ALL=(ALL) ALL\" >> /etc/sudoers"\n\ 
+
+# For launching I3
+ln -s $HOME/.xinitrc $HOME/.bin/starti3 \n\
+export PATH=$HOME/.bin:$PATH \n\
 exec $* \n\
 ' > /usr/local/bin/start 
-RUN chmod +x /usr/local/bin/start 
+RUN chmod +x /usr/local/bin/start
 
 # Clean pacman cache
 RUN pacman -Scc
 
 ENTRYPOINT ["/usr/local/bin/start"]
-CMD ["startx"]
+
+CMD ["starti3"]
