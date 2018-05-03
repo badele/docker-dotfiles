@@ -1,0 +1,46 @@
+#!/bin/bash
+
+REPO=https://github.com/badele/docker-dotfiles.git
+
+#if [[ $(id -u) -ne 0 ]]; then
+#	echo "Please run as root"
+#	exit 1
+#fi
+
+# Update
+yaourt --noconfirm -Syyua
+
+# System configuration
+sudo echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen && sudo echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen
+sudo locale-gen
+
+# Install some graphical packages
+yaourt --noconfirm -S nerd-fonts-complete
+yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit xautolock xdo numlockx compton xterm rxvt-unicode termite
+yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
+yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm maim dunst dunstify clipit
+yaourt --noconfirm -S i3-gaps polybar-git ttf-material-design-icons chromium
+# yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
+
+# Install some terminal package
+yaourt --noconfirm -S openssh ranger neovim stow ripgrep tty-clock mpd ncmpcpp libmpdclient
+
+# Python
+yaourt --noconfirm -S python-pip python-neovim python-virtualenvwrapper python-pywal termpalette-git
+yaourt --noconfirm -S npm
+
+# For Vim package
+sudo npm i -g npm@5.6.0 # Fix temporary npm
+sudo pip install jedi pylint vim-vint
+sudo npm install -g fixjson jsonlint
+
+# Configure ZSH
+# powerline
+yaourt --noconfirm -S antigen-git thefuck
+yaourt --noconfirm -S neofetch highlight
+yaourt --noconfirm -S shfmt
+yaourt --noconfirm -S imagemagick
+
+#if [ ! -e "$HOME/.config" ]; then
+#	git clone "$REPO"
+#fi

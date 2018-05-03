@@ -41,7 +41,7 @@ imap <C-z> <Esc>ui
 " Save with CTRL-S
 noremap <silent> <C-s>          :update<CR>
 vnoremap <silent> <C-s>         <C-C>:update<CR>
-inoremap <silent> <C-s>         <C-O>:update<CR>
+inoremap <silent> <C-s>         <C-O>:update<CR><Esc>
 
 " Quit with CTRL-Q
 noremap <silent> <C-q>          :q<CR>

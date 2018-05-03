@@ -153,16 +153,35 @@ set number
 let g:mapleader = ','
 set ignorecase
 set cursorline
+set autochdir
 
 " Allow switch buffers if unsaved
 set hidden
-highlight CursorLine cterm=None ctermbg=black ctermfg=None
 set fillchars+=vert:│
 
 source ~/.config/nvim/map.vim
 
 augroup filetypedetect
-    au BufRead,BufNewFile *.Jenkinsfile set filetype=groovy
+    	au BufRead,BufNewFile *.Jenkinsfile set filetype=groovy
+augroup END
+
+function! ShowColors()
+let l:num = 255
+while l:num >= 0
+    exec 'hi col_'.l:num.' ctermbg='.l:num.' ctermfg=white'
+    exec 'syn match col_'.l:num.' "ctermbg='.l:num.':...." containedIn=ALL'
+    call append(0, 'ctermbg='.l:num.':....')
+    let l:num = l:num - 1
+endwhile
+endfunction
+
+" Colors
+highlight CursorLine cterm=None ctermbg=232 ctermfg=None
+highlight Visual cterm=None ctermbg=7 ctermfg=0
+highlight Search cterm=None ctermbg=2 ctermfg=0
+augroup colors
+	au InsertEnter * hi CursorLine cterm=NONE ctermbg=0 ctermfg=None
+	au InsertLeave * hi CursorLine cterm=None ctermbg=232 ctermfg=None
 augroup END
 
 "let g:AutoPairsMapCR=0

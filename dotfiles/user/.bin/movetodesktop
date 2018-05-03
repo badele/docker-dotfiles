@@ -1,4 +1,0 @@
-#!/bin/sh
-
-NB=$1
-bspc node -d "$(bspc query -D | awk NR==$NB)"

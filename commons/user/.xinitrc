@@ -67,6 +67,6 @@ init_workspaces
 color_scheme_reset
 
 # Polybar
-#launch_bars
+launch_bars
 
 exec dbus-launch i3 -V
