@@ -2,11 +2,6 @@
 
 REPO=https://github.com/badele/docker-dotfiles.git
 
-#if [[ $(id -u) -ne 0 ]]; then
-#	echo "Please run as root"
-#	exit 1
-#fi
-
 # Update
 yaourt --noconfirm -Syyua
 
@@ -41,6 +36,11 @@ yaourt --noconfirm -S neofetch highlight
 yaourt --noconfirm -S shfmt
 yaourt --noconfirm -S imagemagick
 
-#if [ ! -e "$HOME/.config" ]; then
-#	git clone "$REPO"
-#fi
+# Download some wallpapers, you can donwload more with download_wallpaper scripts
+sudo mkdir /etc/skel/Images
+sudo convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/mountain.jpg"
+sudo convert "http://www.tokkoro.com/picsup/427348-anonymous-hd-widescreen-wallpapers-backgrounds.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/anonymous1_tokkoro.jpg"
+sudo convert "http://www.tokkoro.com/picsup/2986141-anonymous-face-mask-minimalism-guy-fawkes-mask-hope-posters___mixed-wallpapers.jpg" -strip -resize "1920x1080^" "/etc/skel/Images/wanonymous2_tokkoro.jpg"
+sudo convert "https://static.pexels.com/photos/51123/apple-education-school-knowledge-51123.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/apple1_pexels.jpg"
+
+sudo cp "/etc/skel/Images/mountain.jpg" "/etc/skel/wallpaper.jpg"

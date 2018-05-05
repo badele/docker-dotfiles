@@ -69,4 +69,4 @@ color_scheme_reset
 # Polybar
 launch_bars
 
-exec dbus-launch i3 -V
+exec dbus-launch i3

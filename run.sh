@@ -15,4 +15,4 @@ fi
 #docker build --no-cache -t badele/docker-bspwm .
 #docker build -t badele/docker-bspwm .
 
-x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --desktop badele/docker-bspwm
+x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --desktop badele/docker-dockerfiles
