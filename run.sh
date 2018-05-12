@@ -12,7 +12,7 @@ if [[ -e /usr/bin/pacman && ! -e /usr/bin/Xephyr ]]; then
 	sudo pacman -S xorg-server-xephyr
 fi
 
-#docker build --no-cache -t badele/docker-bspwm .
-#docker build -t badele/docker-bspwm .
+#docker build --no-cache -t badele/docker-dotfiles .
+#docker build -t badele/docker-dotfiles .
 
-x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --desktop badele/docker-dockerfiles
+x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --home --desktop badele/docker-dotfiles

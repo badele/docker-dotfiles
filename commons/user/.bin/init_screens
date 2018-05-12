@@ -1,16 +1,20 @@
 #!/bin/bash
 
-NB=$(xrandr | grep " connected" | wc -l)
-
-if [[ "$NB" == 1 ]]; then
-    # Ignore if in x11docker
-    xrandr --listmonitors|grep default
-    if [ $? -ne 0 ]; then
-      exit 0
-    fi
+if [ "$COMPUTER" = "x11docker" ]; then
+	my_simple_screen
 fi
 
-SCREENS=$(xrandr | grep " connected" | awk '{ print $1 }')
-for SCR in $SCREENS; do
-  xrandr --output "$SCR" --auto
-done
+#NB=$(xrandr | grep " connected" | wc -l)
+
+#if [[ "$NB" == 1 ]]; then
+#    # Ignore if in x11docker
+#    xrandr --listmonitors|grep default
+#    if [ $? -ne 0 ]; then
+#      exit 0
+#    fi
+#fi
+
+#SCREENS=$(xrandr | grep " connected" | awk '{ print $1 }')
+#for SCR in $SCREENS; do
+#  xrandr --output "$SCR" --auto
+#done

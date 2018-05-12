@@ -1,5 +1,3 @@
-
-```
                 ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗
                 ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝
                 ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗
@@ -8,28 +6,16 @@
                 ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝
                 
                                For Manjaro/Archlinux distribution
-```
+* ZSH, Pulseaudio, VIM, I3
 
-## Installation
+* ZSH
+  * Antigen ZSH plugins auto-installation
+* VIM
+  * Vim Plug plugins auto-installation
+    * IDE editor 
+* Tools
+  * download_wallpapers	Download some wallpapers, can be used with color_scheme_reset
+  * colors_table	Show characters colors in console
+  * color_scheme_reset	Reset scheme colors from picture
 
-### Docker Installation
-
-```
-bash
-cd
-git clone git@github.com:badele/docker-dotfiles.git
-cd docker-dotfiles
-./run.sh
-```
-
-### Physical Installation
-
-```bash
-cd
-git clone git@github.com:badele/docker-dotfiles.git
-cd docker-dotfiles
-./commons/user/.bin/dotfiles_install_packages
-./commons/user/.bin/dotfiles_get_conf4computer
-```
-
-[For more help](https://raw.githubusercontent.com/badele/docker-dotfiles/master/commons/user/.config/nvim/doc/help.txt)
+For more information, use show_help command

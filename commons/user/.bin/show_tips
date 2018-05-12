@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+echo ""
+echo "** Use show_help command or in Vim [C-F1] + [F1] to display help"

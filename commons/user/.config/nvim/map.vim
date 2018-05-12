@@ -6,7 +6,7 @@ noremap ; :
 " Goto to link
 map <C-L> <C-]>
 
-nmap <CR> O<ESC>
+"nmap <CR> O<ESC>
 
 " Help mappings
 map <F1> :h myvimdoc.txt<CR>

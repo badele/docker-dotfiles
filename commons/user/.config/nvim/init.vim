@@ -144,6 +144,7 @@ augroup END
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
+let g:rg_command = "rg --iglob '!.git' --vimgrep --follow --ignore-case --hidden"
 
 call plug#end()
 
@@ -176,12 +177,14 @@ endwhile
 endfunction
 
 " Colors
-highlight CursorLine cterm=None ctermbg=232 ctermfg=None
+let &colorcolumn=join(range(81,999),",")
+highlight CursorLine cterm=None ctermbg=233 ctermfg=None
 highlight Visual cterm=None ctermbg=7 ctermfg=0
 highlight Search cterm=None ctermbg=2 ctermfg=0
+highlight ColorColumn ctermbg=234
 augroup colors
 	au InsertEnter * hi CursorLine cterm=NONE ctermbg=0 ctermfg=None
-	au InsertLeave * hi CursorLine cterm=None ctermbg=232 ctermfg=None
+	au InsertLeave * hi CursorLine cterm=None ctermbg=233 ctermfg=None
 augroup END
 
 "let g:AutoPairsMapCR=0

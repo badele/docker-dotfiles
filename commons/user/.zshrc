@@ -28,3 +28,5 @@ antigen apply
 
 # Disable Ctrl-S (freeze terminal)
 stty -ixon -ixoff
+
+show_tips

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+cat ~/.config/nvim/doc/help.txt

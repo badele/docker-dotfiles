@@ -18,12 +18,20 @@ RUN yaourt --noconfirm -S openssh zsh
 RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper 
 RUN yaourt --noconfirm -S npm
 
-USER root
+RUN echo "13"
 
-RUN echo "4"
+USER root 
+
+# Clone user dotfiles
 RUN cd /etc/skel && git clone $REPO 
-RUN chmod 755 /etc/skel/docker-dotfiles/dotfiles_*
-RUN /etc/skel/docker-dotfiles/dotfiles_install_packages
+
+# Install commons dotfiles packages
+# If the dotfiles_install_packages file is modified in your dotfile,
+# you must build docker image with "docker build --no-cache -t badele/docker-dotfiles ."
+USER user
+RUN /etc/skel/docker-dotfiles/commons/user/.bin/dotfiles_install_packages
+
+USER root
 
 RUN echo -e '#! /bin/zsh\n \
 [ -e "$HOME/docker-dotfiles" ] || cp -R /etc/skel/. $HOME/ \n\
@@ -33,13 +41,16 @@ cd $HOME/docker-dotfiles && git pull \n\
 echo x11docker | sudo --stdin su -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\"  > /etc/sudoers"\n\ 
 echo x11docker | sudo --stdin su -c "echo \"root ALL=(ALL) ALL\" >> /etc/sudoers"\n\ 
 \n\
-# Configure user configuration by stow
-cd $HOME/docker-dotfiles &&  /$HOME/docker-dotfiles/dotfiles_sync \n\
+# Get user configuration (depend computer)
+cd $HOME/docker-dotfiles &&  /$HOME/docker-dotfiles/commons/user/.bin/dotfiles_get_conf4computer \n\
+\n\
 
+export PATH=$HOME/.bin:$PATH \n\
+cd\n\
 exec $* \n\
 ' > /usr/local/bin/start 
 RUN chmod +x /usr/local/bin/start
 
 ENTRYPOINT ["/usr/local/bin/start"]
 
-CMD ["xterm"]
+CMD ["dotfiles_launch_system"]

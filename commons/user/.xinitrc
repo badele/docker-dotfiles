@@ -3,6 +3,8 @@
 ##run_once is a script in /usr/bin that prevents running script if it is running already
 ##
 
+. get_computer_name
+
 # Set french keyboard for sxhkd
 setxkbmap fr
 numlockx on
@@ -57,7 +59,9 @@ xbacklight -set 15 &
 
 #[ $(pgrep ${TERMINAL} | wc -l) -eq 0 ] && ${TERMINAL} &
 termite &
-termite -e "sh -c 'ranger'" &
+#termite -e "sh -c 'ranger'" &
+#termite -e "sh -c 'less ~/docker-dotfiles/README.md'" &
+
 # init screen
 init_screens
 init_workspaces

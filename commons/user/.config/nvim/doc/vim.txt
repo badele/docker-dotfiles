@@ -1,5 +1,5 @@
 " vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
-*myvimdoc.txt* My Summary Vim Help
+*vimdoc.txt* My Summary Vim Help
 
 ███╗   ███╗██╗   ██╗    ██╗   ██╗██╗███╗   ███╗    ██████╗  ██████╗  ██████╗ ~
 ████╗ ████║╚██╗ ██╔╝    ██║   ██║██║████╗ ████║    ██╔══██╗██╔═══██╗██╔════╝ ~
@@ -13,36 +13,36 @@
 			      Bruno Adelé
 
 ====================================================================
-CONTENTS                                                *MyContents*
+CONTENTS                                                *MyVimIndex*
 
-    1. My Vim ............... |MyVim|
-    2. My NERDTree .......... |MyNerdTree|
+    1. Vim ............... |MyVim|
+    2. NERDTree .......... |MyNerdTree|
+    3. Fugitive .......... |MyFugitive|
 
 ====================================================================
 Section 1: My Vim                                            *MyVim*
 
-  == *MyPrerequisite* ==
+  == Help ==
 
-    - Copy dotfile to your homedir
-    - Generate this help with helptags ~/.config/nvim/doc/  
-
-    [F1]   For showing this Help
     [C-F1] Refresh docs with :helptags command
+    [F1]   For showing this Help or :h
+           :h searchname, search help section
+           :maps view mapping, you can also search mapping with :map,
+    [C-k]  Show key value in insert mode
 
-Note: maps can be view with :map and you can search mapping with :map,
+  == Debuging ==
 
-== Stating ==
     vim -V[LEVELNUMBER]FILENAME
     vim --startuptime vim.log
 
-== Selecting Mode ==
+  == Selecting Mode ==
 
     [i]   Insertion mode
     [v]   Selection mode
     [R]   Replacement mode
     [ESC] Normal mode
 
-== Buffers ==
+  == Buffers ==
 
     [:buffers] List buffers
     [:b,:buf] selectt buffer
@@ -72,7 +72,6 @@ Note: maps can be view with :map and you can search mapping with :map,
     [{number}dd]          Delete line
     [C-v] + key           Show keycode
 
-    
     
 Section 2: My NERDTree                                            *MyNerdTree*
 

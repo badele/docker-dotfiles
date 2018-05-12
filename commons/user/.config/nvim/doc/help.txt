@@ -1,0 +1,55 @@
+" vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
+*help.txt* Help for docker-dotfiles project
+
+	██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗~
+	██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝~
+	██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗~
+	██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║~
+	██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║~
+	╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝~
+ 
+			Some helps for docker-dotfiles   
+				      by
+				 Bruno Adelé
+
+================================================================================
+CONTENTS                                                           *MyHelpIndex*
+
+    1. Introduction ......... |MyIntroduction|
+    1. Packages ............. |MyPackages|
+    2. Tools ................ |MyTools|
+    3. ZSH .................. |MyZSH|
+    4. Vim .................. |MyVim|
+
+================================================================================
+
+
+			    == *MyIntroduction* ==
+
+ This project tries to configure environment with the best opensource softwares
+
+
+			      == *MyPackages* ==
+
+            |WindowsManager|     i3-gaps, polybar, nerd-fonts, rofi, dmenu, dunst
+                      |Xorg|     xorg, pulseaudio, compton, spacefm, chromium
+                  |Terminal|     neovim, ranger, urxvt, termite, mpd
+                     |Shell|     zsh, antigen
+                      |Misc|     tty-clock, pywal, termpalette
+    
+    
+				== *MyTools* ==
+		
+        |color_scheme_reset|     Set theme from picture
+               |color_table|     Show ascii char colors table
+|dotfiles_get_conf4computer|     Get dotfiles for current computer
+ |dotfiles_install_packages|     Install dotfiles requirements packages
+    |dotfiles_launch_system|     Launch the dotfiles main system
+ |download_i3_doc_generator|     Download a i3 doc screenshot generator
+       |download_wallpapers|     Download some wallpapers picture
+         |get_computer_name|     Get a current computer name
+ 	            |mystow|     Download configuration for current computer
+
+
+
+

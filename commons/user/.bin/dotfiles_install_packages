@@ -18,7 +18,7 @@ yaourt --noconfirm -S i3-gaps polybar-git ttf-material-design-icons chromium
 # yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
 
 # Install some terminal package
-yaourt --noconfirm -S openssh ranger neovim stow ripgrep tty-clock mpd ncmpcpp libmpdclient
+yaourt --noconfirm -S openssh ranger neovim stow ripgrep tty-clock mpd ncmpcpp libmpdclient dmidecode
 
 # Python
 yaourt --noconfirm -S python-pip python-neovim python-virtualenvwrapper python-pywal termpalette-git

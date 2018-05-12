@@ -1,3 +1,0 @@
-#!/bin/bash
-
-./commons/user/.bin/mystow.sh apply commons

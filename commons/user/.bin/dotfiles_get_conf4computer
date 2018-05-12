@@ -1,0 +1,13 @@
+#!/bin/bash
+
+path=$(dirname $(realpath $0))
+
+. $path/get_computer_name
+
+# Commons configuration
+$path/mystow apply commons
+
+# Computer configuration
+if [ -e $path/../../../$COMPUTER ]; then
+	$path/mystow apply $COMPUTER
+fi

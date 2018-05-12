@@ -1,0 +1,11 @@
+#!/bin/bash
+
+COMPUTER=""
+
+if [ -e /x11docker/x11docker.CMD.sh ]; then
+	export COMPUTER="x11docker"
+fi
+
+if [ -z "$COMPUTER" ] && [[ $(sudo dmidecode -q -t system | grep "Latitude E5540") ]]; then
+	export COMPUTER="dell"
+fi

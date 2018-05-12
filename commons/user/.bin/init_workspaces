@@ -1,10 +1,10 @@
 #!/bin/bash
 
-NB=$(xrandr | grep " connected" | wc -l)
+#NB=$(xrandr | grep " connected" | wc -l)
 
-if [[ "$NB" == 1 ]]; then
-	bspc monitor -d 1.social 2.music 3.term 4.misc 5.misc 6.code 7.web 8.term 9.misc 0.misc
-elif [[ "$NB" == 2 ]]; then
-	bspc monitor $(bspc query -M | awk NR==1) -d 1.social 2.music 3.term 4.misc 5.misc
-	bspc monitor $(bspc query -M | awk NR==2) -d 6.code 7.web 8.term 9.misc 0.misc
-fi
+#if [[ "$NB" == 1 ]]; then
+#	bspc monitor -d 1.social 2.music 3.term 4.misc 5.misc 6.code 7.web 8.term 9.misc 0.misc
+#elif [[ "$NB" == 2 ]]; then
+#	bspc monitor $(bspc query -M | awk NR==1) -d 1.social 2.music 3.term 4.misc 5.misc
+#	bspc monitor $(bspc query -M | awk NR==2) -d 6.code 7.web 8.term 9.misc 0.misc
+#fi

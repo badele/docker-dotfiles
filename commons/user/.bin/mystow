@@ -3,15 +3,9 @@
 PWD=$(pwd)
 
 # Check if in the dotfiles folder
-if [ ! -f "$PWD/README.md" ]; then
-	echo "$PWD/README.md not found, Please go to your root dotfiles folder"
-	exit 0
-else
-	grep dotfiles "$PWD/README.md" >/dev/null
-	if [ $? == 1 ]; then
-		echo "'dotfiles' text not found in $PWD/README.md not found, Please go to your root dotfiles folder"
-		exit 0
-	fi
+if [ ! -f "$PWD/commons/.stow" ]; then
+	echo "It seem not a dotfiles folder, please go to your root dotfiles folder"
+	exit 1
 fi
 
 # Execute stow
