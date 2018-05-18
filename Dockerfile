@@ -11,14 +11,15 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && echo "fr_FR.UTF-8 UTF-8" >> /
 RUN locale-gen
 
 # Install some graphical packages
-USER user
-RUN yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit xterm pulseaudio pulseaudio-ctl
-RUN yaourt --noconfirm -S openssh zsh
-# Python
-RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper 
-RUN yaourt --noconfirm -S npm
+#USER user
+#RUN yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit xterm pulseaudio pulseaudio-ctl
+#RUN yaourt --noconfirm -S openssh zsh
 
-RUN echo "13"
+# Python
+#RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper 
+#RUN yaourt --noconfirm -S npm
+
+#RUN echo "13"
 
 USER root 
 

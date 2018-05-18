@@ -1,0 +1,74 @@
+#!/bin/bash
+
+COUNTERNAME='/tmp/mybackground_counter'
+BG_FOLDER=~/Images
+
+resetCounter() {
+	rm "$COUNTERNAME"
+}
+
+setMinCounter() {
+	newcounter=0
+	test -e "$COUNTERNAME" || echo "$newcounter" >"$COUNTERNAME"
+
+}
+
+setMaxCounter() {
+	newcounter=$(ls $BG_FOLDER/* | wc -l)
+	test -e "$COUNTERNAME" || echo "$newcounter" >"$COUNTERNAME"
+}
+
+addCounter() {
+	value=$1
+	oldcounter=$(cat $COUNTERNAME)
+	newcounter=$(expr $oldcounter + $value)
+	echo $newcounter >$COUNTERNAME
+}
+
+selectImage() {
+	echo "## $newcounter ##"
+	BG_FILENAME=$(ls $BG_FOLDER/* | head -n$newcounter | tail -n 1)
+	cp "$BG_FILENAME" ~/wallpaper.jpg
+}
+
+case $1 in
+"next")
+	setMinCounter
+	addCounter 1
+	selectImage
+	;;
+
+"prev")
+	setMaxCounter
+	addCounter -1
+	selectImage
+	;;
+
+"top")
+	resetCounter
+	setMaxCounter
+	selectImage
+	;;
+
+"bottom")
+	resetCounter
+	setMinCounter
+	addCounter 1
+	selectImage
+	;;
+
+*)
+	if [ ! -z "$1" ]; then
+		cp "$1" ~/wallpaper.jpg
+	fi
+	;;
+esac
+
+# Reset desktop theme
+
+rm -rf ~/.cache/wal
+wal -i ~/wallpaper.jpg -o ~/.bin/wal.hook
+
+# Set Xresources
+xrdb -load ${HOME}/.cache/wal/colors.Xresources
+xrdb -merge ${HOME}/.Xresources

@@ -63,12 +63,12 @@ termite &
 #termite -e "sh -c 'less ~/docker-dotfiles/README.md'" &
 
 # init screen
-init_screens
+computer_init_screens
 init_workspaces
 
 # Background
 #nitrogen --restore &
-color_scheme_reset
+desktop_theme_from_image
 
 # Polybar
 launch_bars

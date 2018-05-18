@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SCREENS=$(xrandr | grep " connected" | awk '{ print $1 }')
+FIRSTSCREEN=""
+
+for SCR in $SCREENS; do
+	if [ -z $FIRSTSCREEN ]; then
+		FIRSTSCREEN="$SCR"
+		xrandr --output "$SCR" --auto
+	else
+		xrandr --output "$SCR" --auto --right-of $FIRSTSCREEN
+	fi
+done

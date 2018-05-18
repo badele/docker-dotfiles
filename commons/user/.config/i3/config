@@ -1,37 +1,31 @@
 # i3 config file (v4)
-# wallpaper source => http://wallpaperswide.com/rainy_night_painting-wallpapers.html
 
 # Set vars and parameters
 floating_modifier $mod
 set $mod Mod4
 set $alt Mod1
-set $i3lock i3lock-wrapper -l
-#set $I3status i3blocks -c ~/.i3/i3blocks.conf 2>&1 ~/i3blocks.log
 set $filemanager thunar
+set $default_gaps_inner 6
+set $default_gaps_outer 2
 
 
 # Window parameters
-#font pango:DejaVu Sans Mono for Powerline 10
 font pango:Liberation Mono 10
 new_window pixel 1
 new_float pixel 1
-set $default_gaps_inner 6
-set $default_gaps_outer 2
 gaps inner $default_gaps_inner
 gaps outer $default_gaps_outer
 smart_gaps on
 smart_borders on
 
 # Shortcut
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec termite
 bindsym $mod+q kill
-#bindsym $mod+space exec dmenu_run
 bindsym $mod+space exec --no-startup-id rofi -show run
 bindsym $mod+Shift+r restart
-bindsym --release Print exec "maim ~/Downloads/screenshot-full-$(date +%Y-%m-%d).png"
+bindsym --release Print exec "mkdir -p ~/Downloads/screenshot/ && maim ~/Downloads/screenshot-full-$(date +%Y-%m-%d).png"
 #bindsym --release Shift+Print exec "maim -i $(xdotool getactivewindow) ~/Downloads/screenshot-windows-$(date +%Y-%m-%d).png"
-bindsym --release Shift+Print exec "maim -s -c 1,0,0,0.6 -p 1 ~/Downloads/screenshot-windows-$(date +%Y-%m-%d).png"
-
+bindsym --release Shift+Print exec "mkdir -p ~/Downloads/screenshot/ && maim -s -c 1,0,0,0.6 -p 1 ~/Downloads/screenshot-windows-$(date +%Y-%m-%d).png"
 
 # Window management
 bindsym $mod+Up focus up
@@ -52,8 +46,6 @@ bindsym $mod+d exec $filemanager
 bindsym $mod+f fullscreen
 
 # Misc
-bindsym control+$alt+l exec $I3lock
-bindsym $mod+shift+l exec $I3lock
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
 #bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
 #bindsym XF86AudioMute exec amixer -q set Master toggle
@@ -61,42 +53,52 @@ bindsym $mod+shift+l exec $I3lock
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
-bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
 # Workspace
 bindsym $mod+control+Left workspace prev
 bindsym $mod+control+Right workspace next
 
+# Workspace names
+set $w1 "1.social"
+set $w2 "2.music"
+set $w3 "3.term"
+set $w4 "4.misc"
+set $w5 "5.misc"
+set $w6 "6.code"
+set $w7 "7.web"
+set $w8 "8.term"
+set $w9 "9.term"
+set $w0 "0.term"
+
+
 # Workspace selection
-bindsym $mod+ampersand workspace "1: Term"
-bindsym $mod+eacute workspace "2: Web"
-bindsym $mod+quotedbl workspace "3: Editor"
-bindsym $mod+apostrophe workspace "4: Misc"
-bindsym $mod+parenleft workspace "5: Misc"
-bindsym $mod+minus workspace "6: Misc"
-bindsym $mod+egrave workspace "7: Misc"
-bindsym $mod+underscore workspace "8: Misc"
-bindsym $mod+ccedilla workspace "9: Misc"
-bindsym $mod+agrave workspace "10: Misc"
+bindsym $mod+ampersand workspace $w1
+bindsym $mod+eacute workspace $w2
+bindsym $mod+quotedbl workspace $w3
+bindsym $mod+apostrophe workspace $w4
+bindsym $mod+parenleft workspace  $w5
+bindsym $mod+minus workspace $w6
+bindsym $mod+egrave workspace $w7
+bindsym $mod+underscore workspace $w8
+bindsym $mod+ccedilla workspace $w9
+bindsym $mod+agrave workspace  $w0
 
 # Move to the workspace
-bindsym $mod+Shift+ampersand move container to workspace "1: Term"
-bindsym $mod+Shift+eacute move container to workspace "2: Web"
-bindsym $mod+Shift+quotedbl move container to workspace "3: Editor"
-bindsym $mod+Shift+apostrophe move container to workspace "4: Misc"
-bindsym $mod+Shift+5 move container to workspace "5: Misc"
-bindsym $mod+Shift+minus move container to workspace "6: Misc"
-bindsym $mod+Shift+egrave move container to workspace "7: Misc"
-bindsym $mod+Shift+underscore move container to workspace "8: Misc"
-bindsym $mod+Shift+ccedilla move container to workspace "9: Misc"
-bindsym $mod+Shift+agrave move container to workspace "10: Misc"
+bindsym $mod+Shift+ampersand move container to workspace  $w1
+bindsym $mod+Shift+eacute move container to workspace  $w2
+bindsym $mod+Shift+quotedbl move container to workspace  $w3
+bindsym $mod+Shift+apostrophe move container to workspace  $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+minus move container to workspace $w6
+bindsym $mod+Shift+egrave move container to workspace $w7
+bindsym $mod+Shift+underscore move container to workspace $w8
+bindsym $mod+Shift+ccedilla move container to workspace $w9
+bindsym $mod+Shift+agrave move container to workspace $w0
 
 
 # Terminate computer session
 set $mode_system (l)ogout, (r)eboot, (h)halt
 mode "$mode_system" {
-  #bindsym l     exec $I3lock, mode "default"
   bindsym l     exec i3-msg exit
   bindsym r     exec notify-send "SYSTEM: Rebooting..." && systemctl reboot
   bindsym h 	exec notify-send "SYSTEM: Powering off..." && systemctl poweroff
@@ -135,7 +137,6 @@ mode "move workspace" {
 }
 bindsym $mod+m mode "Move workspace"
 
-
 # Background pictures manager
 set $backgroundmanager Background pictures manager (r) rand (f) favorite (←,→,↑,↓) select picture
 mode "$backgroundmanager" {
@@ -152,30 +153,6 @@ mode "$backgroundmanager" {
 }
 bindsym $mod+b mode "$backgroundmanager"
 
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#        font pango:source code pro medium 10
-#        status_command $I3status
-#        tray_output none
-#	    position bottom
-#	    mode dock
-#	    colors {
-#		    #background #002b36
-#		    #background #000000
-#            
-#            separator #268bd2
-#            background #002b36
-#            statusline #839496
-#            # class                     border  backgr  text
-#            focused_workspace           #006680 #005166 #001e26
-#            active_workspace            #fdf6e3 #6c71c4 #fdf6e3
-#            inactive_workspace          #002b36 #002b36 #839496
-#            urgent_workspace            #d33682 #d33682 #fdf6e3
-#	    }
-#}
-
 # colors
 # class                         border  	backgr		text
 client.focused			        #859900 	#859900   	#bf3f34
@@ -184,15 +161,13 @@ client.focused_inactive	        #2c2e2f 	#2c2e2f  	#2c2e2f
 
 # Start application
 #exec --no-startup-id feh --randomize  --bg-scale ~/.i3/pictures/*
-exec --no-startup-id dunst &
+#exec --no-startup-id dunst &
 #exec --no-startup-id google-chrome-stable
 #exec --no-startup-id xedgewarp -b
 
 #focus_follows_mouse no
-assign [class="Gvim"] → "3: Editor"
-assign [class="Emacs"] → "3: Editor"
-assign [class="Firefox"] → "2: Web"
-assign [class="Xchat"] → "4: Misc"
+assign [class="Gvim"] → $w6 
+assign [class="Chromium"] → $w7
 #exec --no-startup-id xautolock -time 5 -locker "i3lock-wrapper -l"
 # exec --no-startup-id wicd-client --tray
 # exec --no-startup-id thunar --daemon
@@ -201,8 +176,5 @@ assign [class="Xchat"] → "4: Misc"
 # exec --no-startup-id parcellite
 #exec --no-startup-id my_emacs_p2k
 
-#for_window [class="Nautilus" instance="file_progress"] floating enable
-for_window [class="Skype"] floating enable
-for_window [class="VirtualBox"] floating enable
 #for_window [class="jetbrains-android-studio"] floating enable
 

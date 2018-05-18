@@ -33,3 +33,10 @@ cd docker-dotfiles
 ```
 
 [For more help](https://raw.githubusercontent.com/badele/docker-dotfiles/master/commons/user/.config/nvim/doc/help.txt)
+
+### TODO
+
+- [ ] Debug Vim first starting, leaderguide problem during plugins installation
+- [ ] Add Vim NerdComment
+- [ ] Configure MPD player
+  

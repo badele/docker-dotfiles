@@ -1,3 +1,0 @@
-#!/bin/bash
-
-xrandr --output default --primary --mode 1280x960 --pos 0x0 --rotate normal

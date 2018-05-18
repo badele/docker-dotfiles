@@ -15,4 +15,10 @@ fi
 #docker build --no-cache -t badele/docker-dotfiles .
 #docker build -t badele/docker-dotfiles .
 
-x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --home --desktop badele/docker-dotfiles
+# For full support
+tty="$(tty)"
+if test "${tty%%[1-9]*}" = /dev/tty; then
+	x11docker --sudouser --env LANG="fr_FR.UTF-8" --env SHELL=/bin/zsh --verbose --xephyr --pulseaudio --home --desktop badele/docker-dotfiles
+else
+	echo "For full xorg support, please run this script from TTY terminals [CTRL-ALT+Fx]"
+fi

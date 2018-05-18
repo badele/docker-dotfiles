@@ -11,7 +11,7 @@ sudo locale-gen
 
 # Install some graphical packages
 yaourt --noconfirm -S nerd-fonts-complete
-yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit xautolock xdo numlockx compton xterm rxvt-unicode termite
+yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite
 yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
 yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm maim dunst dunstify clipit
 yaourt --noconfirm -S i3-gaps polybar-git ttf-material-design-icons chromium

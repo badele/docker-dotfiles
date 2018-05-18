@@ -148,16 +148,19 @@ type = internal/bspwm
 pin-workspaces = false
 fuzzy-match = false
 
-ws-icon-0 = 1.social;1 
-ws-icon-1 = 2.music;2
-ws-icon-2 = 3.term;3 
-ws-icon-3 = 4.misc;4 
-ws-icon-4 = 5.misc;5 
+;          
+
+ws-icon-0 = 1.social;1 
+ws-icon-1 = 2.music;2 
+ws-icon-2 = 3.term;3 
+;ws-icon-3 = 4.misc;4 
+;ws-icon-4 = 5.misc;5 
 ws-icon-5 = 6.code;6 
 ws-icon-6 = 7.web;7 
-ws-icon-7 = 8.term;8 
-ws-icon-8 = 9.misc;9 
-ws-icon-9 = 0.misc;0 
+ws-icon-7 = 8.term;8 
+ws-icon-8 = 9.term;9 
+ws-icon-9 = 0.term;0 
+
 ws-icon-default = 
 
 format = <label-state> <label-mode>

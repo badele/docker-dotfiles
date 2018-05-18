@@ -9,7 +9,7 @@ map <C-L> <C-]>
 "nmap <CR> O<ESC>
 
 " Help mappings
-map <F1> :h myvimdoc.txt<CR>
+map <F1> :h MyHelp<CR>
 map <F25> :helptags ~/.config/nvim/doc/<CR>
 
 " Disable cursor search
