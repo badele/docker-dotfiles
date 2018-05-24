@@ -159,14 +159,15 @@ client.focused			        #859900 	#859900   	#bf3f34
 client.unfocused		        #2c2e2f  	#2c2e2f  	#2c2e2f
 client.focused_inactive	        #2c2e2f 	#2c2e2f  	#2c2e2f
 
-# Start application
+# Launch polybar
+exec_always --no-startup-id $HOME/.bin/launch_bars
+
 #exec --no-startup-id feh --randomize  --bg-scale ~/.i3/pictures/*
 #exec --no-startup-id dunst &
 #exec --no-startup-id google-chrome-stable
 #exec --no-startup-id xedgewarp -b
 
 #focus_follows_mouse no
-assign [class="Gvim"] → $w6 
 assign [class="Chromium"] → $w7
 #exec --no-startup-id xautolock -time 5 -locker "i3lock-wrapper -l"
 # exec --no-startup-id wicd-client --tray

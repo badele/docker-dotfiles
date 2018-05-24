@@ -2,27 +2,14 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " Check if Vim Plug is installed else install it (check first time)
-if has('nvim')
-	if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-		silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-					\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		augroup pluginInstall
-			autocmd!
-			autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-		augroup END
-	endif
-else
-	if empty(glob('~/.vim/autoload/plug.vim'))
-		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-					\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-		augroup pluginInstall
-			autocmd!
-			autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-		augroup END
-
-	endif
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+	silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	augroup pluginInstall
+		autocmd!
+		autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+	augroup END
 endif
-
 call plug#begin('~/.local/share/vim/plugged')
 
 " Vim starting screen
@@ -203,7 +190,11 @@ set hidden
 set fillchars+=vert:│
 
 source ~/.config/nvim/map.vim
-source ~/.config/nvim/leader.vim
+
+" Only load the leader vim file only if pluging installed
+if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    source ~/.config/nvim/leader.vim
+endif
 
 augroup filetypedetect
     	au BufRead,BufNewFile *.Jenkinsfile set filetype=groovy

@@ -22,7 +22,8 @@ xrdb merge $HOME/.Xresources &
 clipit &
 
 # For shadows and transparency
-# x11docker DISABLE compton -b &
+#compton -b &
+compton -cCG -b --vsync opengl &
 
 # Hide mouse if not activity
 pkill unclutter
@@ -69,8 +70,5 @@ init_workspaces
 # Background
 #nitrogen --restore &
 desktop_theme_from_image
-
-# Polybar
-launch_bars
 
 exec dbus-launch i3

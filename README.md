@@ -39,4 +39,4 @@ cd docker-dotfiles
 - [ ] Debug Vim first starting, leaderguide problem during plugins installation
 - [ ] Add Vim NerdComment
 - [ ] Configure MPD player
-  
+- [ ] Active compton application
