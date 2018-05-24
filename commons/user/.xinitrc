@@ -21,10 +21,6 @@ xrdb merge $HOME/.Xresources &
 # Clipboard
 clipit &
 
-# For shadows and transparency
-#compton -b &
-compton -cCG -b --vsync opengl &
-
 # Hide mouse if not activity
 pkill unclutter
 unclutter &

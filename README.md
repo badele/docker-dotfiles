@@ -36,7 +36,7 @@ cd docker-dotfiles
 
 ### TODO
 
-- [ ] Debug Vim first starting, leaderguide problem during plugins installation
+- [x] Debug Vim first starting, leaderguide problem during plugins installation
 - [ ] Add Vim NerdComment
 - [ ] Configure MPD player
-- [ ] Active compton application
+- [x] Active compton application

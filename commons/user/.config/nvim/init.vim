@@ -45,11 +45,10 @@ Plug 'zchee/deoplete-zsh'                                       " ZSH
 Plug 'sebastianmarkow/deoplete-rust'                            " Rust
 Plug 'saltstack/salt-vim'                                       " Salt
 Plug 'chrisbra/Colorizer'                                       " Hex colors
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
-let g:deoplete#enable_smart_case = 1
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#auto_complete_start_length = 1
+"let g:deoplete#enable_smart_case = 1
 
-set keymodel=startsel,stopsel
 
 " Ripgrep integration, also used in NERDTree menu
 Plug 'jremmen/vim-ripgrep'
@@ -79,8 +78,6 @@ Plug 'airblade/vim-gitgutter'
 
 " Linter & Fixer
 Plug 'w0rp/ale'
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
 let g:ale_completion_enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_lint_on_text_changed = 'never'
@@ -120,11 +117,11 @@ let g:ale_fixers = {
 "    \ ['red',         'firebrick3'],
 "    \ ]
 "augroup rainbow
-"	au VimEnter * RainbowParenthesesToggle
-"	au VimEnter * RainbowParenthesesLoadRound
-"	au VimEnter * RainbowParenthesesLoadSquare
-"	au VimEnter * RainbowParenthesesLoadBraces
-"	au VimEnter * RainbowParenthesesLoadChevrons
+    "au VimEnter * RainbowParenthesesToggle
+    "au VimEnter * RainbowParenthesesLoadRound
+    "au VimEnter * RainbowParenthesesLoadSquare
+    "au VimEnter * RainbowParenthesesLoadBraces
+    "au VimEnter * RainbowParenthesesLoadChevrons
 "augroup END
 
 " Insert or delete brackets, parens, quotes in pair
@@ -136,12 +133,10 @@ imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>Au
 "Plug 'Shougo/neosnippet'
 "Plug 'Shougo/neosnippet-snippets'
 
-" Customization
-Plug 'scrooloose/nerdtree'
-"Plug 'scrooloose/nerdcommenter'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'masaakif/nerdtree-useful-plugins'
-map <C-d> :NERDTreeToggle<CR>
+" File Manager
+Plug 'scrooloose/nerdtree'              " File manager
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Show git state in nerdtree
+Plug 'masaakif/nerdtree-useful-plugins' " Grep menu for nerdtree
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeIndicatorMapCustom = {
@@ -156,25 +151,29 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ 'Unknown'   : '?',
     \ }
-"augroup nerdtree
-"	autocmd StdinReadPre * let s:std_in=1
-"	autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-"	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-"augroup END
+
+" Close NERDTree if only this buffer is opened
+augroup nerdtree
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END<Paste>
 
 let g:NERDTreeAutoDeleteBuffer = 1
 let g:NERDTreeMinimalUI = 1
 let g:NERDTreeDirArrows = 1
 let g:rg_command = "rg --iglob '!.git' --vimgrep --follow --ignore-case --hidden"
 
+" Comments tool
+Plug 'scrooloose/nerdcommenter'         " Comment tools
+
 call plug#end()
 
 " Global settings
 set mouse=a
 set number
-let g:mapleader = ','
+let g:mapleader = ' '
 set ignorecase
 set cursorline
+set fillchars+=vert:│
 
 " Tabulation
 set expandtab
@@ -182,17 +181,19 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 
+" Filetype
+filetype plugin on
+filetype indent on
+
 " Configure clip board
 set clipboard=unnamed,unnamedplus
 
 " Allow switch buffers if unsaved
 set hidden
-set fillchars+=vert:│
 
 source ~/.config/nvim/map.vim
 
-" Only load the leader vim file only if pluging installed
-if !empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+if !empty(glob('~/.local/share/vim/plugged/vim-leader-guide/autoload/leaderGuide.vim'))
     source ~/.config/nvim/leader.vim
 endif
 
