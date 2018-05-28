@@ -14,12 +14,11 @@
 
 ### Docker Installation
 
-```
-bash
+```bash
 cd
 git clone git@github.com:badele/docker-dotfiles.git
 cd docker-dotfiles
-./run.sh
+/run.sh
 ```
 
 ### Physical Installation
@@ -36,7 +35,4 @@ cd docker-dotfiles
 
 ### TODO
 
-- [x] Debug Vim first starting, leaderguide problem during plugins installation
-- [ ] Add Vim NerdComment
 - [ ] Configure MPD player
-- [x] Active compton application

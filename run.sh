@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# Install unzip
+if [ ! -e /usr/bin/unzip ]; then
+	yaourt --noconfirm -S unzip
+fi
+
+# Install docker
+if [ ! -e /usr/bin/docker ]; then
+	yaourt --noconfirm -S docker
+fi
+
+# Check if docker running
+if [[ ! $(pgrep dockerd) ]]; then
+	sudo systemctl start docker
+fi
+
 # Install x11docker
 if [ ! -e /usr/bin/x11docker ]; then
 	wget https://raw.githubusercontent.com/mviereck/x11docker/master/x11docker -O /tmp/x11docker

@@ -13,12 +13,13 @@ sudo locale-gen
 yaourt --noconfirm -S nerd-fonts-complete
 yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite
 yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
-yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm maim dunst dunstify clipit
+yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm dunst dunstify clipit
+yaourt --noconfirm -S maim recordmydesktop peek
 yaourt --noconfirm -S i3-gaps polybar-git ttf-material-design-icons chromium
 # yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
 
 # Install some terminal package
-yaourt --noconfirm -S openssh ranger neovim stow ripgrep tty-clock mpd ncmpcpp libmpdclient dmidecode
+yaourt --noconfirm -S openssh ranger neovim stow highlight fzf ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode
 
 # Python
 yaourt --noconfirm -S python-pip python-neovim python-virtualenvwrapper python-pywal termpalette-git

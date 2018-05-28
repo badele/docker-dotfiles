@@ -163,7 +163,7 @@ client.focused_inactive	        #2c2e2f 	#2c2e2f  	#2c2e2f
 exec_always --no-startup-id $HOME/.bin/launch_bars
 
 # For shadows and transparency
-exec --no-startup-id compton -b -c -f
+exec --no-startup-id compton -b -f
 
 #exec --no-startup-id feh --randomize  --bg-scale ~/.i3/pictures/*
 #exec --no-startup-id dunst &

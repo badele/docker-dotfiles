@@ -2,8 +2,20 @@ FROM heichblatt/archlinux-yaourt
 
 ARG REPO=https://github.com/badele/docker-dotfiles.git 
 
-# Update
-RUN yaourt --noconfirm -Syyua
+# Fix package-query
+USER root
+RUN pacman --noconfirm -R yaourt package-query
+RUN pacman --noconfirm -Syu
+
+# yaourt reinstallation
+USER user
+RUN cd /tmp && git clone https://aur.archlinux.org/package-query.git
+RUN cd /tmp/package-query && makepkg --noconfirm -si
+RUN cd /tmp && git clone https://aur.archlinux.org/yaourt.git
+RUN cd /tmp/yaourt && makepkg --noconfirm -si
+
+# Update AUR packages
+RUN yaourt --noconfirm -Sua
 
 # System configuration
 USER root
@@ -18,8 +30,6 @@ RUN locale-gen
 # Python
 #RUN yaourt --noconfirm -S python-pip python-virtualenvwrapper 
 #RUN yaourt --noconfirm -S npm
-
-#RUN echo "13"
 
 USER root 
 

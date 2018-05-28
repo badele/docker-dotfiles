@@ -3,8 +3,11 @@ nnoremap Q <nop>
 map q <nop>
 noremap ; :
 
-" Startify
-nmap <silent> ss :Startify<CR>
+" remap <C-Space> to leader key
+nmap <C-Space> <leader>
+imap <C-Space> <ESC><leader>
+vmap <C-Space> <leader>
+
 
 " Goto to link
 map <silent> <C-L> <C-]>
@@ -22,6 +25,9 @@ nmap <silent> <S-Up> V
 nmap <silent> <S-Down> V
 vmap <silent> <S-Up> k
 vmap <silent> <S-Down> j
+
+" Tagbar
+map <silent> <C-t> :TagbarToggle<CR>
 
 " NERDTree
 map <silent> <C-d> :NERDTreeToggle<CR>
@@ -57,7 +63,7 @@ noremap <silent> <C-q>          :q<CR>
 vnoremap <silent> <C-q>         <C-C>:q<CR>
 inoremap <silent> <C-q>         <C-O>:q<CR>
 
-function! s:ShowMaps()
+function! ShowMaps()
   let l:old_reg = getreg("a")          " save the current content of register a
   let l:old_reg_type = getregtype("a") " save the type of the register as well
 try
@@ -73,4 +79,3 @@ finally                              " Execute even if exception is raised
   call setreg("a", l:old_reg, l:old_reg_type) " restore register a
 endtry
 endfunction
-com! ShowMaps call s:ShowMaps()      " Enable :ShowMaps to call the function

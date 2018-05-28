@@ -31,10 +31,21 @@ Plug 'mhinz/vim-startify'
 \]
 
 " TODO TESTING
+"Plug 'SirVer/ultisnips'
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
+
+" Leadguide
 Plug 'hecal3/vim-leader-guide'
 
+" Detect root project directory
+Plug 'airblade/vim-rooter'
+let g:rooter_silent_chdir = 1
+
+" ctags
+Plug 'xolox/vim-misc'                                           " Used by easytags
+Plug 'xolox/vim-easytags'
+Plug 'majutsushi/tagbar'
 
 " Code completion & syntax highlighting
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -49,16 +60,16 @@ Plug 'chrisbra/Colorizer'                                       " Hex colors
 "let g:deoplete#auto_complete_start_length = 1
 "let g:deoplete#enable_smart_case = 1
 
-
-" Ripgrep integration, also used in NERDTree menu
-Plug 'jremmen/vim-ripgrep'
-
 " Airline
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " Font icons for some plugins
 " (NERDTree, vim-airline, Powerline, Unite, vim-startify and more)
@@ -68,13 +79,10 @@ if !exists('g:airline_symbols')
 endif
 let g:airline#extensions#tabline#enabled = 1
 
-"Plug 'ctrlpvim/ctrlp.vim'
-
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
-"Plug 'SirVer/ultisnips'
 
 " Linter & Fixer
 Plug 'w0rp/ale'
@@ -132,6 +140,9 @@ imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>Au
 "Plug 'Shougo/neco-vim', { 'for': 'vim' }
 "Plug 'Shougo/neosnippet'
 "Plug 'Shougo/neosnippet-snippets'
+
+" Ripgrep integration, also used in NERDTree menu
+Plug 'jremmen/vim-ripgrep'
 
 " File Manager
 Plug 'scrooloose/nerdtree'              " File manager
@@ -195,6 +206,11 @@ source ~/.config/nvim/map.vim
 
 if !empty(glob('~/.local/share/vim/plugged/vim-leader-guide/autoload/leaderGuide.vim'))
     source ~/.config/nvim/leader.vim
+endif
+
+
+if !empty(glob('~/.local/share/vim/plugged/fzf.vim/autoload/fzf/vim.vim'))
+    source ~/.config/nvim/search.vim
 endif
 
 augroup filetypedetect
