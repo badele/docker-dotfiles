@@ -9,13 +9,17 @@ yaourt --noconfirm -Syyua
 sudo echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen && sudo echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen
 sudo locale-gen
 
-# Install some graphical packages
-yaourt --noconfirm -S nerd-fonts-complete
+# Install some desktop tools
 yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite
-yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
 yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm dunst dunstify clipit
-yaourt --noconfirm -S maim recordmydesktop peek
-yaourt --noconfirm -S i3-gaps polybar-git ttf-material-design-icons chromium
+
+# Audio tools
+yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
+
+# Graphical tools
+yaourt --noconfirm -S maim recordmydesktop peek byzanz
+
+yaourt --noconfirm -S i3-gaps polybar-git nerd-fonts-complete ttf-material-design-icons chromium
 # yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
 
 # Install some terminal package
