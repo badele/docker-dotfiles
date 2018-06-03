@@ -1,0 +1,20 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "Usage: $0 action option filename [preview]"
+	echo ""
+	echo "Action: crop"
+fi
+
+ACTION=$1
+OPTIONS=$2
+FILENAME=$3
+PREVIEW=$4
+
+if [ "$ACTION" == "crop" ]; then
+	if [ "$PREVIEW" == "preview" ]; then
+		ffmpeg -i "$FILENAME" -filter:v "crop=$OPTIONS" -f matroska - | ffplay -
+	else
+		ffmpeg -i "$FILENAME" -filter:v "crop=$OPTIONS" "${ACTION}-${FILENAME}"
+	fi
+fi

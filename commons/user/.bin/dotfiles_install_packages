@@ -2,32 +2,57 @@
 
 REPO=https://github.com/badele/docker-dotfiles.git
 
+check_needed_packages() {
+	# Check package needed
+	INSTALLED=$(yaourt -Q)
+	TOINSTALL=""
+	for PACKAGE in $INSTALL; do
+		ISINSTALLED=$(echo "$INSTALLED" | grep "/$PACKAGE")
+		if [ $? -eq 1 ]; then
+			TOINSTALL="$TOINSTALL $PACKAGE"
+		fi
+	done
+
+	echo "$TOINSTALL"
+}
+
+install_needed_packages() {
+	# Install needed packages
+	NEEDED=$(check_needed_packages)
+	if [ "$NEEDED" != "" ]; then
+		yaourt --noconfirm -S $NEEDED
+	fi
+}
+
 # Update
-yaourt --noconfirm -Syyua
+yaourt --noconfirm -Syua
 
 # System configuration
-sudo echo "en_US.UTF-8 UTF-8" >>/etc/locale.gen && sudo echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen
+sudo sh -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen' && sudo sh -c 'echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen'
 sudo locale-gen
 
 # Install some desktop tools
-yaourt --noconfirm -S xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite
-yaourt --noconfirm -S imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm dunst dunstify clipit
+INSTALL="xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
+INSTALL="$INSTALL imlib2 feh nitrogen w3m unclutter key-mon dmenu networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Audio tools
-yaourt --noconfirm -S pulseaudio pavucontrol pulseaudio-ctl
+INSTALL="$INSTALL pulseaudio pavucontrol pulseaudio-ctl"
 
 # Graphical tools
-yaourt --noconfirm -S maim recordmydesktop peek byzanz
+INSTALL="$INSTALL maim peek gifsicle screenkey"
 
-yaourt --noconfirm -S i3-gaps polybar-git nerd-fonts-complete ttf-material-design-icons chromium
-# yaourt --noconfirm -S bspwm-git sxhkd-git polybar-git
+INSTALL="$INSTALL i3-gaps polybar-git nerd-fonts-complete ttf-material-design-icons chromium"
+# INSTALL="$INSTALL bspwm-git sxhkd-git polybar-git"
 
 # Install some terminal package
-yaourt --noconfirm -S openssh ranger neovim stow highlight fzf ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode
+INSTALL="$INSTALL openssh ranger neovim stow highlight fzf ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode"
 
 # Python
-yaourt --noconfirm -S python-pip python-neovim python-virtualenvwrapper python-pywal termpalette-git
-yaourt --noconfirm -S npm
+INSTALL="$INSTALL python-pip python-neovim python-virtualenvwrapper python-pywal termpalette-git"
+INSTALL="$INSTALL npm"
+
+# Install needed packages step 1
+install_needed_packages
 
 # For Vim package
 sudo npm i -g npm@5.6.0 # Fix temporary npm
@@ -36,13 +61,18 @@ sudo npm install -g fixjson jsonlint
 
 # Configure ZSH
 # powerline
-yaourt --noconfirm -S antigen-git thefuck
-yaourt --noconfirm -S neofetch highlight
-yaourt --noconfirm -S shfmt
-yaourt --noconfirm -S imagemagick
+INSTALL="$INSTALL antigen-git thefuck"
+INSTALL="$INSTALL neofetch highlight"
+INSTALL="$INSTALL shfmt"
+INSTALL="$INSTALL imagemagick"
+
+# Install needed packages step 2
+install_needed_packages
 
 # Download some wallpapers, you can donwload more with download_wallpaper scripts
-sudo mkdir /etc/skel/Images
+if [ ! -e /etc/skel/Images ]; then
+	sudo mkdir /etc/skel/Images
+fi
 sudo convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/mountain.jpg"
 sudo convert "http://www.tokkoro.com/picsup/427348-anonymous-hd-widescreen-wallpapers-backgrounds.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/anonymous1_tokkoro.jpg"
 sudo convert "http://www.tokkoro.com/picsup/2986141-anonymous-face-mask-minimalism-guy-fawkes-mask-hope-posters___mixed-wallpapers.jpg" -strip -resize "1920x1080^" "/etc/skel/Images/wanonymous2_tokkoro.jpg"

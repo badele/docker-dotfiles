@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "Please select output filename"
+fi
+
+OPTIONS="fps=10,scale=iw*.7:ih*.7:flags=lanczos"
+ffmpeg -y -i "$1" -vf "$OPTIONS,palettegen=stats_mode=diff" "$1_palete.png"
+ffmpeg -i "$1" -i "$1_palete.png" -lavfi "$OPTIONS,paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$1.gif"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	echo "Please select output filename"
+fi
+
+FULLSIZE=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3"x"$4}')
+ffmpeg -f x11grab -s $FULLSIZE -i ":0.0" "$1"

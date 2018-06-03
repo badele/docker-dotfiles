@@ -140,12 +140,12 @@ bindsym $mod+m mode "Move workspace"
 # Background pictures manager
 set $backgroundmanager Background pictures manager (r) rand (f) favorite (←,→,↑,↓) select picture
 mode "$backgroundmanager" {
-        bindsym Left exec mysetbackground.sh next
-        bindsym Down exec mysetbackground.sh bottom
-        bindsym Up exec mysetbackground.sh top
-        bindsym Right exec mysetbackground.sh prev
-        bindsym r exec exec mysetbackground.sh rand
-        bindsym f exec exec mysetbackground.sh redhead_girl_painting-wallpaper-1366x768._dark.jpg
+        bindsym Left exec desktop_theme_from_image  next
+        bindsym Down exec desktop_theme_from_image bottom
+        bindsym Up exec desktop_theme_from_image top
+        bindsym Right exec desktop_theme_from_image prev
+        bindsym r exec exec desktop_theme_from_image rand
+        bindsym f exec exec desktop_theme_from_image redhead_girl_painting-wallpaper-1366x768._dark.jpg
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
