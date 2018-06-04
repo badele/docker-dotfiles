@@ -1,5 +1,10 @@
 #!/bin/bash
 
+BOOTSTRAP="n"
+if [ "$1" = "bootstrap" ]; then
+	BOOTSTRAP="y"
+fi
+
 REPO=https://github.com/badele/docker-dotfiles.git
 
 check_needed_packages() {
@@ -70,12 +75,19 @@ INSTALL="$INSTALL imagemagick"
 install_needed_packages
 
 # Download some wallpapers, you can donwload more with download_wallpaper scripts
-if [ ! -e /etc/skel/Images ]; then
-	sudo mkdir /etc/skel/Images
+if [ "$BOOTSTRAP" == "y" ]; then
+	IMGPATH="/etc/skel"
+	SUDO="sudo"
+	sudo mkdir -p $IMGPATH/Images
+else
+	IMGPATH="$HOME"
+	SUDO=""
+	mkdir -p $IMGPATH/Images
 fi
-sudo convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/mountain.jpg"
-sudo convert "http://www.tokkoro.com/picsup/427348-anonymous-hd-widescreen-wallpapers-backgrounds.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/anonymous1_tokkoro.jpg"
-sudo convert "http://www.tokkoro.com/picsup/2986141-anonymous-face-mask-minimalism-guy-fawkes-mask-hope-posters___mixed-wallpapers.jpg" -strip -resize "1920x1080^" "/etc/skel/Images/wanonymous2_tokkoro.jpg"
-sudo convert "https://static.pexels.com/photos/51123/apple-education-school-knowledge-51123.jpeg" -strip -resize "1920x1080^" "/etc/skel/Images/apple1_pexels.jpg"
 
-sudo cp "/etc/skel/Images/mountain.jpg" "/etc/skel/wallpaper.jpg"
+$SUDO convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "$IMGPATH/Images/mountain.jpg"
+$SUDO convert "http://www.tokkoro.com/picsup/427348-anonymous-hd-widescreen-wallpapers-backgrounds.jpeg" -strip -resize "1920x1080^" "$IMGPATH/Images/anonymous1_tokkoro.jpg"
+$SUDO convert "http://www.tokkoro.com/picsup/2986141-anonymous-face-mask-minimalism-guy-fawkes-mask-hope-posters___mixed-wallpapers.jpg" -strip -resize "1920x1080^" "$IMGPATH/Images/wanonymous2_tokkoro.jpg"
+$SUDO convert "https://static.pexels.com/photos/51123/apple-education-school-knowledge-51123.jpeg" -strip -resize "1920x1080^" "$IMGPATH/Images/apple1_pexels.jpg"
+
+$SUDO cp "$IMGPATH/Images/mountain.jpg" "$IMGPATH/wallpaper.jpg"

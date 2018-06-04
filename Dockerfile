@@ -40,7 +40,7 @@ RUN cd /etc/skel && git clone $REPO
 # If the dotfiles_install_packages file is modified in your dotfile,
 # you must build docker image with "docker build --no-cache -t badele/docker-dotfiles ."
 USER user
-RUN /etc/skel/docker-dotfiles/commons/user/.bin/dotfiles_install_packages
+RUN /etc/skel/docker-dotfiles/commons/user/.bin/dotfiles_install_packages bootstrap
 
 USER root
 
