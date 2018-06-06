@@ -1,8 +1,10 @@
 #!/bin/bash
 
-if [ -z "$1" ]; then
-	echo "Please select output filename"
-fi
+mkdir -p $HOME/Videos
+
+FILE="record_desktop_$(date +"%Y-%m-%d--%H-%M-%S").mkv"
 
 FULLSIZE=$(xdpyinfo | awk -F'[ x]+' '/dimensions:/{print $3"x"$4}')
-ffmpeg -f x11grab -s $FULLSIZE -i ":0.0" "$1"
+
+sleep 1
+ffmpeg -f x11grab -s $FULLSIZE -i ":0.0+nomouse" -vcodec libx264 -an "$HOME/Videos/$FILE"

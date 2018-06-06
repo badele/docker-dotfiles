@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pkill -f record_desktop
+
+exit 0

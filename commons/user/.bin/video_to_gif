@@ -4,6 +4,16 @@ if [ -z "$1" ]; then
 	echo "Please select output filename"
 fi
 
-OPTIONS="fps=10,scale=iw*.7:ih*.7:flags=lanczos"
+if [ -z "$2" ]; then
+	#OPTIONS="fps=10,scale=iw*.7:ih*.7:flags=lanczos"
+	OPTIONS="fps=10"
+fi
+
 ffmpeg -y -i "$1" -vf "$OPTIONS,palettegen=stats_mode=diff" "$1_palete.png"
-ffmpeg -i "$1" -i "$1_palete.png" -lavfi "$OPTIONS,paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$1.gif"
+ffmpeg -i "$1" -i "$1_palete.png" -lavfi "$OPTIONS,paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle" -y "$1_temp.gif"
+
+#gifsicle -i "$1_temp.gif" -O3 --lossy=80 --colors 16 -o "$1_16.gif"
+#gifsicle -i "$1_temp.gif" -O3 --lossy=80 --colors 32 -o "$1_32.gif"
+#gifsicle -i "$1_temp.gif" -O3 --lossy=80 --colors 64 -o "$1_64.gif"
+#gifsicle -i "$1_temp.gif" -O3 --lossy=80 --colors 128 -o "$1_128.gif"
+gifsicle -i "$1_temp.gif" -O3 --lossy=80 --colors 256 -o "$1_256.gif"
