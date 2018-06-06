@@ -8,7 +8,6 @@ set $filemanager thunar
 set $default_gaps_inner 6
 set $default_gaps_outer 2
 
-
 # Window parameters
 font pango:Liberation Mono 10
 new_window pixel 1
@@ -18,11 +17,14 @@ gaps outer $default_gaps_outer
 smart_gaps on
 smart_borders on
 
+# Stop recording (video_record_desktop)
+bindsym $mod+s exec --no-startup-id video_record_stop && notify-send "Stop recording video"
+
 # Shortcut
 bindsym $mod+Return exec termite
 bindsym $mod+q kill
 #bindsym $mod+space exec --no-startup-id rofi -show run
-bindsym $mod+space exec --no-startup-id dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 14 -w 600 -y $PANEL_HEIGHT
+bindsym $mod+space exec --no-startup-id dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 10 -w 1024
 bindsym $mod+Shift+r restart
 bindsym --release Print exec "mkdir -p ~/Downloads/screenshot/ && maim ~/Downloads/screenshot-full-$(date +%Y-%m-%d).png"
 #bindsym --release Shift+Print exec "maim -i $(xdotool getactivewindow) ~/Downloads/screenshot-windows-$(date +%Y-%m-%d).png"
