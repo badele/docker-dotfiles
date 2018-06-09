@@ -41,20 +41,28 @@ cd docker-dotfiles
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/theme-script-desktop.gif.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/theme-script-desktop.gif" alt="desktop_theme_from_image" width="50%"></a>
 
-**from `ranger` file manager**
+**from `ranger` file manager** It's possible preview picture from ranger(terminal)
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/theme-ranger-desktop.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/theme-ranger-desktop.gif" alt="ranger" width="50%"></a>
 
 #### Vim
 
-**auto plugin installation**
+**auto plugin installation** First time, plugins installed automatically
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim-plug.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim-plug.gif" alt="vim-plugin" width="50%"></a>
 
 
-**startify plugin**
+**startify plugin** Last VIM session files
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim-startify.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim-startify.gif" alt="vim-startify" width="50%"></a>
+
+**FZF Files** Search files from current project
+
+<a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_fzf_files.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_fzf_files.gif" alt="vim-fzf-files" width="50%"></a>
+
+**FZF Contents** Search content in you current project
+
+<a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_fzf_contents.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_fzf_contents.gif" alt="vim-fzf-files" width="50%"></a>
 
 
 ### TODO
