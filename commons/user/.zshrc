@@ -18,6 +18,7 @@ antigen bundle docker
 antigen bundle thefuck
 antigen bundle command-not-found
 antigen bundle zsh-users/zsh-syntax-highlighting
+# FZF is installed from archlinux distribution package manager
 
 # Load the theme.
 #antigen theme robbyrussell
@@ -28,5 +29,15 @@ antigen apply
 
 # Disable Ctrl-S (freeze terminal)
 stty -ixon -ixoff
+
+# FZF plugin configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+_fzf_compgen_path() {
+  fd --hidden --follow --exclude ".git" . "$1"
+}
+
+_fzf_compgen_dir() {
+    fd --type d --hidden --follow --exclude ".git" . "$1"
+}
 
 show_tips
