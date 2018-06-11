@@ -1,16 +1,16 @@
 " vim: filetype=help foldmethod=marker foldmarker=<<<,>>> modifiable noreadonly
 *help.txt* Help for docker-dotfiles project
 
-	██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗~
-	██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝~
-	██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗~
-	██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║~
-	██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║~
-	╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝~
+        ██████╗  ██████╗ ████████╗███████╗██╗██╗     ███████╗███████╗~
+        ██╔══██╗██╔═══██╗╚══██╔══╝██╔════╝██║██║     ██╔════╝██╔════╝~
+        ██║  ██║██║   ██║   ██║   █████╗  ██║██║     █████╗  ███████╗~
+        ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║~
+        ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║~
+        ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝~
  
-			Some helps for docker-dotfiles   
-				      by
-				 Bruno Adelé
+                        Some helps for docker-dotfiles   
+                                      by
+                                 Bruno Adelé
 
 ================================================================================
 CONTENTS                                                                *MyHelp*
@@ -23,13 +23,12 @@ CONTENTS                                                                *MyHelp*
 
 ================================================================================
 
-
-			    == *MyIntroduction* ==
+                            == *MyIntroduction* ==
 
  This project tries to configure environment with the best opensource softwares
 
 
-			      == *MyPackages* ==
+                              == *MyPackages* ==
 
             |WindowsManager|     i3-gaps, polybar, nerd-fonts, rofi, dmenu, dunst
                       |Xorg|     xorg, pulseaudio, compton, spacefm, chromium
@@ -38,18 +37,127 @@ CONTENTS                                                                *MyHelp*
                       |Misc|     tty-clock, pywal, termpalette
     
     
-				== *MyTools* ==
+                               == *MyTools* ==
 		
   |desktop_theme_from_image|     Set theme from picture
                |color_table|     Show ascii char colors table
 |dotfiles_get_conf4computer|     Get dotfiles for current computer
- |ll_packages|     Install dotfiles requirements packages
+ |dotfiles_install_packages|     Install dotfiles requirements packages
     |dotfiles_launch_system|     Launch the dotfiles main system
  |download_i3_doc_generator|     Download a i3 doc screenshot generator
        |download_wallpapers|     Download some wallpapers picture
          |get_computer_name|     Get a current computer name
- 	            |mystow|     Download configuration for current computer
+                    |video_|     Video edition tools (record, gif converter)
+                    |mystow|     Download configuration for current computer
+
+================================================================================
+                                   *MyZSH*
+================================================================================
+
+  == Intro ==
+
+    ZSH customized with antigen plugin manager
+
+  == |MyFZFMatcher| ==
+ 
+     sbtrkt	  fuzzy-match	                  Items that match sbtrkt
+     'wild	  exact-match (quoted)	          Items that include wild
+     ^music	  prefix-exact-match	          Items that start with music
+     .mp3$	  suffix-exact-match	          Items that end with .mp3
+     !fire	  inverse-exact-match	          Items that do not include fire
+     !^music  inverse-prefix-exact-match	  Items that do not start with music
+     !.mp3$	  inverse-suffix-exact-match	  Items that do not end with .mp3
+
+  == |MyFZFUsages| ==
+
+    vim **<TAB>
+    vim ../searchpattern**<TAB>
+    cd **<TAB>
+    kill **<TAB>
+    ssh **<TAB>
 
 
+================================================================================
+                                   *MyVim*
+================================================================================
 
+  == Help ==
+
+    [C-F1] Refresh docs with :helptags command
+    [F1]   For showing this Help or :h
+           :h searchname, search help section
+           :maps view mapping, you can also search mapping with :map,
+    [C-k]  Show key value in insert mode
+
+  == Debuging ==
+
+    vim -V[LEVELNUMBER]FILENAME
+    vim --startuptime vim.log
+
+  == Selecting Mode ==
+
+    [i]   Insertion mode
+    [v]   Selection mode
+    [R]   Replacement mode
+    [ESC] Normal mode
+
+  == Buffers ==
+
+    [:buffers] List buffers
+    [:b,:buf] selectt buffer
+
+== Movement ==
+
+    [h,j,k,l] Left, Down, Up, Right
+    [◀,▼,▲,▶] Left, Down, Up, Right
+    [b,w,e]   Word movement (begin, word, end)
+    [0,^,$]   Line movement (begin, first character, end line)
+    [(,)]     Sentence movement (begin,end)
+    [{,}]     Paragraph movement (begin,end)
+
+    [<x>g]    Go to <x> line
+    [gg]      Go to first line == 1g
+    [G]       Go to last line
+    [H,M,L]   Go to (upper, middle, bottom) screen
+
+== Editor ==
+
+    [a,A] Append character (after character, end line)
+    [i,I] Append character (before character, begin line)
+    [o,O] Append character (before line, after line)
+    [r]   Replace character
+    
+    [d{number}<movement>] Delete with movement option
+    [{number}dd]          Delete line
+    [C-v] + key           Show keycode
+
+................................................................................
+                                 *MyNerdTree*
+................................................................................
+
+	== Navigation ==
+	
+    	[u]         	Up folder
+	[C]		Change root
+	[p]		Goto parent
+	[P]		Goto root parent
+
+	== Files / Folders ==
+	
+	[C-d]       	Toogle NERDTree
+    	[?]		Show help
+    	[o,<Enter>] 	Open folder
+    	[go]		File preview
+    	[I]		Toogle hidden files 
+    	[m]         	Show NERDTree menu
+    	[mg]		Grep on folder
+    	[o,x]		Open/Close node
+    	[O,X]       	Open/close all nodes
+    	[B]		Show bookmark
+    	:Bookmark	Add bookmark
+    	[D]		Delete bookmark
+
+	== Git ==
+	cd 		Select current folder(CWD) for showing the git status
+	r		Refresh git state
 

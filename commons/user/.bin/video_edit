@@ -11,6 +11,7 @@ OPTIONS=$2
 FILENAME=$3
 PREVIEW=$4
 
+#video_edit crop "1680:1050:1366:0" test.mkv preview
 if [ "$ACTION" == "crop" ]; then
 	if [ "$PREVIEW" == "preview" ]; then
 		ffmpeg -i "$FILENAME" -filter:v "crop=$OPTIONS" -f matroska - | ffplay -
