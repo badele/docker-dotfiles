@@ -45,6 +45,12 @@ cd docker-dotfiles
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/theme-ranger-desktop.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/theme-ranger-desktop.gif" alt="ranger" width="50%"></a>
 
+#### ZSH
+
+**FZF** Command-line fuzzy finder (search folder and mores)
+
+<a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/fzf-search.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/fzf-search.gif" alt="fzf-search" width="50%"></a>
+
 #### Vim
 
 **auto plugin installation** First time, plugins installed automatically
