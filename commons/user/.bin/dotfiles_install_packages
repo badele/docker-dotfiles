@@ -38,7 +38,7 @@ sudo locale-gen
 
 # Install some desktop tools
 INSTALL="xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
-INSTALL="$INSTALL imlib2 nomacs w3m unclutter key-mon dmenu-manjaro rootmenu networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
+INSTALL="$INSTALL imlib2 nomacs w3m unclutter key-mon  networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Video
 INSTALL="$INSTALL ffmpeg mpv"
@@ -49,8 +49,9 @@ INSTALL="$INSTALL pulseaudio pavucontrol pulseaudio-ctl"
 # Graphical tools
 INSTALL="$INSTALL imagemagick maim peek gifsicle-lossy  screenkey"
 
-INSTALL="$INSTALL i3-gaps polybar-git nerd-fonts-complete ttf-material-design-icons chromium"
-# INSTALL="$INSTALL bspwm-git sxhkd-git polybar-git"
+#INSTALL="$INSTALL i3-gaps dmenu-manjaro rootmenu polybar-git"
+INSTALL="$INSTALL i3-gaps dmenu polybar-git"
+INSTALL="$INSTALL nerd-fonts-complete ttf-material-design-icons chromium"
 
 # Install some terminal package
 INSTALL="$INSTALL openssh ranger neovim stow highlight ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode"
