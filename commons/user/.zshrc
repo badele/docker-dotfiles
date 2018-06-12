@@ -31,13 +31,7 @@ antigen apply
 stty -ixon -ixoff
 
 # FZF plugin configuration
+[ -f ~/.fzf-custom.zsh ] && source ~/.fzf-custom.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-_fzf_compgen_dir() {
-    fd --type d --hidden --follow --exclude ".git" . "$1"
-}
 
 show_tips
