@@ -7,9 +7,13 @@ fi
 
 REPO=https://github.com/badele/docker-dotfiles.git
 
+# Overide yaourt CMD (disable not enough disk space in TMPFS)
+mkdir -p $HOME/tmp
+YAOURT="yaourt --tmp $HOME/tmp"
+
 check_needed_packages() {
 	# Check package needed
-	INSTALLED=$(yaourt -Q)
+	INSTALLED=$($YAOURT -Q)
 	TOINSTALL=""
 	for PACKAGE in $INSTALL; do
 		ISINSTALLED=$(echo "$INSTALLED" | grep "/$PACKAGE")
@@ -25,12 +29,13 @@ install_needed_packages() {
 	# Install needed packages
 	NEEDED=$(check_needed_packages)
 	if [ "$NEEDED" != "" ]; then
-		yaourt --noconfirm -S $NEEDED
+		$YAOURT --noconfirm -S $NEEDED
 	fi
 }
 
+
 # Update
-yaourt --noconfirm -Syua
+$YAOURT --noconfirm -Syua
 
 # System configuration
 sudo sh -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen' && sudo sh -c 'echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen'
