@@ -11,6 +11,9 @@ REPO=https://github.com/badele/docker-dotfiles.git
 mkdir -p $HOME/tmp
 YAOURT="yaourt --tmp $HOME/tmp"
 
+# set user shell
+[ $(id -u) -eq 0 ] || sudo usermod --shell /bin/zsh $USER
+
 check_needed_packages() {
 	# Check package needed
 	INSTALLED=$($YAOURT -Q)
