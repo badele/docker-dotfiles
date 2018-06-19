@@ -37,8 +37,8 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Buffer navigation, used by airlines(tablines)
-nmap <silent> <C-Right> :bprevious<CR>
-nmap <silent> <C-Left> :bnext<CR>
+nmap <silent> <C-Left> :bprevious<CR>
+nmap <silent> <C-Right> :bnext<CR>
 
 " Comment
 nmap <silent> cc <Plug>NERDCommenterToggle
