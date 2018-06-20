@@ -185,6 +185,7 @@ let g:mapleader = ' '
 set ignorecase
 set cursorline
 set fillchars+=vert:│
+set whichwrap+=<,>,h,l,[,]
 
 " Tabulation
 set expandtab
