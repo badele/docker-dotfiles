@@ -61,7 +61,7 @@ INSTALL="$INSTALL imagemagick maim peek gifsicle-lossy  screenkey"
 
 #INSTALL="$INSTALL i3-gaps dmenu-manjaro rootmenu polybar-git"
 INSTALL="$INSTALL i3-gaps dmenu polybar-git"
-INSTALL="$INSTALL nerd-fonts-complete ttf-material-design-icons chromium"
+INSTALL="$INSTALL nerd-fonts-complete ttf-material-design-icons google-chrome"
 
 # Install some terminal package
 INSTALL="$INSTALL openssh ranger neovim stow highlight ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode"
