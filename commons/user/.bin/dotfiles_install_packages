@@ -36,7 +36,6 @@ install_needed_packages() {
 	fi
 }
 
-
 # Update
 $YAOURT --noconfirm -Syua
 
@@ -47,6 +46,9 @@ sudo locale-gen
 # Install some desktop tools
 INSTALL="xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
 INSTALL="$INSTALL imlib2 nomacs w3m unclutter key-mon  networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
+
+# Terminal tools
+INSTALL="git tig diff-so-fancy"
 
 # Video
 INSTALL="$INSTALL ffmpeg mpv"

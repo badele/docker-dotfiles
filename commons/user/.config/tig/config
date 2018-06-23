@@ -1,0 +1,268 @@
+# Saved by Tig
+
+## Settings
+
+set blame-options             = 
+set blame-view                = date:default,local=no,format= author:full file-name:auto id:yes,color=yes line-number:no,interval=5 text
+set blob-view                 = line-number:no,interval=5 text
+set commit-order              = auto
+set diff-context              = 3
+set diff-noprefix             = no
+set diff-options              = 
+#set diff-highlight            = ""
+set diff-view                 = line-number:no,interval=5 text
+set editor-line-number        = yes
+set file-filter               = yes
+set focus-child               = yes
+set git-colors                = branch.current=main-head branch.local=main-ref branch.plain=main-ref branch.remote=main-remote diff.meta=diff-header diff.meta=diff-index diff.meta=diff-oldmode diff.meta=diff-newmode diff.frag=diff-chunk diff.old=diff-del diff.new=diff-add diff-highlight.oldHighlight=diff-del-highlight diff-highlight.newHighlight=diff-add-highlight grep.filename=grep.file grep.linenumber=grep.line-number grep.separator=grep.delimiter status.branch=status.header status.added=stat-staged status.updated=stat-staged status.changed=stat-unstaged status.untracked=stat-untracked
+set grep-view                 = file-name:no line-number:yes,interval=1 text
+set history-size              = 500
+set horizontal-scroll         = 50%
+set id-width                  = 0
+set ignore-case               = no
+set ignore-space              = no
+set line-graphics             = default
+set log-options               = 
+set log-view                  = line-number:no,interval=5 text
+set mailmap                   = no
+set main-options              = 
+set main-view                 = line-number:no,interval=5 id:no,color=no date:relative,local=no,format= author:abbreviated commit-title:yes,graph=v2,refs=yes
+set mouse                     = no
+set mouse-scroll              = 3
+set mouse-wheel-cursor        = no
+set pager-view                = line-number:no,interval=5 text
+set reference-format          = [branch] {remote} <tag> ~replace~
+set refresh-interval          = 10
+set refresh-mode              = auto
+set refs-view                 = line-number:no id:no,color=no date:default,local=no,format= author:full ref commit-title:yes,graph=no,refs=no
+set show-changes              = yes
+set show-notes                = yes
+set split-view-height         = 67%
+set split-view-width          = 50%
+set stage-view                = line-number:no,interval=5 text
+set stash-view                = line-number:no,interval=5 id:no,color=no date:default,local=no,format= author:full commit-title:yes,graph=no,refs=no
+set status-show-untracked-dirs = yes
+set status-show-untracked-files = yes
+set status-view               = line-number:no,interval=5 status:short file-name:auto
+set tab-size                  = 8
+set tree-view                 = line-number:no,interval=5 mode author:full file-size:default date:default,local=no,format= id:no,color=no file-name:auto
+set truncation-delimiter      = "~"
+set vertical-split            = auto
+set wrap-lines                = no
+set wrap-search               = yes
+
+## Keybindings
+
+# View switching
+bind generic    m               view-main
+bind generic    d               view-diff
+bind generic    l               view-log
+bind generic    t               view-tree
+bind generic    f               view-blob
+bind generic    b               view-blame
+bind generic    r               view-refs
+bind generic    s               view-status
+bind generic    S               view-status
+bind generic    c               view-stage
+bind generic    y               view-stash
+bind generic    g               view-grep
+bind generic    p               view-pager
+bind generic    h               view-help
+# View manipulation
+bind generic    <Enter>         enter
+bind generic    <LessThan>      back
+bind generic    <Down>          next
+bind generic    <Ctrl-N>        next
+bind generic    J               next
+bind generic    <Up>            previous
+bind generic    <Ctrl-P>        previous
+bind generic    K               previous
+bind generic    ,               parent
+bind generic    <Tab>           view-next
+bind generic    R               refresh
+bind generic    <F5>            refresh
+bind generic    O               maximize
+bind generic    q               view-close
+bind generic    Q               quit
+bind generic    <Ctrl-C>        quit
+# Cursor navigation
+bind generic    k               move-up
+bind generic    j               move-down
+bind generic    <PageDown>      move-page-down
+bind generic    <Space>         move-page-down
+bind generic    <PageUp>        move-page-up
+bind generic    -               move-page-up
+bind generic    <Ctrl-D>        move-half-page-down
+bind generic    <Ctrl-U>        move-half-page-up
+bind generic    <Home>          move-first-line
+bind generic    <End>           move-last-line
+# Scrolling
+bind generic    <Insert>        scroll-line-up
+bind generic    <Ctrl-Y>        scroll-line-up
+bind generic    <Delete>        scroll-line-down
+bind generic    <Ctrl-E>        scroll-line-down
+bind generic    <ScrollBack>    scroll-page-up
+bind generic    <ScrollFwd>     scroll-page-down
+bind generic    |               scroll-first-col
+bind generic    <Left>          scroll-left
+bind generic    <Right>         scroll-right
+# Searching
+bind generic    /               search
+bind generic    ?               search-back
+bind generic    n               find-next
+bind generic    N               find-prev
+# Misc
+bind generic    e               edit
+bind generic    :               prompt
+bind generic    o               options
+bind generic    <Ctrl-L>        screen-redraw
+bind generic    z               stop-loading
+bind generic    v               show-version
+# Option toggling:
+bind generic    I               :toggle sort-order
+bind generic    i               :toggle sort-field
+bind generic    <Hash>          :toggle line-number
+bind generic    D               :toggle date
+bind generic    A               :toggle author
+bind generic    ~               :toggle line-graphics
+bind generic    F               :toggle file-name
+bind generic    W               :toggle ignore-space
+bind generic    X               :toggle id
+bind generic    $               :toggle commit-title-overflow
+bind generic    %               :toggle file-filter
+# View manipulation
+bind search     <Ctrl-C>        view-close
+# Searching
+bind search     <Down>          find-next
+bind search     <Ctrl-N>        find-next
+bind search     <Ctrl-J>        find-next
+bind search     <Up>            find-prev
+bind search     <Ctrl-P>        find-prev
+bind search     <Ctrl-K>        find-prev
+# Option toggling:
+bind main       G               :toggle commit-title-graph
+bind main       F               :toggle commit-title-refs
+# External commands:
+bind main       C               ?git cherry-pick %(commit)
+# Option toggling:
+bind diff       [               :toggle diff-context -1
+bind diff       ]               :toggle diff-context +1
+# Internal commands:
+bind diff       @               :/^@@
+# External commands:
+bind refs       C               ?git checkout %(branch)
+bind refs       !               ?git branch -D %(branch)
+# View-specific actions
+bind status     u               status-update
+bind status     !               status-revert
+bind status     M               status-merge
+# External commands:
+bind status     C               !git commit
+# View-specific actions
+bind stage      u               status-update
+bind stage      !               status-revert
+bind stage      1               stage-update-line
+bind stage      \               stage-split-chunk
+# Option toggling:
+bind stage      [               :toggle diff-context -1
+bind stage      ]               :toggle diff-context +1
+# Internal commands:
+bind stage      @               :/^@@
+# External commands:
+bind stash      A               ?git stash apply %(stash)
+bind stash      P               ?git stash pop %(stash)
+bind stash      !               ?git stash drop %(stash)
+
+## Colors
+
+color "diff --"                      yellow   default 
+color "--- "                         yellow   default 
+color "+++ "                         yellow   default 
+color "---"                          blue     default 
+color "@@"                           magenta  default 
+color "+"                            green    default 
+color " +"                           green    default 
+color "-"                            red      default 
+color " -"                           red      default 
+color "index "                       blue     default 
+color "old file mode "               yellow   default 
+color "new file mode "               yellow   default 
+color "similarity "                  yellow   default 
+color diff-add-highlight             green    default  standout
+color diff-del-highlight             red      default  standout
+color "Merge: "                      blue     default 
+color "Refs: "                       red      default 
+color "Reflog: "                     red      default 
+color "Reflog message: "             yellow   default 
+color "commit "                      green    default 
+color "parent "                      blue     default 
+color "tree "                        blue     default 
+color "author "                      green    default 
+color "committer "                   magenta  default 
+color default                        default  default 
+color cursor                         white    green    bold
+color status                         green    default 
+color delimiter                      magenta  default 
+color date                           blue     default 
+color mode                           cyan     default 
+color id                             magenta  default 
+color overflow                       red      default 
+color directory                      yellow   default 
+color file                           default  default 
+color grep.file                      blue     default 
+color file-size                      default  default 
+color line-number                    cyan     default 
+color title-blur                     white    blue    
+color title-focus                    white    blue     bold
+color header                         yellow   default 
+color section                        cyan     default 
+color main-commit                    default  default 
+color main-tag                       magenta  default  bold
+color main-local-tag                 magenta  default 
+color main-remote                    yellow   default 
+color main-replace                   cyan     default 
+color main-tracked                   yellow   default  bold
+color main-ref                       cyan     default 
+color main-head                      cyan     default  bold
+color stat-none                      default  default 
+color stat-staged                    magenta  default 
+color stat-unstaged                  magenta  default 
+color stat-untracked                 magenta  default 
+color help-group                     blue     default 
+color help-action                    yellow   default 
+color diff-stat                      blue     default 
+color palette-0                      magenta  default 
+color palette-1                      yellow   default 
+color palette-2                      cyan     default 
+color palette-3                      green    default 
+color palette-4                      default  default 
+color palette-5                      white    default 
+color palette-6                      red      default 
+color palette-7                      magenta  default  bold
+color palette-8                      yellow   default  bold
+color palette-9                      cyan     default  bold
+color palette-10                     green    default  bold
+color palette-11                     default  default  bold
+color palette-12                     white    default  bold
+color palette-13                     red      default  bold
+color graph-commit                   blue     default 
+color search-result                  black    yellow  
+color "deleted file mode "           yellow   default 
+color "copy from "                   yellow   default 
+color "copy to "                     yellow   default 
+color "rename from "                 yellow   default 
+color "rename to "                   yellow   default 
+color "dissimilarity "               yellow   default 
+color "diff-tree "                   blue     default 
+color "Author: "                     cyan     default 
+color "Commit: "                     magenta  default 
+color "Tagger: "                     magenta  default 
+color "Date: "                       yellow   default 
+color "AuthorDate: "                 yellow   default 
+color "CommitDate: "                 yellow   default 
+color "TaggerDate: "                 yellow   default 
+color "stash@{"                      magenta  default 
+color "    Signed-off-by"            yellow   default 
+color "    Acked-by"                 yellow   default 
+color "    Tested-by"                yellow   default 
+color "    Reviewed-by"              yellow   default 
