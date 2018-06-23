@@ -182,7 +182,7 @@ call plug#end()
 set mouse=a
 set number
 let g:mapleader = ' '
-set ignorecase
+set smartcase
 set cursorline
 set fillchars+=vert:│
 set whichwrap+=<,>,h,l,[,]

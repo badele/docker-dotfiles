@@ -131,6 +131,17 @@ CONTENTS                                                                *MyHelp*
     [{number}dd]          Delete line
     [C-v] + key           Show keycode
 
+== Search ==
+
+    [/]    Search pattern, /pattern\c insensitive, /pattern\C sensitive
+    [n,N]  Next, Previous
+    [*,g*] Search word under cursor, search partial word
+
+== Replace ==
+
+    [:s/pattern/replace/g] replace in current line
+    [:%s/pattern/replace/g] replace current file
+    [:%s//replace/g] replace last search in current file
 ................................................................................
                                  *MyNerdTree*
 ................................................................................
