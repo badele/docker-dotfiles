@@ -16,13 +16,16 @@ let g:lmap.f = {
                 \'c': ['Content','Search content text'],
                 \'g': ['Commits','Search in commits'],
                 \'f': ['call FzSearchFiles()','Search git/files'],
+                \'b': ['Buffers','Search in buffers'],
                 \}
 nnoremap <C-f>c :Contents<CR>
 nnoremap <C-f>f :Files<CR>
 nnoremap <C-f>g :Commits<CR>
+nnoremap <C-f>b :Buffers<CR>
 nmap fc :Contents<CR>
 nmap ff :Files<CR>
 nmap fg :Commits<CR>
+nmap fb :Buffers<CR>
 
 " My leaders menu
 let g:lmap.m = {
