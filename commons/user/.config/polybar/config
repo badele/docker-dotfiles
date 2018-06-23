@@ -48,6 +48,10 @@ font-5 = Termsynu:size=8:antialias=false;0
 modules-left = i3 
 modules-right = cpu memory
 
+tray-position = right
+tray-transparent = true
+tray-detached = false
+
 [module/backlight]
 type = internal/xbacklight
 format = <ramp> <bar>
