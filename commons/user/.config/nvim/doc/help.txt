@@ -139,6 +139,7 @@ CONTENTS                                                                *MyHelp*
 
 == Replace ==
 
+    :Ack patern + Acks /patern/replace/
     [:s/pattern/replace/g] replace in current line
     [:%s/pattern/replace/g] replace current file
     [:%s//replace/g] replace last search in current file

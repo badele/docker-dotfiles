@@ -67,9 +67,10 @@ let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
-" FZF
+" Searcher
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'wincent/ferret'
 
 " Font icons for some plugins
 " (NERDTree, vim-airline, Powerline, Unite, vim-startify and more)
@@ -182,6 +183,7 @@ call plug#end()
 set mouse=a
 set number
 let g:mapleader = ' '
+set ignorecase
 set smartcase
 set cursorline
 set fillchars+=vert:│
