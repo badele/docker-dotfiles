@@ -72,6 +72,9 @@ cd docker-dotfiles
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_fzf_contents.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_fzf_contents.gif" alt="vim-fzf-files" width="50%"></a>
 
+**Search & Replace with ferret** Search and replace content
+
+<a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_search_replace.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_search_replace.gif" alt="vim-search-replace" width="50%"></a>
 
 ### TODO
 
