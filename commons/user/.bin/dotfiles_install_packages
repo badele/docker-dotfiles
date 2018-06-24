@@ -45,7 +45,7 @@ sudo locale-gen
 
 # Install some desktop tools
 INSTALL="xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
-INSTALL="$INSTALL imlib2 nomacs w3m unclutter key-mon  networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
+INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Terminal tools
 INSTALL="git tig diff-so-fancy"

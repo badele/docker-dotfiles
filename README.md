@@ -35,6 +35,8 @@ cd docker-dotfiles
 
 ### Sample
 
+**Note :** Some of these videos were made with `screenkey`, `video_record_desktop`, `video_record_stop`, `video_to_gif`
+
 #### Themes
 
 **desktop_theme_from_image command line** A dedicated tool for setting a themes from picture
