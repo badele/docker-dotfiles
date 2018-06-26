@@ -1,5 +1,5 @@
 #!/bin/bash
-source ~/.cache/wal/colors.sh   
+source ~/.cache/wal/colors.sh
 echo "[colors]
 foreground = $foreground
 background = $background
@@ -18,4 +18,9 @@ color11=$color11
 color12=$color12
 color13=$color13
 color14=$color14
-color15=$color15" > ~/.config/termite/config
+color15=$color15
+
+[options]
+font = TerminessTTF Nerd Font 12
+
+" >~/.config/termite/config
