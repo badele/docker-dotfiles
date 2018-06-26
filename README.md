@@ -76,6 +76,10 @@ cd docker-dotfiles
 
 <a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_search_replace.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_search_replace.gif" alt="vim-search-replace" width="50%"></a>
 
+**Colorize hex color** Colorize color in the code with hex color
+
+<a href="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_colorizer.gif"><img src="https://raw.githubusercontent.com/badele/docker-dotfiles/master/images/vim_colorizer.gif" alt="vim-search-replace" width="50%"></a>
+
 ### TODO
 
 - [ ] Configure MPD player
