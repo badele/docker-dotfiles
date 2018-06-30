@@ -134,6 +134,7 @@ let g:ale_fixers = {
 "augroup END
 
 " Insert or delete brackets, parens, quotes in pair
+Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsMapCR=0
 imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
