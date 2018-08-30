@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Remove files conflicts
+rm ~/.Xresources
+rm ~/.config/clipit/clipitrc
+rm ~/.config/dunst/dunstrc
+rm ~/.config/nitrogen/bg-saved.cfg
+rm ~/.config/nitrogen/nitrogen.cfg
+rm ~/.config/ranger/rc.conf
+rm ~/.config/ranger/scope.sh
+rm ~/.i3/config
+rm ~/.xinitrc
+
+
 path=$(dirname $(realpath $0))
 
 . $path/get_computer_name

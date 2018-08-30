@@ -9,31 +9,16 @@ REPO=https://github.com/badele/docker-dotfiles.git
 
 # Overide yaourt CMD (disable not enough disk space in TMPFS)
 mkdir -p $HOME/tmp
-YAOURT="yaourt --tmp $HOME/tmp"
+#YAOURT="yaourt --tmp $HOME/tmp"
+YAOURT="yaourt"
 
 # set user shell
 [ $(id -u) -eq 0 ] || sudo usermod --shell /bin/zsh $USER
 
-check_needed_packages() {
-	# Check package needed
-	INSTALLED=$($YAOURT -Q)
-	TOINSTALL=""
-	for PACKAGE in $INSTALL; do
-		ISINSTALLED=$(echo "$INSTALLED" | grep "/$PACKAGE")
-		if [ $? -eq 1 ]; then
-			TOINSTALL="$TOINSTALL $PACKAGE"
-		fi
-	done
-
-	echo "$TOINSTALL"
-}
 
 install_needed_packages() {
 	# Install needed packages
-	NEEDED=$(check_needed_packages)
-	if [ "$NEEDED" != "" ]; then
-		$YAOURT --noconfirm -S $NEEDED
-	fi
+	$YAOURT --noconfirm --needed -S $INSTALL
 }
 
 # Update
@@ -43,12 +28,15 @@ $YAOURT --noconfirm -Syua
 sudo sh -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen' && sudo sh -c 'echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen'
 sudo locale-gen
 
+REMOVE="dmenu-manjaro manjaro-i3-settings morc_menu"
+$YAOURT --noconfirm -R $REMOVE 
+
 # Install some desktop tools
-INSTALL="xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
+INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
 INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Terminal tools
-INSTALL="git tig diff-so-fancy"
+INSTALL="$INSTALL git tig diff-so-fancy"
 
 # Video
 INSTALL="$INSTALL ffmpeg mpv"

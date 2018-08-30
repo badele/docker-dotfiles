@@ -9,3 +9,7 @@ fi
 if [ -z "$COMPUTER" ] && [[ $(sudo dmidecode -q -t system | grep "Latitude E5540") ]]; then
 	export COMPUTER="dell"
 fi
+
+if [ -z "$COMPUTER" ] && [[ $(sudo dmidecode -q -t system | grep "XPS 15 9570") ]]; then
+        export COMPUTER="dellxps"
+fi
