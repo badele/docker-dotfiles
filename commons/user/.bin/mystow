@@ -26,18 +26,20 @@ else
 	fi
 
 	if [ -d "$PWD/$ENV/user" ]; then
-		stow -d $PWD/$ENV $SIMULATE -t ~ $OPTS user
+		stow --adopt -d $PWD/$ENV $SIMULATE -t ~ $OPTS user
 
-		if [ -e "$PWD/fix/$ENV/user/postscript.sh" ]; then
-			$PWD/fix/$ENV/user/postscript.sh
+		if [ -e "$PWD/$ENV/postscript_user.sh" ]; then
+			echo "Execute $ENV postscript_user.sh"
+			$PWD/$ENV/postscript_user.sh
 		fi
 	fi
 
 	if [ -d "$PWD/$ENV/system" ]; then
-		sudo stow -d $PWD/$ENV $SIMULATE -t / $OPTS system
+		sudo stow --adopt -d $PWD/$ENV $SIMULATE -t / $OPTS system
 
-		if [ -e "$PWD/fix/$ENV/system/postscript.sh" ]; then
-			sudo $PWD/fix/$ENV/system/postscript.sh
+		if [ -e "$PWD/$ENV/postscript_system.sh" ]; then
+			echo "Execute $ENV/postscript_system.sh"
+			sudo $PWD/$ENV/postscript_system.sh
 		fi
 	fi
 fi
