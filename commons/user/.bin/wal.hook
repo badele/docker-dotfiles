@@ -22,5 +22,7 @@ color15=$color15
 
 [options]
 font = TerminessTTF Nerd Font 12
+browser = google-chrome-stable
+clickable_url = true
 
 " >~/.config/termite/config
