@@ -89,6 +89,11 @@ CONTENTS                                                                *MyHelp*
            :maps view mapping, you can also search mapping with :map,
     [C-k]  Show key value in insert mode
 
+  == Bars ==
+
+	[C-d]       	Toogle NERDTree
+	[C-t]       	Toogle Tag bar
+
   == Debuging ==
 
     vim -V[LEVELNUMBER]FILENAME
@@ -106,7 +111,7 @@ CONTENTS                                                                *MyHelp*
     [:buffers] List buffers
     [:b,:buf] selectt buffer
 
-== Movement ==
+  == Movement ==
 
     [h,j,k,l] Left, Down, Up, Right
     [◀,▼,▲,▶] Left, Down, Up, Right
@@ -120,7 +125,7 @@ CONTENTS                                                                *MyHelp*
     [G]       Go to last line
     [H,M,L]   Go to (upper, middle, bottom) screen
 
-== Editor ==
+  == Editor ==
 
     [a,A] Append character (after character, end line)
     [i,I] Append character (before character, begin line)
@@ -131,13 +136,13 @@ CONTENTS                                                                *MyHelp*
     [{number}dd]          Delete line
     [C-v] + key           Show keycode
 
-== Search ==
+  == Search ==
 
     [/]    Search pattern, /pattern\c insensitive, /pattern\C sensitive
     [n,N]  Next, Previous
     [*,g*] Search word under cursor, search partial word
 
-== Replace ==
+  == Replace ==
 
     :Ack patern + Acks /patern/replace/
     [:s/pattern/replace/g] replace in current line
@@ -147,29 +152,28 @@ CONTENTS                                                                *MyHelp*
                                  *MyNerdTree*
 ................................................................................
 
-	== Navigation ==
+  == Navigation ==
 	
-    	[u]         	Up folder
+    [u]     Up folder
 	[C]		Change root
 	[p]		Goto parent
 	[P]		Goto root parent
 
-	== Files / Folders ==
+  == Files / Folders ==
 	
-	[C-d]       	Toogle NERDTree
-    	[?]		Show help
-    	[o,<Enter>] 	Open folder
-    	[go]		File preview
-    	[I]		Toogle hidden files 
-    	[m]         	Show NERDTree menu
-    	[mg]		Grep on folder
-    	[o,x]		Open/Close node
-    	[O,X]       	Open/close all nodes
-    	[B]		Show bookmark
-    	:Bookmark	Add bookmark
-    	[D]		Delete bookmark
+    [?]		        Show help
+    [o,<Enter>] 	Open folder
+    [go]		    File preview
+    [I]		        Toogle hidden files 
+    [m]         	Show NERDTree menu
+    [mg]		    Grep on folder
+    [o,x]		    Open/Close node
+    [O,X]       	Open/close all nodes
+    [B]		        Show bookmark
+    :Bookmark	    Add bookmark
+    [D]		        Delete bookmark
 
-	== Git ==
+  == Git ==
 	cd 		Select current folder(CWD) for showing the git status
 	r		Refresh git state
 

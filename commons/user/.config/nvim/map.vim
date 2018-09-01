@@ -53,6 +53,8 @@ map  <silent> <C-v> pi
 imap <silent> <C-v> <Esc>pi
 imap <silent> <C-z> <Esc>ui
 
+vmap <silent> <C-c> y<Esc>i
+vmap <silent> <C-x> d<Esc>i
 " Save with CTRL-S
 noremap <silent> <C-s>          :update<CR>
 vnoremap <silent> <C-s>         <C-C>:update<CR>
@@ -64,8 +66,8 @@ vnoremap <silent> <C-q>         <C-C>:q<CR>
 inoremap <silent> <C-q>         <C-O>:q<CR>
 
 function! ShowMaps()
-  let l:old_reg = getreg("a")          " save the current content of register a
-  let l:old_reg_type = getregtype("a") " save the type of the register as well
+  let l:old_reg = getreg('a')          " save the current content of register a
+  let l:old_reg_type = getregtype('a') " save the type of the register as well
 try
   redir @a                           " redirect output to register a
   " Get the list of all key mappings silently, satisfy "Press ENTER to continue"
@@ -76,6 +78,6 @@ try
   " Sort on 4th character column which is the key(s)
   %!sort -k1,14
 finally                              " Execute even if exception is raised
-  call setreg("a", l:old_reg, l:old_reg_type) " restore register a
+  call setreg('a', l:old_reg, l:old_reg_type) " restore register a
 endtry
 endfunction
