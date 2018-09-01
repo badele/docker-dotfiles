@@ -31,7 +31,8 @@ antigen apply
 stty -ixon -ixoff
 
 # FZF plugin configuration
-[ -f ~/.fzf-custom.zsh ] && source ~/.fzf-custom.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.fzf-custom.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 show_tips
