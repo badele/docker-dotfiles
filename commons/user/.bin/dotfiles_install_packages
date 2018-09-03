@@ -31,7 +31,7 @@ REMOVE="dmenu-manjaro manjaro-i3-settings morc_menu"
 $YAOURT --noconfirm -R $REMOVE
 
 # Install some desktop tools
-INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr xautolock xdo numlockx compton xterm rxvt-unicode termite"
+INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr i3lock-fancy-dualmonitor xautolock xdo numlockx xtrlock compton xterm rxvt-unicode termite"
 INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Terminal tools

@@ -7,6 +7,7 @@ set $alt Mod1
 set $filemanager thunar
 set $default_gaps_inner 6
 set $default_gaps_outer 2
+set $i3lock i3lock-fancy-dualmonitor 
 
 # Window parameters
 font pango:Liberation Mono 10
@@ -25,7 +26,9 @@ bindsym $mod+Return exec termite
 bindsym $mod+q kill
 #bindsym $mod+space exec --no-startup-id dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 10 -w 1024
 bindsym $mod+space exec --no-startup-id rofi -combi-modi window#drun#ssh -show combi
-bindsym $mod+ctrl+l exec i3lock  
+bindsym $mod+l exec $i3lock
+bindsym $mod+ctrl+l exec xtrlock
+
 bindsym $mod+Shift+r restart
 bindsym --release Print exec "mkdir -p ~/Downloads/screenshot/ && maim ~/Downloads/screenshot-full-$(date +%Y-%m-%d).png"
 #bindsym --release Shift+Print exec "maim -i $(xdotool getactivewindow) ~/Downloads/screenshot-windows-$(date +%Y-%m-%d).png"
