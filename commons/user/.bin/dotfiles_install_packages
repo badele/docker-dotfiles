@@ -17,7 +17,12 @@ YAOURT="yaourt"
 
 install_needed_packages() {
 	# Install needed packages
+	echo "====================================================================="
+	echo "$INSTALL"
+	echo "====================================================================="
+	set -e
 	$YAOURT --noconfirm --needed -S $INSTALL
+	set +e
 }
 
 # Update
@@ -26,12 +31,15 @@ $YAOURT --noconfirm -Syua
 # System configuration
 sudo sh -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen' && sudo sh -c 'echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen'
 sudo locale-gen
+sudo timedatectl set-timezone Europe/Paris
+sudo timedatectl set-ntp true
 
 REMOVE="dmenu-manjaro manjaro-i3-settings morc_menu"
 $YAOURT --noconfirm -R $REMOVE
 
 # Install some desktop tools
-INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr i3lock-fancy-dualmonitor xautolock xdo numlockx xtrlock compton xterm rxvt-unicode termite"
+INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr i3lock-fancy-dualmonitors-git xtrlock xautolock xdo numlockx light xbindkeys compton"
+INSTALL="$INSTALL xterm rxvt-unicode termite"
 INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Terminal tools
@@ -47,14 +55,14 @@ INSTALL="$INSTALL ffmpeg mpv"
 INSTALL="$INSTALL pulseaudio pavucontrol pulseaudio-ctl"
 
 # Graphical tools
-INSTALL="$INSTALL imagemagick maim peek gifsicle-lossy  screenkey"
+INSTALL="$INSTALL imagemagick maim gifsicle-lossy  screenkey"
 
 #INSTALL="$INSTALL i3-gaps dmenu-manjaro rootmenu polybar-git"
 INSTALL="$INSTALL i3-gaps dmenu polybar-git"
 INSTALL="$INSTALL nerd-fonts-terminus ttf-material-design-icons google-chrome"
 
 # Install some terminal package
-INSTALL="$INSTALL openssh ranger neovim stow highlight ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode"
+INSTALL="$INSTALL openssh ranger neovim stow ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode"
 
 # Python
 INSTALL="$INSTALL python-pip python-neovim python-virtualenvwrapper python-pywal termpalette-git"
@@ -69,7 +77,7 @@ sudo pip install jedi pylint vim-vint
 sudo npm install -g fixjson jsonlint
 
 # Configure ZSH
-INSTALL="$INSTALL fzf fd antigen-git thefuck"
+INSTALL="fzf fd antigen-git thefuck"
 
 # powerline
 INSTALL="$INSTALL neofetch highlight"
