@@ -1,0 +1,8 @@
+"/usr/bin/light -U 5"
+    m:0x0 + c:232
+    XF86MonBrightnessDown
+
+"/usr/bin/light -A 5"
+    m:0x0 + c:233
+    XF86MonBrightnessUp
+

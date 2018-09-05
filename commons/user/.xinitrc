@@ -5,7 +5,8 @@
 
 . get_computer_name
 
-# Set french keyboard for sxhkd
+# Configure keyboard
+xbindkeys &
 setxkbmap fr
 numlockx on
 
