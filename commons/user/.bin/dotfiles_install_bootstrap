@@ -1,0 +1,9 @@
+#!/bin/bash
+
+REPO=https://github.com/badele/docker-dotfiles.git
+
+# Update
+yaourt --noconfirm -Syua
+
+# Install bootstrap packages
+yaourt --noconfirm --needed -S stow
