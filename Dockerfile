@@ -37,10 +37,12 @@ USER root
 RUN cd /etc/skel && git clone $REPO 
 
 # Install commons dotfiles packages
-# If the dotfiles_install_packages file is modified in your dotfile,
+# If the dotfiles_install_commons file is modified in your dotfile,
 # you must build docker image with "docker build --no-cache -t badele/docker-dotfiles ."
 USER user
 RUN /etc/skel/docker-dotfiles/commons/user/.bin/dotfiles_install_bootstrap
+RUN /etc/skel/docker-dotfiles/commons/user/.bin/dotfiles_install_commons
+RUN /etc/skel/docker-dotfiles/commons/user/.bin/dotfiles_sync_for_computer
 
 USER root
 
@@ -53,7 +55,7 @@ echo x11docker | sudo --stdin su -c "echo \"$USER ALL=(ALL) NOPASSWD:ALL\"  > /e
 echo x11docker | sudo --stdin su -c "echo \"root ALL=(ALL) ALL\" >> /etc/sudoers"\n\ 
 \n\
 # Get user configuration (depend computer)
-cd $HOME/docker-dotfiles &&  /$HOME/docker-dotfiles/commons/user/.bin/dotfiles_get_conf4computer \n\
+cd $HOME/docker-dotfiles &&  /$HOME/docker-dotfiles/commons/user/.bin/dotfiles_get_for_computer \n\
 \n\
 
 export PATH=$HOME/.bin:$PATH \n\

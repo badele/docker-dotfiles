@@ -1,6 +1,12 @@
 #!/bin/bash
 
-# Remove files conflicts
+showmess() {
+	echo "################################################################################"
+	echo "# $1"
+	echo "################################################################################"
+}
+
+# Remove commons conflicts files (with stow)
 rm ~/.Xresources
 rm ~/.config/clipit/clipitrc
 rm ~/.config/dunst/dunstrc
@@ -11,15 +17,16 @@ rm ~/.config/ranger/scope.sh
 rm ~/.i3/config
 rm ~/.xinitrc
 
+#path=$(dirname $(realpath $0))
 
-path=$(dirname $(realpath $0))
-
-. $path/get_computer_name
+. ./get_computer_name
 
 # Commons configuration
+showmess "Apply commons configuration"
 $path/mystow apply commons
 
 # Computer configuration
 if [ -e $path/../../../$COMPUTER ]; then
+	showmess "Apply $COMPUTER configuration"
 	$path/mystow apply $COMPUTER
 fi

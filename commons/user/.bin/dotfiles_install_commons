@@ -1,11 +1,16 @@
 #!/bin/bash
 
-BOOTSTRAP="n"
-if [ "$1" = "bootstrap" ]; then
-	BOOTSTRAP="y"
+# Configure user files (for root or home user)
+if [ $(id -u) -eq 0 ]; then
+	ROOTUSER="y"
+	SUDO="sudo"
+	IMGPATH="/etc/skel"
+else
+	ROOTUSER="n"
+	SUDO=""
+	IMGPATH="$HOME"
+	sudo usermod --shell /bin/zsh $USER
 fi
-
-REPO=https://github.com/badele/docker-dotfiles.git
 
 # Overide yaourt CMD (disable not enough disk space in TMPFS)
 mkdir -p $HOME/tmp
@@ -13,37 +18,36 @@ mkdir -p $HOME/tmp
 YAOURT="yaourt"
 
 # set user shell
-[ $(id -u) -eq 0 ] || sudo usermod --shell /bin/zsh $USER
-
-install_needed_packages() {
-	# Install needed packages
-	echo "====================================================================="
-	echo "$INSTALL"
-	echo "====================================================================="
-	set -e
-	$YAOURT --noconfirm --needed -S $INSTALL
-	set +e
-}
+[ $(id -u) -eq 0 ] ||
+	install_needed_packages() {
+		# Install needed packages
+		echo "====================================================================="
+		echo "$INSTALL"
+		echo "====================================================================="
+		set -e
+		$YAOURT --noconfirm --needed -S $INSTALL
+		set +e
+	}
 
 # Update
 $YAOURT --noconfirm -Syua
 
 # System configuration
-sudo sh -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen' && sudo sh -c 'echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen'
-sudo locale-gen
-sudo timedatectl set-timezone Europe/Paris
-sudo timedatectl set-ntp true
+$SUDO sh -c 'echo "en_US.UTF-8 UTF-8" > /etc/locale.gen' && sudo sh -c 'echo "fr_FR.UTF-8 UTF-8" >>/etc/locale.gen'
+$SUDO locale-gen
+$SUDO timedatectl set-timezone Europe/Paris
+$SUDO timedatectl set-ntp true
 
+# Remove unused package
 REMOVE="dmenu-manjaro manjaro-i3-settings morc_menu"
 $YAOURT --noconfirm -R $REMOVE
 
 # Install some desktop tools
 INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr i3lock-fancy-dualmonitors-git xtrlock xautolock xdo numlockx light xbindkeys compton"
-INSTALL="$INSTALL xterm rxvt-unicode termite"
 INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Terminal tools
-INSTALL="$INSTALL git tig diff-so-fancy"
+INSTALL="$INSTALL xterm rxvt-unicode termite git tig diff-so-fancy"
 
 # Development tools
 INSTALL="$INSTALL visual-studio-code-bin"
@@ -87,7 +91,7 @@ INSTALL="$INSTALL shfmt"
 install_needed_packages
 
 # Download some wallpapers, you can donwload more with download_wallpaper scripts
-if [ "$BOOTSTRAP" == "y" ]; then
+if [ "$ROOTUSER" == "y" ]; then
 	IMGPATH="/etc/skel"
 	SUDO="sudo"
 	sudo mkdir -p $IMGPATH/Images
@@ -97,6 +101,8 @@ else
 	mkdir -p $IMGPATH/Images
 fi
 
+# Download some images (not all)
+$SUDO mkdir -p $IMGPATH/Images
 $SUDO convert "https://static.pexels.com/photos/540518/pexels-photo-540518.jpeg" -strip -resize "1920x1080^" "$IMGPATH/Images/mountain.jpg"
 $SUDO convert "http://www.tokkoro.com/picsup/427348-anonymous-hd-widescreen-wallpapers-backgrounds.jpeg" -strip -resize "1920x1080^" "$IMGPATH/Images/anonymous1_tokkoro.jpg"
 $SUDO convert "http://www.tokkoro.com/picsup/2986141-anonymous-face-mask-minimalism-guy-fawkes-mask-hope-posters___mixed-wallpapers.jpg" -strip -resize "1920x1080^" "$IMGPATH/Images/wanonymous2_tokkoro.jpg"

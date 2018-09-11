@@ -41,8 +41,8 @@ CONTENTS                                                                *MyHelp*
 		
   |desktop_theme_from_image|     Set theme from picture
                |color_table|     Show ascii char colors table
-|dotfiles_get_conf4computer|     Get dotfiles for current computer
- |dotfiles_install_packages|     Install dotfiles requirements packages
+ |dotfiles_get_for_computer|     Get dotfiles for current computer
+  |dotfiles_install_commons|     Install dotfiles commons packages
     |dotfiles_launch_system|     Launch the dotfiles main system
  |download_i3_doc_generator|     Download a i3 doc screenshot generator
        |download_wallpapers|     Download some wallpapers picture

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-REPO=https://github.com/badele/docker-dotfiles.git
-
 # Update
 yaourt --noconfirm -Syua
 
