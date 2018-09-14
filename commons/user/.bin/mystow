@@ -26,7 +26,15 @@ else
 	fi
 
 	if [ -d "$PWD/$ENV/user" ]; then
-		stow --adopt -d $PWD/$ENV $SIMULATE -t ~ $OPTS user
+		# Sync files not compatible with stow.
+		# ex: pulseaudio not compatible with hardlink
+		#
+		# Copy *.rsync files to home directory
+		find $PWD/$ENV/user/ -name "*.rsync" -printf '%P\n' -exec cp -r --parent {} $HOME/ \;
+		find $HOME/ -name "*.rsync" | sed -e "p;s/\.rsync//" | xargs -n2 mv
+
+		# Copy stow user file to home directory
+		stow --adopt -d $PWD/$ENV $SIMULATE -t $HOME $OPTS user
 
 		if [ -e "$PWD/$ENV/postscript_user.sh" ]; then
 			echo "Execute $ENV postscript_user.sh"
