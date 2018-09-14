@@ -61,9 +61,14 @@ vnoremap <silent> <C-s>         <C-C>:update<CR>
 inoremap <silent> <C-s>         <C-O>:update<CR><Esc>
 
 " Quit with CTRL-Q
-noremap <silent> <C-q>          :q<CR>
-vnoremap <silent> <C-q>         <C-C>:q<CR>
-inoremap <silent> <C-q>         <C-O>:q<CR>
+noremap <silent> <C-q>          :bw<CR>
+vnoremap <silent> <C-q>         <C-C>:bw<CR>
+inoremap <silent> <C-q>         <C-O>:bw<CR>
+
+" Quit buffer CTRL+B
+noremap <silent> <C-b>         :bw<CR>
+vnoremap <silent> <C-b>         <C-C>:bw<CR>
+inoremap <silent> <C-b>         <C-O>::bw<CR>
 
 function! ShowMaps()
   let l:old_reg = getreg('a')          " save the current content of register a
