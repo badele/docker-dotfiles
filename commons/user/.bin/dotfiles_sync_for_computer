@@ -6,20 +6,24 @@ showmess() {
 	echo "################################################################################"
 }
 
+delete() {
+	[ -e "$1" ] && rm -f "$1"
+}
+
 # Remove commons conflicts files (with stow)
-rm ~/.Xresources
-rm ~/.config/clipit/clipitrc
-rm ~/.config/dunst/dunstrc
-rm ~/.config/nitrogen/bg-saved.cfg
-rm ~/.config/nitrogen/nitrogen.cfg
-rm ~/.config/ranger/rc.conf
-rm ~/.config/ranger/scope.sh
-rm ~/.i3/config
-rm ~/.xinitrc
+delete ~/.Xresources
+delete ~/.config/clipit/clipitrc
+delete ~/.config/dunst/dunstrc
+delete ~/.config/nitrogen/bg-saved.cfg
+delete ~/.config/nitrogen/nitrogen.cfg
+delete ~/.config/ranger/rc.conf
+delete ~/.config/ranger/scope.sh
+delete ~/.i3/config
+delete ~/.xinitrc
 
-#path=$(dirname $(realpath $0))
+path=$(dirname $(realpath $0))
 
-. ./get_computer_name
+. $path/get_computer_name
 
 # Commons configuration
 showmess "Apply commons configuration"
