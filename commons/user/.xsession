@@ -5,8 +5,16 @@
 
 . get_computer_name
 
-# Define Xorg resolution
-mysimplescreen
+# Define Xorg parameters
+myscreensimple
+
+# powersaving options
+xset s on &
+xset s blank &
+#xset s noexpose &
+xset c on &
+#xset -dpms &
+mylightup &
 
 # Configure keyboard
 xbindkeys &
@@ -37,14 +45,6 @@ fc-cache -fv &
 
 ## Automount removable media
 #devmon &
-
-## powersaving options
-xset s off &
-xset s noblank &
-xset s noexpose &
-xset c on &
-xset -dpms &
-xbacklight -set 15 &
 
 #sleep 2s && bspc config top_padding 10 &
 #mylime &
