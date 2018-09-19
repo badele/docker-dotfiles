@@ -7,6 +7,7 @@ source /usr/share/zsh/share/antigen.zsh
 POWERLEVEL9K_MODE="nerdfont-complete"
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_INSTALLATION_PATH=$ANTIGEN_BUNDLES/bhilburn/powerlevel9k
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time load os_icon)
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
