@@ -31,7 +31,7 @@ else
 		#
 		# Copy *.rsync files to home directory
 		find $PWD/$ENV/user/ -name "*.rsync" -printf '%P\n' -exec cp -r --parent {} $HOME/ \;
-		find $HOME/ -name "*.rsync" | sed -e "p;s/\.rsync//" | xargs -n2 mv
+		find $HOME/ -name "*.rsync" | sed -e "p;s/\.rsync//" | xargs -n2 mv 2>/dev/null
 
 		# Copy stow user file to home directory
 		stow --adopt -d $PWD/$ENV $SIMULATE -t $HOME $OPTS user
