@@ -25,7 +25,7 @@ bindsym $mod+s exec --no-startup-id video_record_stop && notify-send "Stop recor
 bindsym $mod+Return exec termite
 bindsym $mod+q kill
 #bindsym $mod+space exec --no-startup-id dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 10 -w 1024
-bindsym $mod+space exec --no-startup-id rofi -combi-modi window#drun#ssh -show combi
+bindsym $mod+space exec --no-startup-id rofi -combi-modi run#drun -show combi
 bindsym $mod+l exec $i3lock
 bindsym $mod+ctrl+l exec xtrlock
 
