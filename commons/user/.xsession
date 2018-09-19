@@ -5,6 +5,9 @@
 
 . get_computer_name
 
+# Define Xorg resolution
+mysimplescreen
+
 # Configure keyboard
 xbindkeys &
 setxkbmap fr
