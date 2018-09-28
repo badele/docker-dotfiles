@@ -1,0 +1,1 @@
+for f in $WORK/platform/_bashrc/*.sh; do source $f; done

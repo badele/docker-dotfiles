@@ -47,7 +47,7 @@ else
 
 		if [ -e "$PWD/$ENV/postscript_system.sh" ]; then
 			echo "Execute $ENV/postscript_system.sh"
-			sudo $PWD/$ENV/postscript_system.sh
+			$PWD/$ENV/postscript_system.sh
 		fi
 	fi
 fi

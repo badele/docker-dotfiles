@@ -36,4 +36,6 @@ source ~/.fzf-custom.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+[ -f ~/.zshrc.computer ] && source ~/.zshrc.computer
+
 show_tips
