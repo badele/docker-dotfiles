@@ -61,6 +61,9 @@ INSTALL="$INSTALL pulseaudio pavucontrol pulseaudio-ctl"
 # Graphical tools
 INSTALL="$INSTALL imagemagick maim gifsicle-lossy  screenkey"
 
+# System tools
+INSTALL="lm_sensors"
+
 #INSTALL="$INSTALL i3-gaps dmenu-manjaro rootmenu polybar-git"
 INSTALL="$INSTALL i3-gaps dmenu polybar-git"
 INSTALL="$INSTALL nerd-fonts-terminus ttf-material-design-icons google-chrome"
