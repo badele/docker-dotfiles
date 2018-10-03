@@ -47,14 +47,12 @@ nmap <silent> cu <Plug>NERDCommenterToggle
 vmap <silent> cu <Plug>NERDCommenterToggle<CR>gv
 
 " Copy/Paste
-vmap <silent> <C-c> y<Esc>i
-vmap <silent> <C-x> d<Esc>i
-map  <silent> <C-v> pi
-imap <silent> <C-v> <Esc>pi
+vmap <silent> <C-c> y
+vmap <silent> <C-x> d
+map  <silent> <C-v> gpi
+imap <silent> <C-v> <Esc>gpi
 imap <silent> <C-z> <Esc>ui
 
-vmap <silent> <C-c> y<Esc>i
-vmap <silent> <C-x> d<Esc>i
 " Save with CTRL-S
 noremap <silent> <C-s>          :update<CR>
 vnoremap <silent> <C-s>         <C-C>:update<CR>
