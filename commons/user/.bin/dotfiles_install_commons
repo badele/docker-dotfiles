@@ -50,7 +50,7 @@ INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spac
 INSTALL="$INSTALL xterm rxvt-unicode termite git tig diff-so-fancy"
 
 # Development tools
-INSTALL="$INSTALL visual-studio-code-bin"
+INSTALL="$INSTALL visual-studio-code-bin smartgit"
 
 # Video
 INSTALL="$INSTALL ffmpeg mpv"
