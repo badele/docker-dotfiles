@@ -56,7 +56,7 @@ INSTALL="$INSTALL visual-studio-code-bin smartgit"
 INSTALL="$INSTALL ffmpeg mpv"
 
 # Audio tools
-INSTALL="$INSTALL pulseaudio pavucontrol pulseaudio-ctl protracker xmp audacious"
+INSTALL="$INSTALL pulseaudio pavucontrol pulseaudio-ctl lmms protracker milkytracker xmp audacious audacity"
 
 # Graphical tools
 INSTALL="$INSTALL imagemagick maim gifsicle-lossy  screenkey"
