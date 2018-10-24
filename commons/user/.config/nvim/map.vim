@@ -47,7 +47,7 @@ nmap <silent> cu <Plug>NERDCommenterToggle
 vmap <silent> cu <Plug>NERDCommenterToggle<CR>gv
 
 " Copy/Paste
-vmap <silent> <C-c> y
+vmap <silent> <C-c> y`]
 vmap <silent> <C-x> d
 map  <silent> <C-v> gpi
 imap <silent> <C-v> <Esc>gpi

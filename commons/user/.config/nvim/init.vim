@@ -190,6 +190,9 @@ set cursorline
 set fillchars+=vert:│
 set whichwrap+=<,>,h,l,[,]
 
+" Move cursor end after Past
+set virtualedit=onemore
+
 " Tabulation
 set expandtab
 set autoindent
