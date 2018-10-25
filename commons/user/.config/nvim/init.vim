@@ -32,10 +32,11 @@ Plug 'mhinz/vim-startify'
 
 " TODO TESTING
 "Plug 'SirVer/ultisnips'
-Plug 'Shougo/unite.vim'
+" DISABLE Plug 'Shougo/unite.vim'
 Plug 'Shougo/vimproc.vim'
 
 " Leadguide
+" <SPACE> in normal mode
 Plug 'hecal3/vim-leader-guide'
 
 " Detect root project directory
@@ -190,14 +191,13 @@ set cursorline
 set fillchars+=vert:│
 set whichwrap+=<,>,h,l,[,]
 
-" Move cursor end after Past
-set virtualedit=onemore
-
 " Tabulation
+"set tabstop=4
 set expandtab
-set autoindent
-set tabstop=4
 set shiftwidth=4
+set softtabstop=4
+set autoindent
+set smarttab
 
 " Filetype
 filetype plugin on
