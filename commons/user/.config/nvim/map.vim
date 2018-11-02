@@ -16,6 +16,9 @@ map <silent> <C-L> <C-]>
 map <silent> <F1> :h MyHelp<CR>
 map <silent> <F25> :helptags ~/.config/nvim/doc/<CR>
 
+" Indent
+map <silent> <F12> gg=G
+
 " Disable cursor search
 map <silent> <ESC> :noh<cr>
 
