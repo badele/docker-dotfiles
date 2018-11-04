@@ -31,8 +31,8 @@ Plug 'mhinz/vim-startify'
 \]
 
 " TODO TESTING
-"Plug 'SirVer/ultisnips'
-" DISABLE Plug 'Shougo/unite.vim'
+" Plug 'SirVer/ultisnips'
+" Plug 'Shougo/unite.vim' NOT-USED
 Plug 'Shougo/vimproc.vim'
 
 " Leadguide
@@ -107,35 +107,8 @@ let g:ale_fixers = {
 			\ 'python': ['autopep8', 'isort', 'remove_trailing_lines', 'trim_whitespace'],
 			\ }
 
-"Plug 'kien/rainbow_parentheses.vim'
-"let g:rbpt_colorpairs = [
-"    \ ['brown',       'RoyalBlue3'],
-"    \ ['Darkblue',    'SeaGreen3'],
-"    \ ['darkgray',    'DarkOrchid3'],
-"    \ ['darkgreen',   'firebrick3'],
-"    \ ['darkcyan',    'RoyalBlue3'],
-"    \ ['darkred',     'SeaGreen3'],
-"    \ ['darkmagenta', 'DarkOrchid3'],
-"    \ ['brown',       'firebrick3'],
-"    \ ['gray',        'RoyalBlue3'],
-"    \ ['black',       'SeaGreen3'],
-"    \ ['darkmagenta', 'DarkOrchid3'],
-"    \ ['Darkblue',    'firebrick3'],
-"    \ ['darkgreen',   'RoyalBlue3'],
-"    \ ['darkcyan',    'SeaGreen3'],
-"    \ ['darkred',     'DarkOrchid3'],
-"    \ ['red',         'firebrick3'],
-"    \ ]
-"augroup rainbow
-    "au VimEnter * RainbowParenthesesToggle
-    "au VimEnter * RainbowParenthesesLoadRound
-    "au VimEnter * RainbowParenthesesLoadSquare
-    "au VimEnter * RainbowParenthesesLoadBraces
-    "au VimEnter * RainbowParenthesesLoadChevrons
-"augroup END
-
 " Insert or delete brackets, parens, quotes in pair
-Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-surround' NOT-USED
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsMapCR=0
 imap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>\<Plug>AutoPairsReturn"
@@ -240,12 +213,12 @@ highlight CursorLine cterm=None ctermbg=233 ctermfg=None
 highlight Visual cterm=None ctermbg=7 ctermfg=0
 highlight Search cterm=None ctermbg=2 ctermfg=0
 highlight ColorColumn ctermbg=234
-"highlight SignColumn ctermbg=0
+highlight MatchParen cterm=bold ctermfg=85 ctermbg=234
 highlight clear SignColumn
 
 augroup colors
-	au InsertEnter * hi CursorLine cterm=NONE ctermbg=0 ctermfg=None
-	au InsertLeave * hi CursorLine cterm=None ctermbg=233 ctermfg=None
+        au InsertEnter * hi CursorLine cterm=NONE ctermbg=0 ctermfg=None
+        au InsertLeave * hi CursorLine cterm=None ctermbg=233 ctermfg=None
 augroup END
 
 "let g:syntastic_python_checkers = ['pylint', 'rope']
