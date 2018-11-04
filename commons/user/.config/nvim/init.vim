@@ -214,6 +214,9 @@ highlight Visual cterm=None ctermbg=7 ctermfg=0
 highlight Search cterm=None ctermbg=2 ctermfg=0
 highlight ColorColumn ctermbg=234
 highlight MatchParen cterm=bold ctermfg=85 ctermbg=234
+highlight DiffAdd ctermfg=85 ctermbg=234
+highlight DiffChange ctermfg=27 ctermbg=234
+highlight DiffDelete ctermfg=124 ctermbg=234
 highlight clear SignColumn
 
 augroup colors
