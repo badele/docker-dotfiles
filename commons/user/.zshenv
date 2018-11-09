@@ -1,12 +1,12 @@
 export TERM="xterm-256color"
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$HOME/go/bin:$PATH"
 export TERMINAL="urxvt"
 
 export VISUAL=/usr/bin/nvim
 export EDITOR=/usr/bin/nvim
 export GUI_EDITOR=/usr/bin/gedit
 export WORK="$HOME/work/projects/"
-
+export GOPATH="$HOME/go"
 
 alias vim='nvim'
 alias cdw='cd $WORK'
