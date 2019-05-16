@@ -1,0 +1,21 @@
+{
+    "git.autofetch": true,
+    "hiera-eyaml": {
+        "eyamlPath": "eyaml",
+        "outputBlockSize": 74,
+        "outputFormat": "Block",
+        "privateKeyPath": "/home/badele/.eyaml/private_key-onfocus.pkcs7.pem",
+        "publicKeyPath": "/home/badele/.eyaml/public_key-onfocus.pkcs7.pem"
+    },
+    "editor.formatOnSave": true,
+    "search.followSymlinks": false,
+    "git.confirmSync": false,
+    "breadcrumbs.enabled": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "python.pythonPath": ".virtualenv/bin/python",
+    "[python]": {},
+}
