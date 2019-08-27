@@ -66,6 +66,6 @@ init_workspaces
 
 # Background
 #nitrogen --restore &
-desktop_theme_from_image
+#desktop_theme_from_image
 
 exec dbus-launch i3 --shmlog-size=26214400
