@@ -1,5 +1,5 @@
 [global]
-    font = xos4 Terminus 13
+    #font = xos4 Terminus 13
     frame_width = 0
     frame_color = "#1ABB9B"
     # Allow a small subset of html markup:
