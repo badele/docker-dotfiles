@@ -29,7 +29,7 @@ git clone git@github.com:badele/docker-dotfiles.git
 cd docker-dotfiles
 ./commons/user/.bin/dotfiles_install_bootstrap
 ./commons/user/.bin/dotfiles_install_commons
-./commons/user/.bin/dotfiles_get_for_computer
+./commons/user/.bin/dotfiles_sync_for_computer
 ```
 
 [For more help](https://raw.githubusercontent.com/badele/docker-dotfiles/master/commons/user/.config/nvim/doc/help.txt)
