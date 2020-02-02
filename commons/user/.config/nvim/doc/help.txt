@@ -7,8 +7,8 @@
         ██║  ██║██║   ██║   ██║   ██╔══╝  ██║██║     ██╔══╝  ╚════██║~
         ██████╔╝╚██████╔╝   ██║   ██║     ██║███████╗███████╗███████║~
         ╚═════╝  ╚═════╝    ╚═╝   ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝~
- 
-                        Some helps for docker-dotfiles   
+
+                        Some helps for docker-dotfiles
                                       by
                                  Bruno Adelé
 
@@ -35,10 +35,10 @@ CONTENTS                                                                *MyHelp*
                   |Terminal|     neovim, ranger, urxvt, termite, mpd
                      |Shell|     zsh, antigen
                       |Misc|     tty-clock, pywal, termpalette
-    
-    
+
+
                                == *MyTools* ==
-		
+
   |desktop_theme_from_image|     Set theme from picture
                |color_table|     Show ascii char colors table
  |dotfiles_get_for_computer|     Get dotfiles for current computer
@@ -59,7 +59,7 @@ CONTENTS                                                                *MyHelp*
     ZSH customized with antigen plugin manager
 
   == |MyFZFMatcher| ==
- 
+
      sbtrkt	  fuzzy-match	                  Items that match sbtrkt
      'wild	  exact-match (quoted)	          Items that include wild
      ^music	  prefix-exact-match	          Items that start with music
@@ -131,7 +131,7 @@ CONTENTS                                                                *MyHelp*
     [i,I] Append character (before character, begin line)
     [o,O] Append character (before line, after line)
     [r]   Replace character
-    
+
     [d{number}<movement>] Delete with movement option
     [{number}dd]          Delete line
     [C-v] + key           Show keycode
@@ -153,18 +153,18 @@ CONTENTS                                                                *MyHelp*
 ................................................................................
 
   == Navigation ==
-	
+
     [u]     Up folder
 	[C]		Change root
 	[p]		Goto parent
 	[P]		Goto root parent
 
   == Files / Folders ==
-	
+
     [?]		        Show help
     [o,<Enter>] 	Open folder
     [go]		    File preview
-    [I]		        Toogle hidden files 
+    [I]		        Toogle hidden files
     [m]         	Show NERDTree menu
     [mg]		    Grep on folder
     [o,x]		    Open/Close node
@@ -176,4 +176,3 @@ CONTENTS                                                                *MyHelp*
   == Git ==
 	cd 		Select current folder(CWD) for showing the git status
 	r		Refresh git state
-

@@ -2,6 +2,6 @@
 	email = bruno@adele.im
 	name = Bruno Adelé
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
-[merge]
-	ff = false
+    pager = diff-so-fancy | less --tabs=4 -RFX
+# [merge]
+# 	ff = false
