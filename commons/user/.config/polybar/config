@@ -1,9 +1,10 @@
+
 [bar/top]
 monitor = ${env:MONITOR}
 width = 100%
 height = 34
 
-background = #00000000
+background = #FF808080
 foreground = #ffffffff
 
 line-color = ${bar/bottom.background}
@@ -46,7 +47,7 @@ font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
 font-5 = Termsynu:size=8:antialias=false;0
 
-modules-left = i3 
+modules-left = i3
 modules-right = cpu memory
 
 tray-position = right
@@ -136,86 +137,17 @@ enable-scroll = false
 ; Default: true
 wrapping-scroll = false
 
-; Set the scroll cycle direction 
+; Set the scroll cycle direction
 ; Default: true
 reverse-scroll = false
 
-; Use fuzzy (partial) matching on labels when assigning 
+; Use fuzzy (partial) matching on labels when assigning
 ; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces 
+; Example: code;♚ will apply the icon to all workspaces
 ; containing 'code' in the label
 ; Default: false
 fuzzy-match = true
 
-[module/bspwm]
-type = internal/bspwm
-
-pin-workspaces = false
-fuzzy-match = false
-
-;          
-
-ws-icon-0 = 1.social;1 
-ws-icon-1 = 2.music;2 
-ws-icon-2 = 3.term;3 
-;ws-icon-3 = 4.misc;4 
-;ws-icon-4 = 5.misc;5 
-ws-icon-5 = 6.code;6 
-ws-icon-6 = 7.web;7 
-ws-icon-7 = 8.term;8 
-ws-icon-8 = 9.term;9 
-ws-icon-9 = 0.term;0 
-
-ws-icon-default = 
-
-format = <label-state> <label-mode>
-
-label-dimmed-underline = ${root.background}
-
-label-focused = %name%
-label-focused-foreground = #fff
-label-focused-background = #773f3f3f
-label-focused-underline = #c9665e
-label-focused-font = 4
-label-focused-padding = 4
-
-label-occupied = %name%
-label-occupied-foreground = #dd
-label-occupied-underline = #666
-label-occupied-font = 4
-label-occupied-padding = 4
-
-label-urgent = %name%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
-
-label-empty = %name%
-label-empty-foreground = #55
-label-empty-font = 4
-label-empty-padding = 4
-
-label-monocle = 
-label-monocle-underline = ${module/bspwm.label-focused-underline}
-label-monocle-background = #33ffffff
-label-monocle-padding = 2
-
-label-locked = 
-label-locked-foreground = #bd2c40
-label-locked-underline = ${module/bspwm.label-monocle-underline}
-label-locked-padding = ${module/bspwm.label-monocle-padding}
-
-label-sticky = 
-label-sticky-foreground = #fba922
-label-sticky-underline = ${module/bspwm.label-monocle-underline}
-label-sticky-padding = ${module/bspwm.label-monocle-padding}
-
-label-private = 
-label-private-foreground = #bd2c40
-label-private-underline = ${module/bspwm.label-monocle-underline}
-label-private-padding = ${module/bspwm.label-monocle-padding}
 
 [module/cpu]
 type = internal/cpu
@@ -379,5 +311,7 @@ menu-2-1-exec = menu_open-0
 type = internal/date
 interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+; vim:ft=dosini
 
 ; vim:ft=dosini

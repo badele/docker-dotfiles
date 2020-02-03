@@ -1,0 +1,190 @@
+# i3 config file (v4)
+
+# Set vars and parameters
+floating_modifier $mod
+set $mod Mod4
+set $alt Mod1
+set $filemanager thunar
+set $default_gaps_inner 6
+set $default_gaps_outer 2
+set $i3lock i3lock-fancy-dualmonitor
+
+# Window parameters
+font pango:Liberation Mono 10
+new_window pixel 1
+new_float pixel 1
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+smart_gaps on
+smart_borders on
+
+# Stop recording (video_record_desktop)
+bindsym $mod+s exec --no-startup-id video_record_stop && notify-send "Stop recording video"
+
+# Shortcut
+bindsym $mod+Return exec termite
+bindsym $mod+q kill
+#bindsym $mod+space exec --no-startup-id rofi -show run
+bindsym $mod+space exec --no-startup-id dmenu_recent -fn 'xos4 Terminus:size=15' -i -l 10 -w 1024
+bindsym $mod+Shift+r restart
+bindsym --release Print exec "mkdir -p ~/Téléchargements/screenshot/ && maim ~/Téléchargements/screenshot-full-$(date +%Y-%m-%d).png"
+#bindsym --release Shift+Print exec "maim -i $(xdotool getactivewindow) ~/Téléchargements/screenshot-windows-$(date +%Y-%m-%d).png"
+bindsym --release Shift+Print exec "mkdir -p ~/Téléchargements/screenshot/ && maim -s -c 1,0,0,0.6 -p 1 ~/Téléchargements/screenshot-windows-$(date +%Y-%m-%d).png"
+bindsym $mod+l exec $i3lock
+bindsym $mod+ctrl+l exec xtrlock
+
+
+# Window management
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Down focus down
+bindsym $mod+Left focus left
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Left move left
+bindsym $mod+h split h
+bindsym $mod+v split v
+#bindsym $mod+s layout stacking
+#bindsym $mod+z layout tabbed
+#bindsym $mod+e layout toggle split
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+d exec $filemanager
+bindsym $mod+f fullscreen
+
+# Misc
+#bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+#bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+#bindsym XF86AudioMute exec amixer -q set Master toggle
+# Use issue => https://github.com/badele/dotfiles/issues/1
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Workspace
+bindsym $mod+control+Left workspace prev
+bindsym $mod+control+Right workspace next
+
+# Workspace names
+set $w1 "1.social"
+set $w2 "2.music"
+set $w3 "3.term"
+set $w4 "4.misc"
+set $w5 "5.misc"
+set $w6 "6.misc"
+set $w7 "7.web"
+set $w8 "8.term"
+set $w9 "9.code"
+set $w0 "0.term"
+
+
+# Workspace selection
+bindsym $mod+ampersand workspace $w1
+bindsym $mod+eacute workspace $w2
+bindsym $mod+quotedbl workspace $w3
+bindsym $mod+apostrophe workspace $w4
+bindsym $mod+parenleft workspace  $w5
+bindsym $mod+minus workspace $w6
+bindsym $mod+egrave workspace $w7
+bindsym $mod+underscore workspace $w8
+bindsym $mod+ccedilla workspace $w9
+bindsym $mod+agrave workspace  $w0
+
+# Move to the workspace
+bindsym $mod+Shift+ampersand move container to workspace  $w1
+bindsym $mod+Shift+eacute move container to workspace  $w2
+bindsym $mod+Shift+quotedbl move container to workspace  $w3
+bindsym $mod+Shift+apostrophe move container to workspace  $w4
+bindsym $mod+Shift+5 move container to workspace $w5
+bindsym $mod+Shift+minus move container to workspace $w6
+bindsym $mod+Shift+egrave move container to workspace $w7
+bindsym $mod+Shift+underscore move container to workspace $w8
+bindsym $mod+Shift+ccedilla move container to workspace $w9
+bindsym $mod+Shift+agrave move container to workspace $w0
+
+
+# Terminate computer session
+set $mode_system (l)ogout, (r)eboot, (h)halt
+mode "$mode_system" {
+  bindsym l     exec i3-msg exit
+  bindsym r     exec notify-send "SYSTEM: Rebooting..." && systemctl reboot
+  bindsym h 	exec notify-send "SYSTEM: Powering off..." && systemctl poweroff
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod+Shift+e mode "$mode_system"
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Move workspace
+mode "move workspace" {
+        bindsym Left move workspace to output left
+        bindsym Down move workspace to output down
+        bindsym Up move workspace to output up
+        bindsym Right move workspace to output right
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+m mode "Move workspace"
+
+# Background pictures manager
+set $backgroundmanager Background pictures manager (r) rand (f) favorite (←,→,↑,↓) select picture
+mode "$backgroundmanager" {
+        bindsym Left exec desktop_theme_from_image  next
+        bindsym Down exec desktop_theme_from_image bottom
+        bindsym Up exec desktop_theme_from_image top
+        bindsym Right exec desktop_theme_from_image prev
+        bindsym r exec exec desktop_theme_from_image rand
+        bindsym f exec exec desktop_theme_from_image redhead_girl_painting-wallpaper-1366x768._dark.jpg
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+b mode "$backgroundmanager"
+
+# colors
+# class                         border  	backgr		text
+client.focused			        #859900 	#859900   	#bf3f34
+client.unfocused		        #2c2e2f  	#2c2e2f  	#2c2e2f
+client.focused_inactive	        #2c2e2f 	#2c2e2f  	#2c2e2f
+
+# Launch polybar
+exec_always --no-startup-id $HOME/.bin/launch_bars
+
+# For shadows and transparency
+#exec --no-startup-id compton -b -f
+
+#exec --no-startup-id feh --randomize  --bg-scale ~/.i3/pictures/*
+#exec --no-startup-id dunst &
+#exec --no-startup-id google-chrome-stable
+#exec --no-startup-id xedgewarp -b
+
+#focus_follows_mouse no
+assign [class="Chromium"] → $w7
+#exec --no-startup-id xautolock -time 5 -locker "i3lock-wrapper -l"
+# exec --no-startup-id wicd-client --tray
+# exec --no-startup-id thunar --daemon
+# exec --no-startup-id synclient touchpadoff=1
+# exec --no-startup-id volumeicon
+# exec --no-startup-id parcellite
+#exec --no-startup-id my_emacs_p2k
+
+#for_window [class="jetbrains-android-studio"] floating enable

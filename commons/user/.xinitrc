@@ -15,7 +15,7 @@ pulseaudio --start &
 sleep 2s && volume 30 &
 
 # Xorg appearance
-xsetroot -cursor_name left_ptr &
+xsetroot -solid "#808080" -cursor_name left_ptr &
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0" &
 export _JAVA_AWT_WM_NONREPARENTING=1
 xrdb merge $HOME/.Xresources &
