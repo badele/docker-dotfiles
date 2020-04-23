@@ -1,3 +1,4 @@
+source /home/badele/work/projects//platform/_bashrc/docker.sh
 source /home/badele/work/projects//platform/_bashrc/encrypt.sh
 source /home/badele/work/projects//platform/_bashrc/postgres.sh
 source /home/badele/work/projects//platform/_bashrc/ssh.sh
@@ -5,4 +6,3 @@ source /home/badele/work/projects//platform/_bashrc/vrac.sh
 source /home/badele/work/projects//platform/_bashrc/ssh_aliases.sh
 source /home/badele/work/projects//platform/_bashrc/terraform.sh
 
-source /home/badele/work/projects/docker-tools/tools.sh 
