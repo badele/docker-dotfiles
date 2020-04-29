@@ -7,7 +7,7 @@ set $alt Mod1
 set $filemanager thunar
 set $default_gaps_inner 6
 set $default_gaps_outer 2
-set $i3lock i3lock-fancy-dualmonitor 
+set $i3lock i3lock-fancy-dualmonitor
 
 # Window parameters
 font pango:Liberation Mono 10
@@ -170,7 +170,7 @@ client.focused_inactive	        #2c2e2f 	#2c2e2f  	#2c2e2f
 exec_always --no-startup-id $HOME/.bin/launch_bars
 
 # For shadows and transparency
-exec --no-startup-id compton -b -f
+exec --no-startup-id picom -b -f
 
 #exec --no-startup-id feh --randomize  --bg-scale ~/.i3/pictures/*
 #exec --no-startup-id dunst &
@@ -188,4 +188,3 @@ assign [class="Chromium"] → $w7
 #exec --no-startup-id my_emacs_p2k
 
 #for_window [class="jetbrains-android-studio"] floating enable
-

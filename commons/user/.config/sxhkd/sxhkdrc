@@ -6,7 +6,7 @@
 # ______________
 
 # Show Help
-super + F1 
+super + F1
 	$TERMINAL -e sh -c 'cat $HOME/.config/sxhkd/sxhkdrc | egrep "super|ctrl" -B2 | less'
 
 # Move current window to largest space or preselected area if there is one.
@@ -39,23 +39,23 @@ super + shift + space
 	bspc node -t {float}
 
 # Toggle fullscreen
-super + shift + f 
-	bspc node -t {fullscreen,tiled}	
+super + shift + f
+	bspc node -t {fullscreen,tiled}
 
 # Toggle monocle mode
-super + f 
+super + f
 	bspc desktop -l next
 
 
 #
 # Window moving and splitting
-# ______________    
+# ______________
 
 
 # Change desktop
 ctrl + alt + {Left,Right}
-	bspc desktop -f {prev,next} 
-		
+	bspc desktop -f {prev,next}
+
 #
 # Desktop navigation i3 style
 #
@@ -70,35 +70,35 @@ super + eacute
 
 # Select desktop 3
 super + quotedbl
-  focusdesktop 3 
+  focusdesktop 3
 
 # Select desktop 4
 super + apostrophe
-  focusdesktop 4 
+  focusdesktop 4
 
 # Select desktop 5
 super + parenleft
-  focusdesktop 5 
-  
+  focusdesktop 5
+
 # Select desktop 6
 super + minus
   focusdesktop 6
 
 # Select desktop 7
 super + egrave
-  focusdesktop 7 
+  focusdesktop 7
 
 # Select desktop 8
 super + underscore
-  focusdesktop 8 
+  focusdesktop 8
 
 # Select desktop 9
 super + ccedilla
-  focusdesktop 9 
+  focusdesktop 9
 
 # Select desktop 10
 super + agrave
-  focusdesktop 10 
+  focusdesktop 10
 
 # Select desktop 1-10
 super + shift + {1-9,0}
@@ -108,11 +108,11 @@ super + shift + {1-9,0}
 # Go to specific window
 super + Tab
 	WindowSelector
-	
+
 # Windows navigation
 super +  {Left,Down,Up,Right}
   focusmover {west,south,north,east}
-        	
+
 # Windows resize
 super + ctrl + {Left,Down,Up,Right}
 	resize_win {west,south,north,east} 50
@@ -124,9 +124,9 @@ super + shift + {Left,Down,Up,Right}
 
 #
 # Layout manipulation/desktop level controls
-# ______________    
+# ______________
 
-	
+
 # Undo balancing (equalize windows)
 super + ctrl + b
 	bspc node @/ -E
@@ -186,25 +186,25 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	volume mute
-	
+
 XF86MonBrightnessDown
- xbacklight -dec 10 
+ xbacklight -dec 10
 
 XF86MonBrightnessUp
  xbacklight -inc 10
- 
+
 
 XF86Sleep
 	systemctl suspend
 
 # Show configuration folder
-super + c 
+super + c
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 #	$TERMINAL -e ranger $HOME/.config
 
 # Reload sxhkd
 super + shift + s
-  notify-send "sxhkd" "Reload sxhkd" && pkill -USR1 -x sxhkd 
+  notify-send "sxhkd" "Reload sxhkd" && pkill -USR1 -x sxhkd
 
 # Restart bspwm
 super + shift + r
@@ -212,5 +212,5 @@ super + shift + r
 
 # Toggle compositing
 super + ctrl + space
-	{pkill compton ,\
-	compton -b }
+	{pkill picom ,\
+	picom -b }

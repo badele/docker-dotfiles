@@ -31,7 +31,7 @@ CONTENTS                                                                *MyHelp*
                               == *MyPackages* ==
 
             |WindowsManager|     i3-gaps, polybar, nerd-fonts, rofi, dmenu, dunst
-                      |Xorg|     xorg, pulseaudio, compton, spacefm, chromium
+                      |Xorg|     xorg, pulseaudio, picom, spacefm, chromium
                   |Terminal|     neovim, ranger, urxvt, termite, mpd
                      |Shell|     zsh, antigen
                       |Misc|     tty-clock, pywal, termpalette
