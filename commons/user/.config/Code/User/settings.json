@@ -18,4 +18,20 @@
     "editor.autoClosingQuotes": "never",
     "python.pythonPath": ".virtualenv/bin/python",
     "[python]": {},
+    "explorer.confirmDragAndDrop": false,
+    "editor.renderControlCharacters": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "workspace-manager.includeGlobPattern": [
+        "/home/badele/work",
+        "/home/badele/private"
+    ],
+    "runOnSave.statusMessageTimeout": 3000,
+    "runOnSave.commands": [
+        {
+            "match": ".*\\.tf$",
+            "command": "make fmt",
+            "runIn": "terminal",
+        },
+    ]
 }
