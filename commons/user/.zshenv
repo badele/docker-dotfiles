@@ -24,3 +24,33 @@ alias grunnerstop="gcloud --project adagio-grunner-3b965aa7 compute instances st
 alias gprod="gcloud --project adagio-prod compute instances list"
 alias gstaging="gcloud --project adagio-vrac compute instances list"
 alias gtesting="gcloud --project adagio-testing-cfa18295 compute instances list"
+
+GCPPROJECTS="""testing:adagio-testing-cfa18295
+staging:adagio-vrac
+prod:adagio-prod
+"""
+
+function getProjectId {
+    echo ${GCPPROJECTS} | grep $1 | cut -d":" -f2
+}
+
+# List hosts
+function glhosts {
+    gcloud --project $(getProjectId $1) compute instances list
+}
+
+# Search hosts
+function gshosts {
+  gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP,creationTimestamp,name,status)" --sort-by=~creationTimestamp --filter="name~'.*$2.*'"
+}
+
+
+function gssh {
+  IP=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'" | head -n 1 | cut -f1)
+  ssh root@$IP
+}
+
+function gsshk {
+  IP=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'" | head -n 1 | cut -f1)
+  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$IP
+}
