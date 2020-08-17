@@ -54,3 +54,11 @@ function gsshk {
   IP=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'" | head -n 1 | cut -f1)
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$IP
 }
+
+function gclustersshk {
+  IPS=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'" | cut -f1)
+  while read -r IP
+  do
+    ssh -n -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$IP "$3"
+  done < <(printf '%s\n' "$IPS")
+}
