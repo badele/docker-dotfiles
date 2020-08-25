@@ -36,7 +36,7 @@ function getProjectId {
 
 # List hosts
 function glhosts {
-    gcloud --project $(getProjectId $1) compute instances list
+    gcloud --project $(getProjectId $1) compute instances list --filter="name~'.*$2.*'"
 }
 
 # Search hosts
