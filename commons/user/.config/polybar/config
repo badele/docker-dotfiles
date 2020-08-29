@@ -2,7 +2,7 @@
 [bar/top]
 monitor = ${env:MONITOR}
 width = 100%
-height = 34
+height = 28
 
 background = #FF808080
 foreground = #ffffffff
@@ -14,10 +14,14 @@ spacing = 2
 padding-right = 5
 module-margin = 4
 
-font-0 = NotoSans-Regular:size=8;-1
-font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8:antialias=false;-2
-font-3 = FontAwesome:size=10;0
+font-0 = NotoSans-Regular:size=8;0
+font-1 = unifont:size=6;-3
+font-2 = FontAwesome:size=8;-2
+font-3 = NotoSans-Regular:size=8;-1
+font-4 = MaterialIcons:size=10;-1
+font-5 = Termsynu:size=8:antialias=false;0
+font-6 = "Font Awesome 5 Free:style=Solid:size=10;1"
+font-7 = "Font Awesome 5 Brands:size=10;1"
 
 # mpd pulseaudio
 modules-left = powermenu
@@ -27,7 +31,7 @@ modules-right = pulseaudio backlight wireless-network wired-network battery date
 monitor = ${env:MONITOR}
 bottom = true
 width = 100%
-height = 27
+height = 28
 
 background = ${bar/top.background}
 foreground = ${bar/top.foreground}
@@ -45,13 +49,14 @@ font-1 = unifont:size=6;-3
 font-2 = FontAwesome:size=8;-2
 font-3 = NotoSans-Regular:size=8;-1
 font-4 = MaterialIcons:size=10;-1
-font-5 = Termsynu:size=8:antialias=false;0
+font-6 = "Font Awesome 5 Free:style=Solid:size=10;1"
+font-7 = "Font Awesome 5 Brands:size=10;1"
 
 modules-left = i3
-modules-right = cpu memory
+modules-right = cpu memory temperature
 
 tray-position = right
-tray-transparent = true
+#tray-transparent = true
 tray-detached = false
 
 [module/backlight]
@@ -64,14 +69,14 @@ ramp-2 = 
 
 bar-width = 10
 bar-indicator = |
-bar-indicator-font = 3
+bar-indicator-font = 7
 bar-indicator-foreground = #ff
 bar-fill = ─
-bar-fill-font = 3
-bar-fill-foreground = #c9665e
+bar-fill-font = 7
+bar-fill-foreground = #00FF00
 bar-empty = ─
-bar-empty-font = 3
-bar-empty-foreground = #44
+bar-empty-font = 7
+bar-empty-foreground = #000000
 
 [module/battery]
 type = internal/battery
@@ -89,15 +94,6 @@ ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
 
-bar-capacity-width = 10
-bar-capacity-format = %{+u}%{+o}%fill%%empty%%{-u}%{-o}
-bar-capacity-fill = █
-bar-capacity-fill-foreground = #ddffffff
-bar-capacity-fill-font = 3
-bar-capacity-empty = █
-bar-capacity-empty-font = 3
-bar-capacity-empty-foreground = #44ffffff
-
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
@@ -107,6 +103,8 @@ animation-charging-framerate = 750
 
 [module/i3]
 type = internal/i3
+
+format = <label-state> <label-mode>
 
 ; Only show workspaces defined on the same output as the bar
 ;
@@ -125,20 +123,9 @@ strip-wsnumbers = true
 ; Default: false
 index-sort = true
 
-; Create click handler used to focus workspace
-; Default: true
 enable-click = false
-
-; Create scroll handlers used to cycle workspaces
-; Default: true
 enable-scroll = false
-
-; Wrap around when reaching the first/last workspace
-; Default: true
 wrapping-scroll = false
-
-; Set the scroll cycle direction
-; Default: true
 reverse-scroll = false
 
 ; Use fuzzy (partial) matching on labels when assigning
@@ -149,6 +136,29 @@ reverse-scroll = false
 fuzzy-match = true
 
 
+label-mode-padding = 5
+label-mode-foreground = #dddddd
+label-mode-background = #52537a
+
+label-focused = %name%
+label-focused-background = #666666
+label-focused-foreground = #dddddd
+label-focused-padding = 1
+
+label-unfocused = %name%
+label-unfocused-background = #888888
+label-unfocused-foreground = #dddddd
+label-unfocused-padding = 1
+
+label-visible = %index%
+label-visible-background = #56737a
+label-visible-foreground = #1e1e20
+label-visible-padding = 1
+
+label-urgent = %index%
+label-urgent-background = #BA2922
+label-urgent-padding = 2
+
 [module/cpu]
 type = internal/cpu
 interval = 0.5
@@ -156,28 +166,28 @@ format = <label> <ramp-coreload>
 label = CPU
 
 ramp-coreload-0 = ▁
-ramp-coreload-0-font = 2
+ramp-coreload-0-font = 7
 ramp-coreload-0-foreground = #aaff77
 ramp-coreload-1 = ▂
-ramp-coreload-1-font = 2
+ramp-coreload-1-font = 7
 ramp-coreload-1-foreground = #aaff77
 ramp-coreload-2 = ▃
-ramp-coreload-2-font = 2
+ramp-coreload-2-font = 7
 ramp-coreload-2-foreground = #aaff77
 ramp-coreload-3 = ▄
-ramp-coreload-3-font = 2
+ramp-coreload-3-font = 7
 ramp-coreload-3-foreground = #aaff77
 ramp-coreload-4 = ▅
-ramp-coreload-4-font = 2
+ramp-coreload-4-font = 7
 ramp-coreload-4-foreground = #fba922
 ramp-coreload-5 = ▆
-ramp-coreload-5-font = 2
+ramp-coreload-5-font = 7
 ramp-coreload-5-foreground = #fba922
 ramp-coreload-6 = ▇
-ramp-coreload-6-font = 2
+ramp-coreload-6-font = 7
 ramp-coreload-6-foreground = #ff5555
 ramp-coreload-7 = █
-ramp-coreload-7-font = 2
+ramp-coreload-7-font = 7
 ramp-coreload-7-foreground = #ff5555
 
 [module/date]
@@ -188,21 +198,18 @@ date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 [module/memory]
 type = internal/memory
 format = <label> <bar-used>
-label = RAM
+label = RAM %gb_used% / %gb_total%
 
+bar-used-indicator =
 bar-used-width = 30
-bar-used-foreground-0 = #aaff77
-bar-used-foreground-1 = #aaff77
-bar-used-foreground-2 = #fba922
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
 bar-used-foreground-3 = #ff5555
-bar-used-indicator = |
-bar-used-indicator-font = 6
-bar-used-indicator-foreground = #ff
-bar-used-fill = ─
-bar-used-fill-font = 6
-bar-used-empty = ─
-bar-used-empty-font = 6
+bar-used-fill = ▐
+bar-used-empty = ▐
 bar-used-empty-foreground = #444444
+
 
 [module/mpd]
 type = internal/mpd
@@ -233,7 +240,7 @@ bar-progress-empty-foreground = #44
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = wlp59s0
 interval = 3.0
 ping-interval = 10
 
@@ -312,6 +319,32 @@ type = internal/date
 interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
 
-; vim:ft=dosini
+[module/temperature]
+type = internal/temperature
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+; Thermal zone to use
+; To list all the zone types, run
+; $ for i in /sys/class/thermal/thermal_zone*; do echo "$i: $(<$i/type)"; done
+; Default: 0
+thermal-zone = 0
+
+; Full path of temperature sysfs path
+; Use `sensors` to find preferred temperature source, then run
+; $ for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
+; to find path to desired file
+; Default reverts to thermal zone setting
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon1/temp1_input
+
+base-temperature = 20
+label-foreground = #0f0
+
+warn-temperature = 80
+label-warn-foreground = #f00
+
+
 
 ; vim:ft=dosini

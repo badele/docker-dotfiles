@@ -66,7 +66,7 @@ INSTALL="lm_sensors"
 
 #INSTALL="$INSTALL i3-gaps dmenu-manjaro rootmenu polybar-git"
 INSTALL="$INSTALL i3-gaps dmenu"
-INSTALL="$INSTALL nerd-fonts-terminus ttf-material-design-icons google-chrome"
+INSTALL="$INSTALL nerd-fonts-terminus ttf-material-design-icons ttf-font-awesome google-chrome"
 
 # Install some terminal package
 INSTALL="$INSTALL openssh ranger neovim stow ripgrep ctags the_silver_searcher tty-clock mpd ncmpcpp libmpdclient dmidecode"
