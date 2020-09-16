@@ -26,7 +26,8 @@ alias gstaging="gcloud --project adagio-vrac compute instances list"
 alias gtesting="gcloud --project adagio-testing-cfa18295 compute instances list"
 
 GCPPROJECTS="""testing:adagio-testing-cfa18295
-staging:adagio-vrac
+vrac-staging:adagio-vrac
+staging:adagio-staging-8b11f5ec
 prod:adagio-prod
 """
 
@@ -34,35 +35,91 @@ function getProjectId {
     echo ${GCPPROJECTS} | grep $1 | cut -d":" -f2
 }
 
-# List hosts
+function grefresh {
+  if [ -z $2 ]; then
+    username="root"
+  else
+    username=$2
+  fi
+
+  # Get hosts list
+  gcloud --project $(getProjectId $1) compute instances list --format="csv[no-heading,separator=' '](name,networkInterfaces.networkIP,networkInterfaces.accessConfigs.natIP)" | sed "s/\[u'//" | sed "s/'\]//" > /tmp/gssh-${1}-hosts
+
+  # Store user login account
+  echo "$username" > /tmp/gssh-${1}-username
+}
+
+
 function glhosts {
-    gcloud --project $(getProjectId $1) compute instances list --filter="name~'.*$2.*'"
+    FILENAME="/tmp/gssh-${1}-hosts"
+    stat -c "%y" $FILENAME
+    echo ""
+    cat $FILENAME | egrep ".*$2.*"
 }
 
-# Search hosts
-function gshosts {
-  gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP,creationTimestamp,name,status)" --sort-by=~creationTimestamp --filter="name~'.*$2.*'"
-}
+function __gssh {
 
+  # If hosts file list not exist create it
+  if [ ! -f /tmp/gssh-${1}-hosts ]; then
+    grefresh $1 $2
+  fi
+
+  username=$(cat /tmp/gssh-${1}-username)
+  bastion=$(cat /tmp/gssh-${1}-hosts | grep bastion | cut -d " " -f3)
+  HOSTS=$(cat /tmp/gssh-${1}-hosts | grep ${2})
+  NBLINES=$(echo ${HOSTS} | wc -l)
+  SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
+
+  IP=$(echo ${HOSTS} | sed -n ${SELECTEDLINE}p | cut -d " " -f2)
+
+  ssh -o ConnectTimeout=5 ${SSHOPTIONS} root@$IP $3
+}
 
 function gssh {
-  IP=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'" | head -n 1 | cut -f1)
-  ssh root@$IP
+  SSHOPTIONS=()
+  __gssh $1 $2 $3
 }
 
 function gsshk {
-  IPS=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'")
-  NBLINES=$(echo $IPS | wc -l)
-  SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
-
-  IP=$(echo $IPS | sed -n ${SELECTEDLINE}p | cut -f1)
-  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$IP
+  SSHOPTIONS=(-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no)
+  __gssh $1 $2 $3
 }
 
 function gclustersshk {
-  IPS=$(gcloud --project $(getProjectId $1) compute instances list --sort-by NAME --format="value(networkInterfaces[0].networkIP)" --sort-by=~creationTimestamp --filter="name~'.*$2.*' AND status='RUNNING'" | cut -f1)
+  username=$(cat /tmp/gssh-${1}-username)
+  bastion=$(cat /tmp/gssh-${1}-hosts | grep bastion | cut -d " " -f3)
+  IPS=$(cat /tmp/gssh-${1}-hosts | grep ${2} | cut -d" " -f2)
+
   while read -r IP
   do
-    ssh -n -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$IP "$3"
+    ssh -n -o ConnectTimeout=1 -o BatchMode=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no $IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'grefresh' command\n===============================\n"; fi
   done < <(printf '%s\n' "$IPS")
+}
+
+
+###
+# by bastion
+###
+
+
+function __bssh {
+  username=$(cat /tmp/gssh-${1}-username)
+  bastion=$(cat /tmp/gssh-${1}-hosts | grep bastion | cut -d " " -f3)
+  HOSTS=$(cat /tmp/gssh-${1}-hosts | grep ${2})
+  NBLINES=$(echo ${HOSTS} | wc -l)
+  SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
+
+  IP=$(echo ${HOSTS} | sed -n ${SELECTEDLINE}p | cut -d " " -f2)
+
+  ssh ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP
+}
+
+function bssh {
+  SSHOPTIONS=""
+  __bssh $1 $2
+}
+
+function bsshk {
+  SSHOPTIONS=(-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no)
+  __bssh $1 $2
 }
