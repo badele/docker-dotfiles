@@ -32,7 +32,7 @@ prod:adagio-prod
 """
 
 function getProjectId {
-    echo ${GCPPROJECTS} | egrep "^$1:" | cut -d":" -f2
+    echo "${GCPPROJECTS}" | egrep "^$1:" | cut -d":" -f2
 }
 
 function gsync {
@@ -68,7 +68,14 @@ function glhosts {
   fi
 
   FILENAME="/tmp/gssh-${1}-hosts"
-  stat -c "%y" $FILENAME
+
+  # Show cache time
+  if [ `uname` == "Darwin" ] ; then
+    stat -f "%Sm" $FILENAME
+  else
+    stat -c "%y" $FILENAME
+  fi
+
   echo ""
   cat $FILENAME | egrep ".*$2.*" | column -t
 }
