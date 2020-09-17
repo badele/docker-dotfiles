@@ -32,10 +32,16 @@ prod:adagio-prod
 """
 
 function getProjectId {
-    echo ${GCPPROJECTS} | grep $1 | cut -d":" -f2
+    echo ${GCPPROJECTS} | egrep "^$1:" | cut -d":" -f2
 }
 
 function grefresh {
+
+  if [ -z "$1" ];then
+      echo "Usage: $0 <ENV> [USERNAME](default: root)"
+      return 1
+  fi
+
   if [ -z $2 ]; then
     username="root"
   else
@@ -43,7 +49,7 @@ function grefresh {
   fi
 
   # Get hosts list
-  gcloud --project $(getProjectId $1) compute instances list --format="csv[no-heading,separator=' '](name,networkInterfaces.networkIP,networkInterfaces.accessConfigs.natIP)" | sed "s/\[u'//" | sed "s/'\]//" > /tmp/gssh-${1}-hosts
+  gcloud --project $(getProjectId $1) compute instances list --filter="status='RUNNING'" --format="csv[no-heading,separator=' '](name,networkInterfaces.networkIP,networkInterfaces.accessConfigs.natIP)" | sed "s/\[u'//" | sed "s/'\]//" > /tmp/gssh-${1}-hosts
 
   # Store user login account
   echo "$username" > /tmp/gssh-${1}-username
@@ -51,13 +57,29 @@ function grefresh {
 
 
 function glhosts {
-    FILENAME="/tmp/gssh-${1}-hosts"
-    stat -c "%y" $FILENAME
-    echo ""
-    cat $FILENAME | egrep ".*$2.*"
+  if [ -z "$1" ];then
+      echo "Usage: $0 <ENV> [FILTER](default: all hosts)"
+      return 1
+  fi
+
+  # If hosts file list not exist create it
+  if [ ! -f /tmp/gssh-${1}-hosts ]; then
+    grefresh $1 $2
+  fi
+
+  FILENAME="/tmp/gssh-${1}-hosts"
+  stat -c "%y" $FILENAME
+  echo ""
+  cat $FILENAME | egrep ".*$2.*" | column -t
 }
 
+# Connect via VPN
 function __gssh {
+
+  if [ -z "$2" ];then
+      echo "Usage: gssh <ENV> [FILTER] [COMMAND]"
+      return 1
+  fi
 
   # If hosts file list not exist create it
   if [ ! -f /tmp/gssh-${1}-hosts ]; then
@@ -69,10 +91,13 @@ function __gssh {
   HOSTS=$(cat /tmp/gssh-${1}-hosts | grep ${2})
   NBLINES=$(echo ${HOSTS} | wc -l)
   SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
-
   IP=$(echo ${HOSTS} | sed -n ${SELECTEDLINE}p | cut -d " " -f2)
 
-  ssh -o ConnectTimeout=5 ${SSHOPTIONS} root@$IP $3
+  if [ -z "$bastion" ]; then
+    ssh -o ConnectTimeout=5 ${SSHOPTIONS} root@$IP $3
+  else
+    ssh ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP
+  fi
 }
 
 function gssh {
@@ -92,34 +117,12 @@ function gclustersshk {
 
   while read -r IP
   do
-    ssh -n -o ConnectTimeout=1 -o BatchMode=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no $IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'grefresh' command\n===============================\n"; fi
+    echo "$IP"
+    if [ -z "$bastion" ]; then
+      ssh -n -o ConnectTimeout=1 -o BatchMode=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no root@$IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'grefresh' command\n===============================\n"; fi
+    else
+      # TODO actually loop not working
+      ssh -o ConnectTimeout=1 -o BatchMode=yes ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'grefresh' command\n===============================\n"; fi
+    fi
   done < <(printf '%s\n' "$IPS")
-}
-
-
-###
-# by bastion
-###
-
-
-function __bssh {
-  username=$(cat /tmp/gssh-${1}-username)
-  bastion=$(cat /tmp/gssh-${1}-hosts | grep bastion | cut -d " " -f3)
-  HOSTS=$(cat /tmp/gssh-${1}-hosts | grep ${2})
-  NBLINES=$(echo ${HOSTS} | wc -l)
-  SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
-
-  IP=$(echo ${HOSTS} | sed -n ${SELECTEDLINE}p | cut -d " " -f2)
-
-  ssh ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP
-}
-
-function bssh {
-  SSHOPTIONS=""
-  __bssh $1 $2
-}
-
-function bsshk {
-  SSHOPTIONS=(-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no)
-  __bssh $1 $2
 }
