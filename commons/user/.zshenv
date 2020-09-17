@@ -26,7 +26,7 @@ alias gstaging="gcloud --project adagio-vrac compute instances list"
 alias gtesting="gcloud --project adagio-testing-cfa18295 compute instances list"
 
 GCPPROJECTS="""testing:adagio-testing-cfa18295
-vrac-staging:adagio-vrac
+adagio-vrac:adagio-vrac
 staging:adagio-staging-8b11f5ec
 prod:adagio-prod
 """
@@ -96,7 +96,7 @@ function __gssh {
   if [ -z "$bastion" ]; then
     ssh -o ConnectTimeout=5 ${SSHOPTIONS} root@$IP $3
   else
-    ssh ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP
+    ssh ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP "$3"
   fi
 }
 
