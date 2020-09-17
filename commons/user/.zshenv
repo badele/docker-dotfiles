@@ -35,7 +35,7 @@ function getProjectId {
     echo ${GCPPROJECTS} | egrep "^$1:" | cut -d":" -f2
 }
 
-function grefresh {
+function gsync {
 
   if [ -z "$1" ];then
       echo "Usage: $0 <ENV> [USERNAME](default: root)"
