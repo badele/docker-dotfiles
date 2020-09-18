@@ -70,7 +70,7 @@ function glhosts {
   FILENAME="/tmp/gssh-${1}-hosts"
 
   # Show cache time
-  if [ `uname` == "Darwin" ] ; then
+  if [[ "_$(uname)_" == "_Darwin_" ]] ; then
     stat -f "%Sm" $FILENAME
   else
     stat -c "%y" $FILENAME
