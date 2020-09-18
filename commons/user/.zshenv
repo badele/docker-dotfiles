@@ -64,7 +64,7 @@ function glhosts {
 
   # If hosts file list not exist create it
   if [ ! -f /tmp/gssh-${1}-hosts ]; then
-    grefresh $1 $2
+    gsync $1 $2
   fi
 
   FILENAME="/tmp/gssh-${1}-hosts"
@@ -90,7 +90,7 @@ function __gssh {
 
   # If hosts file list not exist create it
   if [ ! -f /tmp/gssh-${1}-hosts ]; then
-    grefresh $1 $2
+    gsync $1 $2
   fi
 
   username=$(cat /tmp/gssh-${1}-username)
@@ -126,10 +126,10 @@ function gclustersshk {
   do
     echo "$IP"
     if [ -z "$bastion" ]; then
-      ssh -n -o ConnectTimeout=1 -o BatchMode=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no root@$IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'grefresh' command\n===============================\n"; fi
+      ssh -n -o ConnectTimeout=1 -o BatchMode=yes -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -o CheckHostIP=no root@$IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'gsync' command\n===============================\n"; fi
     else
       # TODO actually loop not working
-      ssh -o ConnectTimeout=1 -o BatchMode=yes ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'grefresh' command\n===============================\n"; fi
+      ssh -o ConnectTimeout=1 -o BatchMode=yes ${SSHOPTIONS} -o "ProxyCommand ssh -W %h:%p ${SSHOPTIONS} $bastion" ${username}@$IP "$3" || if [ $? -eq 255 ]; then echo "\n===============================\n= please use 'gsync' command\n===============================\n"; fi
     fi
   done < <(printf '%s\n' "$IPS")
 }
