@@ -47,7 +47,7 @@ INSTALL="$INSTALL xorg-server xorg-apps xorg-xinit arandr i3lock-fancy-dualmonit
 INSTALL="$INSTALL imlib2 nomacs w3m unclutter networkmanager-dmenu-git rofi spacefm dunst dunstify clipit"
 
 # Terminal tools
-INSTALL="$INSTALL up xterm rxvt-unicode termite git tig diff-so-fancy"
+INSTALL="$INSTALL up xterm rxvt-unicode termite git tig diff-so-fancy glow"
 
 # Development tools
 INSTALL="$INSTALL visual-studio-code-bin smartgit"
