@@ -13,6 +13,7 @@ export BROWSER="google-chrome-stable"
 alias vim='nvim'
 alias cdw='cd $WORK'
 alias cdwp='cd $WORK/platform'
+alias cdg='cd $(git rev-parse --show-toplevel)'
 alias cdp='cd $PRIVATE'
 alias cdpd='cd $PRIVATE/docker-dotfiles'
 
@@ -100,6 +101,29 @@ function __gssh {
   SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
   IP=$(echo ${HOSTS} | sed -n ${SELECTEDLINE}p | cut -d " " -f2)
 
+  if [[ "_${IP}_" == "__" ]]; then
+    echo "Hostname not found, refresh cache"
+    gsync $1
+
+    HOSTS=$(cat /tmp/gssh-${1}-hosts | grep ${2})
+    NBLINES=$(echo ${HOSTS} | wc -l)
+    SELECTEDLINE=$(shuf -i1-${NBLINES} -n1)
+    IP=$(echo ${HOSTS} | sed -n ${SELECTEDLINE}p | cut -d " " -f2)
+
+    if [[ "_${IP}_" == "__" ]]; then
+      echo "Can't found a hostname"
+      return 1
+    fi
+  fi
+
+  # Test host availability
+  ping -c1 -w1 $IP > /dev/null
+  if [ $? -ne 0 ]; then
+    echo "Can't ping host, refresh ssh cache"
+    gsync $1
+  fi
+
+  # Connect to SSH terminal
   if [ -z "$bastion" ]; then
     ssh -o ConnectTimeout=5 ${SSHOPTIONS} root@$IP $3
   else
