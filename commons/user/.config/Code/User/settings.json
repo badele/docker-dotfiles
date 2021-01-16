@@ -33,5 +33,6 @@
             "command": "make fmt",
             "runIn": "terminal",
         },
-    ]
+    ],
+    "explorer.compactFolders": false
 }
