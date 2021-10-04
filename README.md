@@ -10,6 +10,8 @@
                                For Manjaro/Archlinux distribution
 ```
 
+**Project migrated to https://github.com/badele/dotfiles**
+
 ## Installation
 
 ### Docker Installation
